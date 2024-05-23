@@ -10,17 +10,67 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(0 0 0);
   min-height: 100vh;
+  
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+@keyframes circleEntry {
+  0% {
+    background-size: 0 0;
+    
+  }
+  100% {
+    background-size: var(--bgSize) var(--bgSize);
+  }
+}
+.halftone {
+  --blend-mode: 'normal';
+  position: relative;
+  aspect-ratio: 1;
+  background: rgb(236,0,140);
+  filter: contrast(var(--contrast, 20)) invert(var(--invert, 0));
+
+  /* mix-blend-mode: var(--blendMode, multiply); */
+}
+
+.halftone::before {
+  content: '';
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  background-image: var(--bg);
+  background-size: 0 0; /* Initially set to zero */
+  background-repeat: round;
+  background-position: 0 0, var(--bgPosition) var(--bgPosition);
+  -webkit-mask-image: var(--mask);
+  mask-image: var(--mask);
+  mask-size: cover;
+  mask-position: center;
+  transition: background-size 100ms;
+  animation: circleEntry 0.5s ease-in-out forwards; /* Apply the animation */
+}
+
+
+.hyper {
+
+  --size: 1.25rem;
+  --mask: repeating-linear-gradient(65deg, rgba(0 0 0), rgb(0 0 0 / 0.255) 50%, rgb(0 0 0) 100%);
+  --dotsColor: 255 255 255;
+  --bg: radial-gradient(circle at center, rgb(var(--dotsColor)) 3%, rgb(var(--dotsColor) / 0.4) var(--dotRadius, 70%));
+  --bgSize: var(--size);
+  --cardBg: linear-gradient(135deg, rgb(236,0,140), rgb(237,20,92));
+  background: var(--cardBg);
+  overflow: hidden;
+  border: 2px solid;
+  border-image: var(--cardBg) 30;
+  position:relative;
+  z-index:10;
 }

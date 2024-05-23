@@ -1,58 +1,42 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+"use client";
 import "./globals.css";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import NavBar from "@/components/navbar";
+import { usePathname } from "next/navigation";
+import { PropsWithChildren, useContext, useRef } from "react";
+import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { layoutTransitions } from "@/animations/helper";
 
-const inter = Inter({ subsets: ["latin"] });
-interface AnimVariants {
-  initial: string;
-  animate: string;
-  exit: string;
-  variants: any; // Replace 'any' with the actual type of 'variants' if known
+
+function FrozenRouter(props: PropsWithChildren<{}>) {
+  const context = useContext(LayoutRouterContext);
+  const frozen = useRef(context).current;
+
+  return (
+    <LayoutRouterContext.Provider value={frozen}>
+      {props.children}
+    </LayoutRouterContext.Provider>
+  );
 }
-export const metadata: Metadata = {
-  title: "Aaron Taylor | Professional IT & Media Services",
-  description: "Web design, application development, IT consultation and more.",
-};
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-
-  const anim = (variants: any): AnimVariants => {
-    return {
-      initial: "initial",
-      animate: "enter",
-      exit: "exit",
-      variants
-
-    }
-  }
-
-  const opacity = {
-    intial: {
-      opacity: 0,
-    },
-    enter: {
-      opacity: 1,
-    },
-    exit: {
-      opacity: 0,
-    }
-  }
+export default function RootLayout(props: PropsWithChildren<{}>) {
+  const pathname = usePathname();
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body >
         <NavBar />
-        <motion.div
-          initial={{ x: "100%" }}
-          animate={{ x: "calc(100vw - 50%)" }}
-        >
-          {children}
-        </motion.div>
+        <AnimatePresence mode="popLayout">
+
+
+          {/* Page transition animation */}
+
+          <motion.div
+            key={pathname}
+            {...layoutTransitions({pathname})}
+          >
+            <FrozenRouter>{props.children}</FrozenRouter>
+          </motion.div>
+        </AnimatePresence>
       </body>
     </html>
   );
