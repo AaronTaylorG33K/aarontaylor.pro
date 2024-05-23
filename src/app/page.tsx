@@ -1,13 +1,22 @@
 import { Metadata } from "next";
+import { Open_Sans } from 'next/font/google'
+
+const open_sans = Open_Sans({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <div className="h-full">
       <div
-        className="h-[400px] w-full bg-white"
+        className={`h-[400px] w-full bg-white text-black text-5xl pt-20 lg:pt-0 lg:text-7xl flex items-center justify-center ${open_sans.className}`}
         data-scroll-anchor
         id="hero"
-      ></div>
+      >
+Brilliant<br/>
+Design &<br/>
+Branding
+
+        
+      </div>
 
       <div className="h-full w-full relative" data-scroll-anchor id="hyper">
         <div className="hyper z-10">

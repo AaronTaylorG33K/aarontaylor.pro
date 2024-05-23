@@ -5,9 +5,10 @@ import { useState } from "react";
 import Logo from "./logo";
 import { useAnimatedScroll } from "@/animations/helper";
 
+import { Bars2Icon } from "@heroicons/react/20/solid";
+
 const NavBar = ({ theme }: { theme?: string }) => {
   console.log("NavBar", theme);
-
   const {
     config: {
       navbar: { animate },
@@ -25,13 +26,16 @@ const NavBar = ({ theme }: { theme?: string }) => {
       <motion.div className="navbar-start">
         <Logo width={200} animate={animateLogo[`${theme}`]} />
       </motion.div>
-      <div className="navbar-center"></div>
+      
 
-      <div className="navbar-end [&>a]:btn [&>a]:btn-ghost">
+      <div className="navbar-end [&>a]:btn [&>a]:btn-outline [&>a]:px-8 [&>a]:border-gray-100 space-x-6 hidden lg:inline-flex w-1/2">
         <Link href="/">Home</Link>
         <Link href="/about">About</Link>
-        <Link href="/contact">Contact</Link>
+        <Link href="/contact">Contact</Link>     
+       
+        <Bars2Icon className="fixed top-8 right-6 rounded-full p-3 mr-4 btn btn-circle btn-outline border-secondary fill-secondary bg-white hover:bg-white hover:border-secondary active:border-secondary" />
       </div>
+     
     </motion.div>
   );
 };
