@@ -14,8 +14,8 @@ export default function Home() {
           <div className="halftone opacity-10 z-10"></div>
         </div>
         <div className="absolute top-0 z-20 w-full h-full ">
-          What up here?
-          <button className="btn btn-primary text-white">Button Text</button>
+          {/* What up here?
+          <button className="btn btn-primary text-white">Button Text</button> */}
         </div>
       </div>
     </div>

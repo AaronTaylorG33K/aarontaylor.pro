@@ -11,12 +11,12 @@ interface ConfigTypes {
   footer?: any;
 }
 interface ScrollConfig {
-    [key: string]: any[]; // Define the type of values in scrollConfig as any array for now
-  }
-  
-  interface FoundConfig {
-    [key: string]: any; // Define the type of values in foundConfig as any for now
-  }
+  [key: string]: any[]; // Define the type of values in scrollConfig as any array for now
+}
+
+interface FoundConfig {
+  [key: string]: any; // Define the type of values in foundConfig as any for now
+}
 // This config object contains our animations and animation chains
 
 // specify a startY and endY to contain within a range
@@ -27,17 +27,22 @@ export const scrollConfig = {
     {
       startY: 0,
       endY: 180,
-      animate: { fill: "#46C4D9", scale: 1, rotate: 0 },
-      animations: [
-        { fill: "#46C4D9", scale: 1, rotate: 0 },
-        { fill: "#FFFFFF", scale: 1.1, rotate: 30 },
-      ],
+      animate: {
+        light: { fill: "#46C4D9", scale: 1, rotate: 0 },
+        dark: { fill: "#FFFFFF", scale: 1, rotate: 0 },
+      },
     },
-    { startY: 180, animate: { fill: "#FFFFFF", scale: 1.1, rotate: -5 } },
+    {
+      startY: 180,
+      animate: {
+        light: { fill: "#FFFFFF", scale: 1.1, rotate: -5 },
+        dark: { fill: "#000000", scale: 1.1, rotate: -5 },
+      },
+    },
   ],
   navbar: [
-    { startY: 0, endY: 100, animate: { color: "#000000" },},
-    { startY: 100, animate: { color: "#ffffff"}, },
+    { startY: 0, endY: 100, animate: { light: { color: "#000000" }, dark: { color: "#ffffff" } } },
+    { startY: 100, animate: { light: { color: "#ffffff" }, dark: {color:'#000000'} }},
   ],
   hero: [{ startY: 0, endY: 100, properties: { opacity: 0.5, y: 0 } }],
   hyper: [{ startY: 0, endY: 100, properties: { opacity: 0.5, y: 0 } }],
@@ -45,18 +50,18 @@ export const scrollConfig = {
 };
 
 function getDistanceFromTop(elem: Element) {
-    var rect = elem.getBoundingClientRect();
-    return rect.top;
+  var rect = elem.getBoundingClientRect();
+  return rect.top;
 }
 
 export const useAnimatedScroll = () => {
   const { scrollYProgress, scrollY } = useScroll();
 
-  const [scrollState, setScrollState] = useState<"initial" | "scrolling" | "end">("initial");
+  const [scrollState, setScrollState] = useState<
+    "initial" | "scrolling" | "end"
+  >("initial");
   const [scrollPercentage, setScrollPercentage] = useState<number>(0);
   const [y, setY] = useState<number>(0);
-
-
 
   const getConfigForRange = useCallback(
     (
@@ -92,7 +97,7 @@ export const useAnimatedScroll = () => {
     let foundConfig: FoundConfig = {};
     for (const key in scrollConfig) {
       if (Object.hasOwnProperty.call(scrollConfig, key)) {
-        const configArray = (scrollConfig as ScrollConfig)[key] as any[]; 
+        const configArray = (scrollConfig as ScrollConfig)[key] as any[];
         const configForRange = getConfigForRange(configArray, y);
         if (configForRange) {
           foundConfig[key] = configForRange;
@@ -109,11 +114,11 @@ export const useAnimatedScroll = () => {
     setScrollState,
     scrollPercentage,
     y,
-    config: config as ConfigTypes
+    config: config as ConfigTypes,
   };
 };
 
-export const layoutTransitions = ({pathname}: { pathname?: string }) => {
+export const layoutTransitions = ({ pathname }: { pathname?: string }) => {
   // the pathname is passed here to create page specific transitions
   if (pathname && pathname === "/") {
     return {
