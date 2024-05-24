@@ -2,6 +2,7 @@ import { useFlubber } from "@/animations/use-flubber";
 import SVGMorph from "./svgMorph";
 import { Suspense } from "react";
 import { cubicBezier, motion, useMotionValue, useScroll, useTransform } from "framer-motion";
+import useViewportSize from "@/hooks/useViewportSize";
 
 const p =
   "m 0 11 l 6.8 -1.5 c 6.9 -1.5 20.5 -4.5 34.2 -3.7 c 13.7 0.9 27.3 5.5 41 11.9 c 13.7 6.3 25.76 32.51 39.46 31.21 c 13.7 -1.4 28.84 -30.21 42.54 -36.11 c 13.7 -5.8 30.89 -0.71 44.39 5.09 c 13.5 5.9 23.67 17.29 37.17 20.49 s 26.74 -8.08 40.44 -14.88 s 27.23 -10.05 40.93 -12.05 s 27.37 -2.75 41.07 0.55 s 28.06 16.55 41.76 15.55 s 26.54 -16.25 40.24 -15.75 s 27.13 27.18 40.83 26.28 c 13.7 -0.8 28.45 -20.53 42.15 -22.83 c 13.7 -2.4 26.1 -1.25 39.8 5.85 c 13.7 7.2 26.69 30.81 40.39 31.61 c 13.7 0.9 28.13 -27.42 41.63 -29.02 c 13.5 -1.7 26.9 4.3 40.4 6.3 s 27.1 0 40.8 -5.3 c 13.7 -5.4 27.3 -14 41 -16.5 s 28.52 13.49 42.22 13.49 s 26.08 -15.98 39.78 -17.98 s 27.3 -2.4 34.2 -2.5 l 6.8 -0.2 v -1 h -900 v 11 z";
@@ -32,9 +33,10 @@ const TheDrip = ({ pathname }: { pathname?: string }) => {
   const { scrollY } = useScroll();
   const drip = useTransform(scrollY, [0, 500], keyframesOverlay, 
     { ease: cubicBezier(0.17, 0.67, 0.83, 0.67),  });
+    const { isMobile } = useViewportSize()
   return (
-    <div className="w-full absolute z-20">
-      <svg className="overlay" viewBox="0 0 900 500" width="100%" height={"100%"}>
+    <div className="w-full  absolute z-20">
+      <svg className="overlay border-white border-t-[100px] lg:border-t-0" viewBox={`0 0 ${isMobile ? 700:900} 500`} width="100%" height={"100%"}>
         <motion.path d={drip} fill={"#ffffff"} />
       </svg>
     </div>
