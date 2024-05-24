@@ -6,9 +6,11 @@ import {
 } from "framer-motion";
 import GitHubButton from "react-github-btn";
 import { useState } from "react";
+import useViewportSize from "@/hooks/useViewportSize";
 
 const Footer = () => {
   const { scrollYProgress } = useScroll();
+  const { isMobile } = useViewportSize();
   const [showFooter, setShowFooter] = useState(false);
   const [expandFooter, setExpandFooter] = useState(false);
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -37,14 +39,14 @@ const Footer = () => {
     <AnimatePresence>
       {showFooter && (
         <motion.div
-          initial={{ bottom: "-20vh", opacity: 0, height: "10vh" }}
-          animate={{ bottom: "-20vh", opacity: 1, height: "30vh" }}
-          exit={{ bottom: "-20vh", opacity: 0, height: "10vh" }}
+          initial={{ bottom: "-20vh", opacity: 0, height: isMobile ? "30vh":"10vh" }}
+          animate={{ bottom: "-20vh", opacity: 1, height: isMobile ? "40vh":"30vh" }}
+          exit={{ bottom: "-20vh", opacity: 0, height: isMobile ? "30vh":"10vh" }}
           transition={{ type: "spring" }}
-          className="h-[15vh]  bg-black fixed bottom-0 left-0 right-0 z-50 w-full text-white flex flex-row w-full justify-between "
+          className="h-[40vh] lg:h-[15vh]  bg-black fixed bottom-0 left-0 right-0 z-50 w-full text-white flex  flex-col  w-full justify-between "
         >
-            <div className="px-6 flex flex-row w-full mx-auto">
-          <div className="flex  items-center h-[10vh]  w-1/4">
+        <div className="px-6 flex flex-col lg:flex-row w-full mx-auto gap-4 lg:gap-0 ">
+          <div className="flex  items-center mt-8 lg:mt-auto lg:h-[10vh]  w-full lg:w-1/4 justify-center lg:justify-start">
             <GitHubButton
               href="https://github.com/AaronTaylorG33K"
               data-color-scheme="no-preference: light; light: light; dark: dark;"
@@ -54,7 +56,7 @@ const Footer = () => {
               Follow @AaronTaylorG33K
             </GitHubButton>
           </div>
-          <div className="flex flex-row gap-4 items-center h-[10vh]  w-1/2 justify-center">
+          <div className="flex flex-row gap-10 items-center h-auto lg:h-[10vh]  w-full lg:w-1/2 justify-center">
             <div>
               <svg
                 role="img"
@@ -92,7 +94,7 @@ const Footer = () => {
               </svg>
             </div>
           </div>
-          <div className="w-1/4 flex justify-end items-center h-[10vh] text-[rgba(255,255,255,0.5)] text-sm">&copy; Copyright 2024 Aaron Taylor</div>
+          <div className="w-full lg:w-1/4 flex justify-center lg:justify-end items-center h-auto lg:h-[10vh] text-[rgba(255,255,255,0.5)] text-sm">&copy; Copyright 2024 Aaron Taylor</div>
           </div>
         </motion.div>
       )}
