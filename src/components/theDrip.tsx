@@ -1,6 +1,3 @@
-import { useFlubber } from "@/animations/use-flubber";
-import SVGMorph from "./svgMorph";
-import { Suspense } from "react";
 import { cubicBezier, motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import useViewportSize from "@/hooks/useViewportSize";
 
