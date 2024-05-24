@@ -13,9 +13,9 @@ import {
 import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { layoutTransitions } from "@/animations/helper";
 import Footer from "@/components/footer";
-import FlubberBar from "@/components/flubberBar";
 import TheDrip from "@/components/theDrip";
 import Hero from "@/components/hero";
+import HyperPink from "@/components/hyper";
 function FrozenRouter(props: PropsWithChildren<{}>) {
   const context = useContext(LayoutRouterContext);
   const frozen = useRef(context).current;
@@ -47,7 +47,14 @@ export default function RootLayout(props: PropsWithChildren<{}>) {
         <AnimatePresence mode="popLayout">
           <motion.div key={pathname} {...layoutTransitions({ pathname })}>
             <TheDrip pathname={pathname} />
-            <FrozenRouter>{props.children}</FrozenRouter>
+            <FrozenRouter>
+              <div className="h-full h-[100vh]">
+                <div className="w-full relative h-full">
+                  <HyperPink pathname={pathname} />
+                  {props.children}{" "}
+                </div>
+              </div>
+            </FrozenRouter>
           </motion.div>
         </AnimatePresence>
         <Footer />

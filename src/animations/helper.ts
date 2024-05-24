@@ -122,16 +122,16 @@ export const layoutTransitions = ({ pathname }: { pathname?: string }) => {
   // the pathname is passed here to create page specific transitions
   if (pathname && pathname === "/") {
     return {
-      initial: { opacity: 0, y: 0 },
+      initial: { opacity: 0, y: -500 },
       animate: { opacity: 1, y: 0 },
-      exit: { opacity: 0, y: 0 },
+      exit: { opacity: 0, y: -500 },
       transition: { type: "spring" },
     };
   } else if (pathname && pathname === "/about") {
     return {
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-      exit: { opacity: 0 },
+      initial: { opacity: 0.5, y: -500 },
+      animate: { opacity: 1, y:0 },
+      exit: { opacity: 0.5, y:500},
       transition: { duration: 0.4, type: "tween" },
     };
   } else {
