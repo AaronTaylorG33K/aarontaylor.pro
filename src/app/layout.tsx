@@ -3,11 +3,19 @@ import "./globals.css";
 import { AnimatePresence, motion } from "framer-motion";
 import NavBar from "@/components/navbar";
 import { usePathname } from "next/navigation";
-import { PropsWithChildren, useContext, useEffect, useRef, useState } from "react";
+import {
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { layoutTransitions } from "@/animations/helper";
-
-
+import Footer from "@/components/footer";
+import FlubberBar from "@/components/flubberBar";
+import TheDrip from "@/components/theDrip";
+import Hero from "@/components/hero";
 function FrozenRouter(props: PropsWithChildren<{}>) {
   const context = useContext(LayoutRouterContext);
   const frozen = useRef(context).current;
@@ -22,31 +30,27 @@ function FrozenRouter(props: PropsWithChildren<{}>) {
 export default function RootLayout(props: PropsWithChildren<{}>) {
   const pathname = usePathname();
   // we use lightPages to determine if the nav should be light or dark.
-  const lightPages = ['/'];
+  const lightPages = ["/"];
 
-  const [navTheme, setNavTheme] = useState<'dark' | 'light'>('light'); // Assuming default theme is light
+  const [navTheme, setNavTheme] = useState<"dark" | "light">("light"); // Assuming default theme is light
   const determinePageTheme = (pathname: string) => {
-    setNavTheme(lightPages.includes(pathname) ? 'light' : 'dark');
+    setNavTheme(lightPages.includes(pathname) ? "light" : "dark");
   };
   useEffect(() => {
     determinePageTheme(pathname);
   }, [pathname]);
   return (
     <html lang="en">
-      <body >
+      <body>
         <NavBar theme={navTheme} />
+        <Hero pathname={pathname} />
         <AnimatePresence mode="popLayout">
-
-
-          {/* Page transition animation */}
-
-          <motion.div
-            key={pathname}
-            {...layoutTransitions({pathname})}
-          >
+          <motion.div key={pathname} {...layoutTransitions({ pathname })}>
+            <TheDrip pathname={pathname} />
             <FrozenRouter>{props.children}</FrozenRouter>
           </motion.div>
         </AnimatePresence>
+        <Footer />
       </body>
     </html>
   );

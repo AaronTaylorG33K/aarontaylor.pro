@@ -8,7 +8,6 @@ import { useAnimatedScroll } from "@/animations/helper";
 import { Bars2Icon } from "@heroicons/react/20/solid";
 
 const NavBar = ({ theme }: { theme?: string }) => {
-  console.log("NavBar", theme);
   const {
     config: {
       navbar: { animate },
@@ -21,7 +20,7 @@ const NavBar = ({ theme }: { theme?: string }) => {
       animate={animate[`${theme}`]}
       data-scroll-anchor
       id="navbar"
-      className="navbar fixed left-0 top-0 right-0 z-[100]"
+      className="navbar fixed left-0 top-0 right-0 z-50"
     >
       <motion.div className="navbar-start">
         <Logo width={200} animate={animateLogo[`${theme}`]} />
@@ -33,9 +32,9 @@ const NavBar = ({ theme }: { theme?: string }) => {
         <Link href="/about">About</Link>
         <Link href="/contact">Contact</Link>     
        
-        <Bars2Icon className="fixed top-8 right-6 rounded-full p-3 mr-4 btn btn-circle btn-outline border-secondary fill-secondary bg-white hover:bg-white hover:border-secondary active:border-secondary" />
+       
       </div>
-     
+      <Bars2Icon className="fixed top-8 right-6 z-20 rounded-full p-3 mr-4 btn btn-circle btn-outline border-secondary fill-secondary bg-white hover:bg-white hover:border-secondary active:border-secondary" />
     </motion.div>
   );
 };

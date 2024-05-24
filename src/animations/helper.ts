@@ -35,8 +35,8 @@ export const scrollConfig = {
     {
       startY: 180,
       animate: {
-        light: { fill: "#FFFFFF", scale: 1.1, rotate: -5 },
-        dark: { fill: "#000000", scale: 1.1, rotate: -5 },
+        light: { fill: "#000000", scale: 1.1, rotate: -5 },
+        dark: { fill: "#FFFFFF", scale: 1.1, rotate: -5 },
       },
     },
   ],
@@ -122,10 +122,10 @@ export const layoutTransitions = ({ pathname }: { pathname?: string }) => {
   // the pathname is passed here to create page specific transitions
   if (pathname && pathname === "/") {
     return {
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-      exit: { opacity: 0 },
-      transition: { duration: 0.4, type: "tween" },
+      initial: { opacity: 0, y: 0 },
+      animate: { opacity: 1, y: 0 },
+      exit: { opacity: 0, y: 0 },
+      transition: { type: "spring" },
     };
   } else if (pathname && pathname === "/about") {
     return {
