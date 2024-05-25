@@ -5,18 +5,25 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import GitHubButton from "react-github-btn";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useViewportSize from "@/hooks/useViewportSize";
 
-const Footer = () => {
+const Footer = ({pathname}:{pathname?:string}) => {
   const { scrollYProgress } = useScroll();
   const { isMobile } = useViewportSize();
-  const [showFooter, setShowFooter] = useState(false);
+  const [showFooter, setShowFooter] = useState(pathname === '/' ? false : true);
   const [expandFooter, setExpandFooter] = useState(false);
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (latest < 0.5) setShowFooter(false);
     if (latest > 0.5) setShowFooter(true);
   });
+
+//   useEffect(() => {
+//     if(pathname === '/'){setShowFooter(false)}
+//     else {
+//         setShowFooter(true)
+//     }
+//   }, []);
 
   const variants = {
     closed: {
@@ -37,7 +44,7 @@ const Footer = () => {
 
   return (
     <AnimatePresence>
-      {showFooter && (
+      {(showFooter ||  pathname !== '/') && (
         <motion.div
           initial={{ bottom: "-20vh", opacity: 0, height: isMobile ? "30vh":"10vh" }}
           animate={{ bottom: "-20vh", opacity: 1, height: isMobile ? "40vh":"30vh" }}

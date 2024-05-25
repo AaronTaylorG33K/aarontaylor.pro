@@ -1,8 +1,8 @@
-const HyperPink = ({ pathname }: { pathname?: string }) => {
-  if (pathname !== "/") return null;
+const HyperPink = ({children}) => {
   return (
-    <div className="hyper h-full z-10">
-      <div className="halftone opacity-10 z-50 h-full w-full"></div>
+    <div className="hyper h-[150vh]">
+      <div className="halftone opacity-10 w-full"></div>
+      {children}
     </div>
   );
 };

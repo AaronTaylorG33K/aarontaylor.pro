@@ -30,7 +30,7 @@ function FrozenRouter(props: PropsWithChildren<{}>) {
 export default function RootLayout(props: PropsWithChildren<{}>) {
   const pathname = usePathname();
   // we use lightPages to determine if the nav should be light or dark.
-  const lightPages = ["/"];
+  const lightPages = ["/","/contact"];
 
   const [navTheme, setNavTheme] = useState<"dark" | "light">("light"); // Assuming default theme is light
   const determinePageTheme = (pathname: string) => {
@@ -42,22 +42,18 @@ export default function RootLayout(props: PropsWithChildren<{}>) {
   return (
     <html lang="en">
       <body>
-        <NavBar theme={navTheme} />
-        <Hero pathname={pathname} />
         <AnimatePresence mode="popLayout">
+        <NavBar theme={navTheme} />
+          
           <motion.div key={pathname} {...layoutTransitions({ pathname })}>
-            <TheDrip pathname={pathname} />
+           
             <FrozenRouter>
-              <div className="h-full h-[100vh]">
-                <div className="w-full relative h-full">
-                  <HyperPink pathname={pathname} />
-                  {props.children}
-                </div>
-              </div>
+                {props.children}
             </FrozenRouter>
           </motion.div>
+
+        <Footer pathname={pathname} />
         </AnimatePresence>
-        <Footer />
       </body>
     </html>
   );

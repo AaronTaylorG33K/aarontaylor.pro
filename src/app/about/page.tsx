@@ -3,7 +3,9 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 export default function Home() {
-  return <div className="h-screen w-screen bg-black"></div>;
+  return (
+ <div className="h-screen w-screen bg-black h-full text-white">About</div>
+  );
 }
 export const metadata: Metadata = {
   title: "Aaron Taylor | Professional IT & Media Services",

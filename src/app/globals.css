@@ -69,7 +69,6 @@ body {
   --cardBg: linear-gradient(135deg, rgb(236,0,140), rgb(237,20,92));
   background: var(--cardBg);
   overflow: hidden;
-  border: 2px solid;
   border-image: var(--cardBg) 30;
   position:relative;
   z-index:10;

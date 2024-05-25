@@ -122,16 +122,33 @@ export const layoutTransitions = ({ pathname }: { pathname?: string }) => {
   // the pathname is passed here to create page specific transitions
   if (pathname && pathname === "/") {
     return {
-      initial: { opacity: 0, y: -500 },
-      animate: { opacity: 1, y: 0 },
-      exit: { opacity: 0, y: -500 },
-      transition: { type: "spring" },
+        initial: {
+            opacity: 0,
+            transition: { duration: 0.5, easing: "easeInOut"},
+
+            // clipPath: "circle(0% at 50% 50%)", // starting with a small circle at the center
+          },
+          animate: {
+            opacity: 1,
+            transition: { duration: 0.5,  easing: "easeInOut"},
+            // clipPath: "circle(100% at 50% 50%)", // expanding to cover the entire screen
+          },
+          exit: {
+            opacity: 0,
+            transition: { duration: 0.5,  easing: "easeInOut"},
+            // clipPath: "circle(0% at 50% 50%)", // shrinking back to a small circle
+          },
+          transition: {
+            type: "spring",
+            stiffness: 200,
+            damping: 20,
+          },
     };
   } else if (pathname && pathname === "/about") {
     return {
-      initial: { opacity: 0.5, y: -500 },
-      animate: { opacity: 1, y:0 },
-      exit: { opacity: 0.5, y:500},
+      initial: { opacity: 0.5},
+      animate: { opacity: 1, },
+      exit: { opacity: 0.5,},
       transition: { duration: 0.4, type: "tween" },
     };
   } else {

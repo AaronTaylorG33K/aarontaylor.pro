@@ -15,22 +15,29 @@ const n7 =
 
 const keyframesOverlay = [n7, n6];
 
-const TheDrip = ({ pathname }: { pathname?: string }) => {
+const TheDrip = () => {
   const { scrollY } = useScroll();
   const drip = useTransform(scrollY, [0, 500], keyframesOverlay, {
     ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
   });
+  const shadowValue = useTransform(scrollY, [0, 500], ["drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))", "drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.4))"], {
+    ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+  });
+  const translateYValue = useTransform(scrollY, [500, 800], ["0px", "120px"], {
+    ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+  });
+
+
   const { isMobile } = useViewportSize();
-  if (pathname !== "/") return null;
   return (
-    <div className="w-full  absolute z-20">
+    <div className="w-full  absolute z-20 pointer-events-none top-0">
       <svg
-        className="overlay border-white border-t-[100px] lg:border-t-0"
+        className="overlay border-white border-t-[100px] lg:border-t-0 "
         viewBox={`0 0 ${isMobile ? 700 : 900} 500`}
         width="100%"
-        height={"100%"}
       >
-        <motion.path d={drip} fill={"#ffffff"} />
+        <motion.path className={`shadow-xl`} d={drip} fill={"#ffffff"} 
+          style={{ filter: shadowValue, translateY: translateYValue  }}  />
       </svg>
     </div>
   );

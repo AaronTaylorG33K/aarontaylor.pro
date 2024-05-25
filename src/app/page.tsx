@@ -1,5 +1,7 @@
 import { Metadata } from "next";
-
+import Hero from "@/components/hero";
+import HyperPink from "@/components/hyper";
+import TheDrip from "@/components/theDrip";
 export const metadata: Metadata = {
   title: "Aaron Taylor | Professional IT & Media Services",
   description: "Web design, application development, IT consultation and more.",
@@ -7,12 +9,19 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-   
+    <div className="w-full">
+      <Hero />
+      <HyperPink>
 
-        <div className="absolute top-0 z-20 w-full h-full flex flex-col gap-4 items-center justify-center text-white ">
+      <TheDrip/>
+        <div className="absolute h-full  w-full top-0 w-1/2 z-50 flex flex-col gap-4 items-center justify-center text-white  ">
+          
+          <div className="border border-white rounded-lg w-1/2 items-center flex h-[500px] justify-center ">
           <div>What up here? </div>
           <button className="btn btn-primary text-white">Button Text</button>
+          </div>
         </div>
+      </HyperPink>
+    </div>
   );
 }
-
