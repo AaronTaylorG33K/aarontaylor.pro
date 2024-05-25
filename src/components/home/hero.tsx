@@ -1,5 +1,4 @@
 import { Open_Sans } from "next/font/google";
-import TheDrip from "./theDrip";
 
 const open_sans = Open_Sans({ subsets: ["latin"] });
 

@@ -13,9 +13,7 @@ import {
 import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { layoutTransitions } from "@/animations/helper";
 import Footer from "@/components/footer";
-import TheDrip from "@/components/theDrip";
-import Hero from "@/components/hero";
-import HyperPink from "@/components/hyper";
+
 function FrozenRouter(props: PropsWithChildren<{}>) {
   const context = useContext(LayoutRouterContext);
   const frozen = useRef(context).current;

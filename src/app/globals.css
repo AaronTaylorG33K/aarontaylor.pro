@@ -37,11 +37,14 @@ body {
   aspect-ratio: 1;
   background: rgb(236,0,140);
   filter: contrast(var(--contrast, 20)) invert(var(--invert, 0));
+  
 
-  /* mix-blend-mode: var(--blendMode, multiply); */
+  mix-blend-mode: var(--blendMode, multiply);
 }
 
 .halftone::before {
+
+  --blend-mode: 'normal';
   content: '';
   position: absolute;
   z-index: 10;
@@ -54,6 +57,8 @@ body {
   mask-image: var(--mask);
   mask-size: cover;
   mask-position: center;
+  
+  /* mix-blend-mode: var(--blendMode, multiply); */
   transition: background-size 100ms;
   animation: circleEntry 0.5s ease-in-out forwards; /* Apply the animation */
 }
@@ -61,7 +66,7 @@ body {
 
 .hyper {
 
-  --size: 1.25rem;
+  --size: 1.5rem;
   --mask: repeating-linear-gradient(65deg, rgba(0 0 0), rgb(0 0 0 / 0.255) 50%, rgb(0 0 0) 100%);
   --dotsColor: 255 255 255;
   --bg: radial-gradient(circle at center, rgb(var(--dotsColor)) 3%, rgb(var(--dotsColor) / 0.4) var(--dotRadius, 70%));

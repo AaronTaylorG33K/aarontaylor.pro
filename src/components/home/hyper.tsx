@@ -1,7 +1,7 @@
 const HyperPink = ({children}:{children: React.ReactNode}) => {
   return (
-    <div className="hyper h-[130vh]">
-      <div className="halftone opacity-10 w-full h-full"></div>
+    <div className="hyper h-[200vh] ">
+      <div className="halftone  w-full h-full border-t-[30px] border border-black"></div>
       {children}
     </div>
   );

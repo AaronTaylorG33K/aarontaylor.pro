@@ -20,7 +20,7 @@ const Logo = (props: LogoProps) => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       x="0px"
       y="0px"
-      viewBox="0 0 146.53 96.31"
+      viewBox="0 0 160.53 120"
       xmlSpace="preserve"
       {...props}
     >

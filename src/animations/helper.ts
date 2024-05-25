@@ -28,17 +28,26 @@ export const scrollConfig = {
       startY: 0,
       endY: 380,
       animate: {
-        light: { fill: "#000000", scale: 1.1, rotate: -5, opacity: 1 },
-        dark: { fill: "#FFFFFF", scale: 1.1, rotate: -5, opacity: 1 },
+        light: { fill: "#000000", scale: 1.1, rotate: -5, opacity: 1, y:0 },
+        dark: { fill: "#FFFFFF", scale: 1.1, rotate: -5, opacity: 1, y:0 },
       },
     },
     {
       startY: 381,
+      endY: 600,
       animate: {
-        light: { fill: "#46C4D9", scale: 1, rotate: 0, opacity: 1 },
-        dark: { fill: "#FFFFFF", scale: 1, rotate: 0, opacity: 1 },
+        light: { fill: "#46C4D9", scale: 1, rotate: 0, opacity: 1, y:0 },
+        dark: { fill: "#FFFFFF", scale: 1, rotate: 0, opacity: 1, y:0 },
       },
     },
+    {
+        startY: 601,
+
+        animate: {
+          light: { fill: "#46C4D9", scale: 1, rotate: 0, opacity: 0, y: -50 },
+          dark: { fill: "#FFFFFF", scale: 1, rotate: 0, opacity: 0, y:-50 },
+        },
+      },
   ],
   navbar: [
     {
