@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect } from "react";
 
 interface ViewportSize {
@@ -13,14 +14,16 @@ interface ViewportType {
 
 const useViewportSize = (): ViewportType => {
   const [viewportSize, setViewportSize] = useState<ViewportSize>({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+    height: typeof window !== "undefined" ? window.innerHeight : 0,
   });
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isTablet, setIsTablet] = useState<boolean>(false);
   const [isDesktop, setIsDesktop] = useState<boolean>(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const handleResize = () => {
       setViewportSize({
         width: window.innerWidth,
@@ -29,6 +32,9 @@ const useViewportSize = (): ViewportType => {
     };
 
     window.addEventListener("resize", handleResize);
+
+    // Call handleResize to set initial size if the component is mounted in the browser
+    handleResize();
 
     return () => {
       window.removeEventListener("resize", handleResize);

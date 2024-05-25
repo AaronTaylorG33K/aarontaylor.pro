@@ -51,7 +51,7 @@ export default function RootLayout(props: PropsWithChildren<{}>) {
               <div className="h-full h-[100vh]">
                 <div className="w-full relative h-full">
                   <HyperPink pathname={pathname} />
-                  {props.children}{" "}
+                  {props.children}
                 </div>
               </div>
             </FrozenRouter>
