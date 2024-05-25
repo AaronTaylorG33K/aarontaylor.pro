@@ -30,7 +30,7 @@ const TheDrip = () => {
 
   const { isMobile } = useViewportSize();
   return (
-    <div className="w-full  absolute z-20 pointer-events-none top-0">
+    <div id="theDrip" className="w-full  absolute z-20 pointer-events-none top-0">
       <svg
         className="overlay border-white border-t-[100px] lg:border-t-0 "
         viewBox={`0 0 ${isMobile ? 700 : 900} 700`}

@@ -7,9 +7,9 @@ const SubHero = () => {
   const top = useTransform(scrollY, [300, 1800], [-400, 700]);
 
   return (
-    <motion.div className="absolute h-full w-full top-0 w-1/2 z-50 flex flex-col gap-4 items-center justify-center text-white"  style={{ top }}>
+    <motion.div id="subHero" className="absolute h-full w-full top-0 w-full lg:w-1/2 z-50 flex flex-col px-4 lg:px-0 gap-4 items-center justify-center text-white"  style={{ top }}>
       <motion.div
-        className="backdrop-blur-sm bg-[rgba(255,255,255,0.1)] border border-white rounded-lg w-1/2 items-center flex h-[500px] justify-center"
+        className=" bg-[rgba(255,255,255,0.2)] border border-white rounded-lg w-full lg:w-1/2 items-center flex h-[500px] justify-center"
       >
         <div>Component</div>
       </motion.div>
