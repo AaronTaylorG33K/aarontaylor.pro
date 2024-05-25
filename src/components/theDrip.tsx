@@ -33,7 +33,7 @@ const TheDrip = () => {
     <div className="w-full  absolute z-20 pointer-events-none top-0">
       <svg
         className="overlay border-white border-t-[100px] lg:border-t-0 "
-        viewBox={`0 0 ${isMobile ? 700 : 900} 500`}
+        viewBox={`0 0 ${isMobile ? 700 : 900} 700`}
         width="100%"
       >
         <motion.path className={`shadow-xl`} d={drip} fill={"#ffffff"} 

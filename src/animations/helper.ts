@@ -26,23 +26,30 @@ export const scrollConfig = {
   logo: [
     {
       startY: 0,
-      endY: 180,
+      endY: 380,
       animate: {
-        light: { fill: "#46C4D9", scale: 1, rotate: 0 },
-        dark: { fill: "#FFFFFF", scale: 1, rotate: 0 },
+        light: { fill: "#000000", scale: 1.1, rotate: -5, opacity: 1 },
+        dark: { fill: "#FFFFFF", scale: 1.1, rotate: -5, opacity: 1 },
       },
     },
     {
-      startY: 180,
+      startY: 381,
       animate: {
-        light: { fill: "#000000", scale: 1.1, rotate: -5 },
-        dark: { fill: "#FFFFFF", scale: 1.1, rotate: -5 },
+        light: { fill: "#46C4D9", scale: 1, rotate: 0, opacity: 1 },
+        dark: { fill: "#FFFFFF", scale: 1, rotate: 0, opacity: 1 },
       },
     },
   ],
   navbar: [
-    { startY: 0, endY: 100, animate: { light: { color: "#000000" }, dark: { color: "#ffffff" } } },
-    { startY: 100, animate: { light: { color: "#ffffff" }, dark: {color:'#000000'} }},
+    {
+      startY: 0,
+      endY: 100,
+      animate: { light: { color: "#000000" }, dark: { color: "#ffffff" } },
+    },
+    {
+      startY: 100,
+      animate: { light: { color: "#ffffff" }, dark: { color: "#000000" } },
+    },
   ],
   hero: [{ startY: 0, endY: 100, properties: { opacity: 0.5, y: 0 } }],
   hyper: [{ startY: 0, endY: 100, properties: { opacity: 0.5, y: 0 } }],
@@ -122,33 +129,33 @@ export const layoutTransitions = ({ pathname }: { pathname?: string }) => {
   // the pathname is passed here to create page specific transitions
   if (pathname && pathname === "/") {
     return {
-        initial: {
-            opacity: 0,
-            transition: { duration: 0.5, easing: "easeInOut"},
+      initial: {
+        opacity: 0,
+        transition: { duration: 0.5, easing: "easeInOut" },
 
-            // clipPath: "circle(0% at 50% 50%)", // starting with a small circle at the center
-          },
-          animate: {
-            opacity: 1,
-            transition: { duration: 0.5,  easing: "easeInOut"},
-            // clipPath: "circle(100% at 50% 50%)", // expanding to cover the entire screen
-          },
-          exit: {
-            opacity: 0,
-            transition: { duration: 0.5,  easing: "easeInOut"},
-            // clipPath: "circle(0% at 50% 50%)", // shrinking back to a small circle
-          },
-          transition: {
-            type: "spring",
-            stiffness: 200,
-            damping: 20,
-          },
+        // clipPath: "circle(0% at 50% 50%)", // starting with a small circle at the center
+      },
+      animate: {
+        opacity: 1,
+        transition: { duration: 0.5, easing: "easeInOut" },
+        // clipPath: "circle(100% at 50% 50%)", // expanding to cover the entire screen
+      },
+      exit: {
+        opacity: 0,
+        transition: { duration: 0.5, easing: "easeInOut" },
+        // clipPath: "circle(0% at 50% 50%)", // shrinking back to a small circle
+      },
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        damping: 20,
+      },
     };
   } else if (pathname && pathname === "/about") {
     return {
-      initial: { opacity: 0.5},
-      animate: { opacity: 1, },
-      exit: { opacity: 0.5,},
+      initial: { opacity: 0.5 },
+      animate: { opacity: 1 },
+      exit: { opacity: 0.5 },
       transition: { duration: 0.4, type: "tween" },
     };
   } else {
