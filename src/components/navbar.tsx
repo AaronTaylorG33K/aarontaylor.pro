@@ -11,7 +11,6 @@ const NavBar = ({ theme }: { theme?: string }) => {
   const {
     config: {
       navbar: { animate },
-      logo: { animate: animateLogo },
     },
   } = useAnimatedScroll();
 
@@ -22,7 +21,7 @@ const NavBar = ({ theme }: { theme?: string }) => {
       className="navbar fixed left-0 top-0 right-0 z-50"
     >
       <motion.div className="navbar-start">
-        <Logo width={200} animate={animateLogo[`${theme}`]} />
+        <Logo width={200}  />
       </motion.div>
 
       <div className="navbar-end [&>a]:btn [&>a]:btn-outline [&>a]:px-8 [&>a]:border-gray-100 space-x-6 hidden lg:inline-flex w-1/2">
