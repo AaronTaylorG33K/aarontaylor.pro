@@ -29,22 +29,22 @@ const TheDrip = () => {
 
   const drip = useTransform(
     scrollYProgress,
-    [0,1],
-    [n7, n6],
+    [0,0.9,1],
+    [n7, n6, n7],
     {
       ease: cB,
     }
   );
   const scaleY = useTransform(
     scrollYProgress,
-    [...quadRanges],
-    [1,  1, 1, 1],
+    [0,0.9,1],
+    [1,1.5,1],
     { ease: cB }
   );
   const y = useTransform(
     scrollYProgress,
-    [...quadRanges],
-    ["0vh", "0vh", "0vh", "0vh"],
+    [0,0.8, 1],
+    ["-5vh", "20vh", "40vh"],
     { ease: cB }
   );
   const shadowValue = useTransform(
