@@ -13,78 +13,86 @@ import { useEffect, useState } from "react";
 const BlobbyHill = () => {
   const { config, scrollPercentage, scrollYProgress } = useAnimatedScroll();
   const { isMobile } = useViewportSize();
-  const x = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [isMobile ? "200%" : "100%", isMobile ? "75%" : "75%"],
-    {
+  
+  const blueBlob = {
+    x: useTransform(
+      scrollYProgress,
+      [0, 1],
+      [isMobile ? "200%" : "100%", isMobile ? "100%" : "75%"],
+      {
+        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+      }
+    ),
+    y: useTransform(
+      scrollYProgress,
+      [0, 0.8, 0.9, 1],
+      ["200%", "200%", isMobile ? "200%" : "100%", isMobile ? "170%" : "0%"],
+      {
+        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+      }
+    ),
+    scale: useTransform(scrollYProgress, [0, 1], [0.5, isMobile ? 2.5 : 1.2], {
       ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-    }
-  );
-  const y = useTransform(
-    scrollYProgress,
-    [0, 0.8, 0.9, 1],
-    ["200%", "200%", isMobile ? "200%" : "100%", isMobile ? "170%" : "0%"],
-    {
-      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-    }
-  );
-  const scale = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0.5, isMobile ? 2.5 : 1.2],
-    {
-      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-    }
-  );
-  const rotate = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0deg", isMobile ? "-30deg" : "-30deg"],
-    {
-      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-    }
-  );
-  const x2 = useTransform(
-    scrollYProgress,
-    [0.4, 0.7],
-    [isMobile ? "-25%" : "-25%", isMobile ? "-25%" : "-25%"],
-    {
-      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-    }
-  );
-  const y2 = useTransform(
-    scrollYProgress,
-    [
-      isMobile ? 0.3 : 0.4,
-      isMobile ? 0.7 : 0.7,
-      isMobile ? 0.9 : 0.9,
-      isMobile ? 1 : 1,
-    ],
-    [
-      isMobile ? "-10%" : "40%",
-      isMobile ? "-60%" : "30%",
-      isMobile ? "-60%" : "20%",
-      isMobile ? "-100%" : "0%",
-    ],
-    {
-      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-    }
-  );
-  const scale2 = useTransform(
-    scrollYProgress,
-    [isMobile ? 0.3 : 0.5, isMobile ? 0.5 : 0.7, isMobile ? 0.7 : 0.7],
-    [isMobile ? 1 : 0.5, isMobile ? 1.5 : 1, isMobile ? 2 : 1],
-    {
-      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-    }
-  );
+    }),
+    rotate: useTransform(
+      scrollYProgress,
+      [0, 1],
+      ["0deg", isMobile ? "-30deg" : "-30deg"],
+      {
+        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+      }
+    ),
+  };
 
+  const yellowBlob = {
+    x: useTransform(
+      scrollYProgress,
+      [0.4, 0.7],
+      [isMobile ? "-25%" : "-25%", isMobile ? "-25%" : "-25%"],
+      {
+        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+      }
+    ),
+    y: useTransform(
+      scrollYProgress,
+      [
+        isMobile ? 0.3 : 0.4,
+        isMobile ? 0.7 : 0.7,
+        isMobile ? 0.9 : 0.9,
+        isMobile ? 1 : 1,
+      ],
+      [
+        isMobile ? "-10%" : "40%",
+        isMobile ? "-60%" : "30%",
+        isMobile ? "-30%" : "20%",
+        isMobile ? "-100%" : "0%",
+      ],
+      {
+        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+      }
+    ),
+    scale: useTransform(
+      scrollYProgress,
+      [isMobile ? 0.3 : 0.5, isMobile ? 0.5 : 0.7, isMobile ? 0.7 : 0.7],
+      [isMobile ? 1 : 0.5, isMobile ? 1.5 : 1, isMobile ? 2.5 : 1],
+      {
+        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+      }
+    ),
+    rotate: useTransform(
+      scrollYProgress,
+      [0, 1],
+      ["-120deg", isMobile ? "-30deg" : "-30deg"],
+      {
+        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+      }
+    ),
+  };
   return (
     <div className="w-full h-screen absolute bottom-0 left-0 right-0 z-[11] ">
       <motion.div
         className="absolute right-0 top-0 w-full"
-        style={{ x, y, rotate, scale }}
+        style={{ ...blueBlob }}
       >
         <svg
           id="Isolation_Mode"
@@ -148,7 +156,7 @@ const BlobbyHill = () => {
       </motion.div>
       <motion.div
         className="absolute bottom-0 left-0 -translate-x-1/4 translate-y-1/4 w-full"
-        style={{ x: x2, y: y2, scale: scale2 }}
+        style={{ ...yellowBlob }}
       >
         <svg
           id="Isolation_Mode"
