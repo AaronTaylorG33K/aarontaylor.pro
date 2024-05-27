@@ -9,8 +9,6 @@ interface ConfigTypes {
   hero?: any;
   hyper?: any;
   footer?: any;
-  blob1?: any;
-  blob2?: any;
 }
 interface ScrollConfig {
   [key: string]: any[]; // Define the type of values in scrollConfig as any array for now
@@ -65,23 +63,6 @@ export const scrollConfig = {
   hero: [{ startY: 0, endY: 100, properties: { opacity: 0.5, y: 0 } }],
   hyper: [{ startY: 0, endY: 100, properties: { opacity: 0.5, y: 0 } }],
   footer: [{ startY: 0, endY: 100, properties: { opacity: 0.5, y: 0 } }],
-
-    blob1: [
-        {
-            startY: 700,
-            endY: 750,
-            animate: { color: "#000000", x: -500 },
-        },
-        {
-            startY: 751,
-            animate: { color: "#000000", x: 0 },
-        },
-    ],
-    blob2: [{
-        startY: 700,
-        animate: { color: "#000000" },
-    },
-    ]
 };
 
 function getDistanceFromTop(elem: Element) {
