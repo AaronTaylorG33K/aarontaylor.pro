@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import {
   cubicBezier,
   motion,
@@ -14,31 +14,56 @@ const n6 =
 const n7 =
   "M0 9L9.3 9C18.7 9 37.3 9 56.2 9C75 9 94 9 112.8 9C131.7 9 150.3 9 169 9C187.7 9 206.3 9 225 9C243.7 9 262.3 9 281.2 9C300 9 319 9 337.8 9C356.7 9 375.3 9 394 9C412.7 9 431.3 9 450 9C468.7 9 487.3 9 506.2 9C525 9 544 9 562.8 9C581.7 9 600.3 9 619 9C637.7 9 656.3 9 675 9C693.7 9 712.3 9 731.2 9C750 9 769 9 787.8 9C806.7 9 825.3 9 844 9C862.7 9 881.3 9 890.7 9L900 9L900 0L890.7 0C881.3 0 862.7 0 844 0C825.3 0 806.7 0 787.8 0C769 0 750 0 731.2 0C712.3 0 693.7 0 675 0C656.3 0 637.7 0 619 0C600.3 0 581.7 0 562.8 0C544 0 525 0 506.2 0C487.3 0 468.7 0 450 0C431.3 0 412.7 0 394 0C375.3 0 356.7 0 337.8 0C319 0 300 0 281.2 0C262.3 0 243.7 0 225 0C206.3 0 187.7 0 169 0C150.3 0 131.7 0 112.8 0C94 0 75 0 56.2 0C37.3 0 18.7 0 9.3 0L0 0Z";
 
-const keyframesOverlay = [n7, n6, n6, n7];
+const keyframesOverlay = [n7, n6, n7];
 
 const TheDrip = () => {
-  const { scrollY } = useScroll();
+  const { scrollYProgress } = useAnimatedScroll();
   const { isMobile } = useViewportSize();
 
-  const drip = useTransform(scrollY, [0, isMobile ? 200 : 500, isMobile ? 500:700, isMobile ? 1100:900], keyframesOverlay, {
-    ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-  });
-  const shadowValue = useTransform(scrollY, [0, 500], ["drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))", "drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.4))"], {
-    ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-  });
-  const translateYValue = useTransform(scrollY, [500, 800], ["0px", isMobile ? "0px" : "120px"], {
-    ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-  });
+  const drip = useTransform(
+    scrollYProgress,
+    [0, isMobile ? 0.6 : 0.8, 1],
+    keyframesOverlay,
+    {
+      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+    }
+  );
+  const shadowValue = useTransform(
+    scrollYProgress,
+    [0, 0.5],
+    [
+      "drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))",
+      "drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.4))",
+    ],
+    {
+      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+    }
+  );
+  const translateYValue = useTransform(
+    scrollYProgress,
+    [0, 0.8, 1],
+    ["0px", isMobile ? "0px" : "0px", isMobile ? "0px" : "0px"],
+    {
+      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+    }
+  );
 
   return (
-    <div id="theDrip" className="w-full  absolute z-20 pointer-events-none top-0">
+    <div
+      id="theDrip"
+      className="w-full  absolute z-20 pointer-events-none top-0"
+    >
       <svg
         className="overlay border-white border-t-[100px] lg:border-t-0 "
         viewBox={`0 0 ${isMobile ? 500 : 900} 700`}
         // width={`${isMobile ? '50%':'100%'}`}
       >
-        <motion.path className={`shadow-xl`} d={drip} fill={"#ffffff"} 
-          style={{ filter: shadowValue, translateY: translateYValue  }}  />
+        <motion.path
+          className={`shadow-xl`}
+          d={drip}
+          fill={"#ffffff"}
+          style={{ filter: shadowValue,  }}
+        />
       </svg>
     </div>
   );
