@@ -62,9 +62,9 @@ const BlobbyHill = () => {
         isMobile ? 1 : 1,
       ],
       [
-        isMobile ? "-10%" : "40%",
-        isMobile ? "-60%" : "30%",
-        isMobile ? "-30%" : "20%",
+        isMobile ? "50%" : "40%",
+        isMobile ? "0%" : "30%",
+        isMobile ? "30%" : "20%",
         isMobile ? "-100%" : "0%",
       ],
       {
