@@ -13,13 +13,18 @@ import { useEffect, useState } from "react";
 const BlobbyHill = () => {
   const { config, scrollPercentage, scrollYProgress } = useAnimatedScroll();
   const { isMobile } = useViewportSize();
-  const x = useTransform(scrollYProgress, [0, 1], ["55%", "55%"], {
-    ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-  });
-  const y = useTransform(
+  const x = useTransform(
     scrollYProgress,
     [0, 1],
-    ["100%", isMobile ? "150%" : "0%"],
+    [isMobile ? "200%" : "100%", isMobile ? "100%" : "75%"],
+    {
+      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+    }
+  );
+  const y = useTransform(
+    scrollYProgress,
+    [0, 0.8, 0.9, 1],
+    ["200%", "200%", isMobile ? "200%" : "100%", isMobile ? "170%" : "0%"],
     {
       ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
     }
@@ -27,14 +32,19 @@ const BlobbyHill = () => {
   const scale = useTransform(
     scrollYProgress,
     [0, 1],
-    [0.5, isMobile ? 1.5 : 1],
+    [0.5, isMobile ? 2.5 : 1.2],
     {
       ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
     }
   );
-  const rotate = useTransform(scrollYProgress, [0, 1], ["0deg", "0deg"], {
-    ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-  });
+  const rotate = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0deg", isMobile ? "-30deg" : "-30deg"],
+    {
+      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+    }
+  );
   const x2 = useTransform(
     scrollYProgress,
     [0.4, 0.7],
@@ -47,15 +57,15 @@ const BlobbyHill = () => {
     scrollYProgress,
     [
       isMobile ? 0.3 : 0.4,
-      isMobile ? 0.5 : 0.7,
-      isMobile ? 0.6 : 0.7,
       isMobile ? 0.7 : 0.7,
+      isMobile ? 0.9 : 0.9,
+      isMobile ? 1 : 1,
     ],
     [
-      isMobile ? "-100%" : "50%",
-      isMobile ? "-100%" : "20%",
-      isMobile ? "-100%" : "20%",
-      isMobile ? "-150%" : "50%",
+      isMobile ? "-10%" : "60%",
+      isMobile ? "-60%" : "60%",
+      isMobile ? "-60%" : "70%",
+      isMobile ? "-100%" : "0%",
     ],
     {
       ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
@@ -80,7 +90,7 @@ const BlobbyHill = () => {
           id="Isolation_Mode"
           data-name="Isolation Mode"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 491.6 518.78"
+          viewBox="0 0 591.6 518.78"
           width="60%"
         >
           <defs>
