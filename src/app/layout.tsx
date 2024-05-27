@@ -38,12 +38,12 @@ export default function RootLayout(props: PropsWithChildren<{}>) {
     determinePageTheme(pathname);
   }, [pathname]);
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body>
         <AnimatePresence mode="popLayout">
         <NavBar theme={navTheme} />
           
-          <motion.div key={pathname} {...layoutTransitions({ pathname })}>
+          <motion.div className=" " key={pathname} {...layoutTransitions({ pathname })}>
            
             <FrozenRouter>
                 {props.children}
