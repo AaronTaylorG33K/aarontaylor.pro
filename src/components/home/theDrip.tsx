@@ -43,10 +43,11 @@ const TheDrip = () => {
   );
   const y = useTransform(
     scrollYProgress,
-    [0,0.8, 1],
-    ["-5vh", "20vh", "40vh"],
+    [0,0.5,0.8, 1],
+    ["0", "0","40vh", "40vh"],
     { ease: cB }
   );
+  const color = useTransform(scrollYProgress, [0,1],['#000000','#ffffff']);
   const shadowValue = useTransform(
     scrollYProgress,
     [...quadRanges],
@@ -67,13 +68,14 @@ const TheDrip = () => {
       className="w-full  absolute z-20 pointer-events-none top-0"
     >
       <motion.svg
-        className="overlay relative border-white border-t-[100px] lg:border-t-0 "
+        className="overlay relative  lg:border-t-0 top-0 "
         viewBox={`0 0 ${isMobile ? 500 : 900} 700`}
         // width={`${isMobile ? '50%':'100%'}`}
         style={{ y, scaleY }}
       >
         <motion.path
-          className={`shadow-xl`}
+        className={'absolute top-0'}
+          // className={`shadow-xl`}
           d={drip}
           fill={"#ffffff"}
           style={{ filter: shadowValue }}
