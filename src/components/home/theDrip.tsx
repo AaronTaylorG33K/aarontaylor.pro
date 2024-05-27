@@ -18,18 +18,18 @@ const keyframesOverlay = [n7, n6, n6, n7];
 
 const TheDrip = () => {
   const { scrollY } = useScroll();
+  const { isMobile } = useViewportSize();
 
-  const drip = useTransform(scrollY, [0, 500, 700, 900], keyframesOverlay, {
+  const drip = useTransform(scrollY, [0, isMobile ? 200 : 500, isMobile ? 500:700, isMobile ? 1100:900], keyframesOverlay, {
     ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
   });
   const shadowValue = useTransform(scrollY, [0, 500], ["drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))", "drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.4))"], {
     ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
   });
-  const translateYValue = useTransform(scrollY, [500, 800], ["0px", "120px"], {
+  const translateYValue = useTransform(scrollY, [500, 800], ["0px", isMobile ? "0px" : "120px"], {
     ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
   });
 
-  const { isMobile } = useViewportSize();
   return (
     <div id="theDrip" className="w-full  absolute z-20 pointer-events-none top-0">
       <svg
