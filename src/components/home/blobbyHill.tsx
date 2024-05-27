@@ -16,7 +16,7 @@ const BlobbyHill = () => {
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    [isMobile ? "200%" : "100%", isMobile ? "100%" : "75%"],
+    [isMobile ? "200%" : "100%", isMobile ? "75%" : "75%"],
     {
       ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
     }
@@ -62,9 +62,9 @@ const BlobbyHill = () => {
       isMobile ? 1 : 1,
     ],
     [
-      isMobile ? "-10%" : "60%",
-      isMobile ? "-60%" : "60%",
-      isMobile ? "-60%" : "70%",
+      isMobile ? "-10%" : "40%",
+      isMobile ? "-60%" : "30%",
+      isMobile ? "-60%" : "20%",
       isMobile ? "-100%" : "0%",
     ],
     {
