@@ -48,7 +48,7 @@ const BlobbyHill = () => {
     x: useTransform(
       scrollYProgress,
       [0.4, 0.7],
-      [isMobile ? "-25%" : "-25%", isMobile ? "-25%" : "-25%"],
+      [isMobile ? "-25%" : "-300%", isMobile ? "-25%" : "-15%"],
       {
         ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
       }
@@ -62,10 +62,10 @@ const BlobbyHill = () => {
         isMobile ? 1 : 1,
       ],
       [
-        isMobile ? "50%" : "40%",
-        isMobile ? "0%" : "30%",
-        isMobile ? "30%" : "20%",
-        isMobile ? "-100%" : "0%",
+        isMobile ? "50%" : "80%",
+        isMobile ? "50%" : "80%",
+        isMobile ? "30%" : "80%",
+        isMobile ? "-70%" : "20%",
       ],
       {
         ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
@@ -73,8 +73,8 @@ const BlobbyHill = () => {
     ),
     scale: useTransform(
       scrollYProgress,
-      [isMobile ? 0.3 : 0.5, isMobile ? 0.5 : 0.7, isMobile ? 0.7 : 0.7],
-      [isMobile ? 1 : 0.5, isMobile ? 1.5 : 1, isMobile ? 2.5 : 1],
+      [isMobile ? 0.3 : 0.5, isMobile ? 0.5 : 0.9, isMobile ? 0.7 : 1],
+      [isMobile ? 1 : 0.1, isMobile ? 1.5 : 0.1, isMobile ? 2.5 : 1.2],
       {
         ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
       }
@@ -82,7 +82,7 @@ const BlobbyHill = () => {
     rotate: useTransform(
       scrollYProgress,
       [0, 1],
-      ["-120deg", isMobile ? "-30deg" : "-30deg"],
+      [isMobile ? "-120deg":"-180deg", isMobile ? "-30deg" : "0deg"],
       {
         ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
       }
