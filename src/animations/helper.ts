@@ -23,32 +23,42 @@ interface FoundConfig {
 // ommit the endY if you want the state to apply for the rest of the page
 
 export const scrollConfig = {
-  logo: [
-    {
-      startY: 0,
-      endY: 380,
-      animate: {
-        light: { fill: "#000000", scale: 1.1, rotate: -5, opacity: 1, y:0 },
-        dark: { fill: "#FFFFFF", scale: 1.1, rotate: -5, opacity: 1, y:0 },
-      },
-    },
-    {
-      startY: 381,
-      endY: 600,
-      animate: {
-        light: { fill: "#46C4D9", scale: 1, rotate: 0, opacity: 1, y:0 },
-        dark: { fill: "#FFFFFF", scale: 1, rotate: 0, opacity: 1, y:0 },
-      },
-    },
-    {
-        startY: 601,
+  // logo: [
+  //   {
+  //     startY: 0.1,
+  //     endY: 0.2,
+  //     animate: {
+  //       light: { fill: "#000000", scale: 1.1, rotate: -5, opacity: 1, y:0},
+  //       dark: { fill: "#FFFFFF", scale: 1.1, rotate: -5, opacity: 1, y:0 },
+  //     },
+  //   },
+  //   {
+  //     startY: 0.21,
+  //     endY: 0.4,
+  //     animate: {
+  //       light: { fill: "#46C4D9", scale: 1, rotate: 0, opacity: 1, y:0 },
+  //       dark: { fill: "#FFFFFF", scale: 1, rotate: 0, opacity: 1, y:0 },
+  //     },
+  //   },
+  //   {
+  //       startY: 0.41,
+  //       endY: 0.8,
 
-        animate: {
-          light: { fill: "#46C4D9", scale: 1, rotate: 0, opacity: 0, y: -50 },
-          dark: { fill: "#FFFFFF", scale: 1, rotate: 0, opacity: 0, y:-50 },
-        },
-      },
-  ],
+  //       animate: {
+  //         light: { fill: "#46C4D9", scale: 1, rotate: 0, opacity: 0, y: -50 },
+  //         dark: { fill: "#FFFFFF", scale: 1, rotate: 0, opacity: 0, y:-50 },
+  //       },
+  //     },
+  //     {
+  //       startY: 8,
+  //       endY: 1,
+
+  //       animate: {
+  //         light: { fill: "#46C4D9", scale: 1, rotate: 0, opacity: 0, y: -50 },
+  //         dark: { fill: "#FFFFFF", scale: 1, rotate: 0, opacity: 0, y:-50 },
+  //       },
+  //     },
+  // ],
   navbar: [
     {
       startY: 0,

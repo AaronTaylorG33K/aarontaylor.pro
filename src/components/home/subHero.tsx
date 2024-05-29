@@ -11,7 +11,7 @@ const SubHero = () => {
       <motion.div
         className="  rounded-lg w-full lg:w-1/2 items-center flex h-[500px] justify-center"
       >
-        <div>Component</div>
+        <div>&nbsp;</div>
       </motion.div>
     </motion.div>
   );

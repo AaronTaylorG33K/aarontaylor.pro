@@ -1,5 +1,5 @@
 "use client";
-import { motion, useTransform } from "framer-motion";
+import { cubicBezier, motion, useTransform } from "framer-motion";
 import { scrollConfig, useAnimatedScroll } from "@/animations/helper";
 import useViewportSize from "@/hooks/useViewportSize";
 
@@ -15,7 +15,6 @@ type LogoProps = {
 const Logo = (props: LogoProps) => {
   const { animate } = props;
   const { scrollYProgress } = useAnimatedScroll();
-  console.log(scrollYProgress.get());
   const { isMobile } = useViewportSize();
 
   const scale = useTransform(
@@ -29,15 +28,19 @@ const Logo = (props: LogoProps) => {
     ["-20deg", "-10deg", "-10deg"]
   );
 
-//   [0,0.9,1]
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 0.6, 0.9, 1], [1, 1, 1, 1, 0]);
-  const x = useTransform(scrollYProgress, [0, 0.3, 0.6], ["0%", "0%", "0%"]);
-  const y = useTransform(scrollYProgress, [0, 0.75, 0.8, 0.875, 0.895,1], ['0vh', '-5vh','-5vh', '-2vh','-2vh','-50vh']);
+  const cB = cubicBezier(0.17, 0.67, 0.83, 0.67);
+  const transformers = [0, 0.5, 0.8, 1]
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 0.8, 1], [1, 1, 1, 0], {ease: cB});
+  const x = useTransform(scrollYProgress, [0, 0.3, 0.6], ["0%", "0%", "0%"], {ease: cB});
+  const y = useTransform(scrollYProgress, [0,0.5, 0.9, 1], ['0vh', '-10vh','5vh','-50vh'], {ease: cB});
   const color = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6, 0.9, 1],
-    ["#000000", "#46C4D9", "#46C4D9", "#46C4D9", "#ffffff"]
+    ["#000000", "#46C4D9", "#46C4D9", "#46C4D9", "#ffffff"],
+    {ease: cB}
   );
+
+
   return (
     <motion.div>
       <motion.svg
