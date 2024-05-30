@@ -39,7 +39,7 @@ const TheDrip = () => {
   const scaleY = useTransform(
     scrollYProgress,
     [0,0.7, 1],
-    [1,3, 1],
+    [1, isMobile ? 5:3, 1],
     { ease: cB }
   );
 
@@ -48,7 +48,7 @@ const TheDrip = () => {
   const y = useTransform(
     scrollYProgress,
     [0, 0.2,0.95, 1],
-    ["0","200", "0", "-5vh"],
+    ["0",isMobile ? "500":"200", "0", "-5vh"],
     { ease: cB }
   );
   const color = useTransform(scrollYProgress, [0,1],['#000000','#ffffff']);
@@ -73,10 +73,11 @@ const TheDrip = () => {
       style={{y}}
     >
       <motion.svg
-        className=" origin-top absolute"
-        viewBox={`0 0 ${isMobile ? 500 : 900} 500`}
+        className=" origin-top absolute "
+        viewBox={`0 0 ${isMobile ? 900 : 900} 500`}
         // width={`${isMobile ? '50%':'100%'}`}
         style={{ scaleY:springScaleY, y }}
+        
       >
         <motion.path
         className={'origin-top'}
