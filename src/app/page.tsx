@@ -14,7 +14,6 @@ export default function Home() {
     <div className="w-full">
       <Hero />
       <HyperPink>
-        <TheDrip />
         <BlobbyHill />
         <SubHero />
       </HyperPink>

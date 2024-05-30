@@ -25,14 +25,13 @@ const Logo = (props: LogoProps) => {
   const rotate = useTransform(
     scrollYProgress,
     [0, 0.5, 0.6],
-    ["-20deg", "-10deg", "-10deg"]
+    ["-20deg", "-20deg", "-20deg"]
   );
 
   const cB = cubicBezier(0.17, 0.67, 0.83, 0.67);
-  const transformers = [0, 0.5, 0.8, 1]
   const opacity = useTransform(scrollYProgress, [0, 0.5, 0.8, 1], [1, 1, 1, 0], {ease: cB});
-  const x = useTransform(scrollYProgress, [0, 0.3, 0.6], ["0%", "0%", "0%"], {ease: cB});
-  const y = useTransform(scrollYProgress, [0,0.5, 0.9, 1], ['0vh', '-10vh','5vh','-50vh'], {ease: cB});
+  const x = useTransform(scrollYProgress, [0, 0.3, 0.6], ["5vw", "5vw", "5vw"], {ease: cB});
+  const y = useTransform(scrollYProgress, [0,0.1, 0.9, 1], ['0vh', '-20vh','15vh','-50vh'], {ease: cB});
   const color = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6, 0.9, 1],

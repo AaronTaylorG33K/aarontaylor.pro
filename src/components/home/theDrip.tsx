@@ -4,6 +4,7 @@ import {
   motion,
   useMotionValue,
   useScroll,
+  useSpring,
   useTransform,
 } from "framer-motion";
 import useViewportSize from "@/hooks/useViewportSize";
@@ -16,7 +17,7 @@ const n7 =
 
 
 const TheDrip = () => {
-  const { scrollYProgress } = useAnimatedScroll();
+  const { scrollYProgress, scrollY } = useAnimatedScroll();
   const { isMobile } = useViewportSize();
 
   const quadRanges = [
@@ -37,14 +38,17 @@ const TheDrip = () => {
   );
   const scaleY = useTransform(
     scrollYProgress,
-    [0,0.9,1],
-    [1,1.5,1],
+    [0,0.7, 1],
+    [1,3, 1],
     { ease: cB }
   );
+
+  const springScaleY = useSpring(scaleY, {damping: 10, stiffness: 100});
+
   const y = useTransform(
     scrollYProgress,
-    [0,0.5,0.8, 1],
-    ["0", "0","40vh", "40vh"],
+    [0, 0.2,0.95, 1],
+    ["0","200", "0", "-5vh"],
     { ease: cB }
   );
   const color = useTransform(scrollYProgress, [0,1],['#000000','#ffffff']);
@@ -63,25 +67,26 @@ const TheDrip = () => {
   );
 
   return (
-    <div
+    <motion.div
       id="theDrip"
-      className="w-full  absolute z-20 pointer-events-none top-0"
+      className={`w-full  pointer-events-none ${(scrollY.get() > 400) ? 'fixed top-0':'relative'} z-40`}
+      style={{y}}
     >
       <motion.svg
-        className="overlay relative  lg:border-t-0 top-0 "
-        viewBox={`0 0 ${isMobile ? 500 : 900} 700`}
+        className=" origin-top absolute"
+        viewBox={`0 0 ${isMobile ? 500 : 900} 500`}
         // width={`${isMobile ? '50%':'100%'}`}
-        style={{ y, scaleY }}
+        style={{ scaleY:springScaleY, y }}
       >
         <motion.path
-        className={'absolute top-0'}
+        className={'origin-top'}
           // className={`shadow-xl`}
           d={drip}
           fill={"#ffffff"}
           style={{ filter: shadowValue }}
         />
       </motion.svg>
-    </div>
+    </motion.div>
   );
 };
 
