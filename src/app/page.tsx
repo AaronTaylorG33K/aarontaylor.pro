@@ -44,7 +44,7 @@ export default function Home() {
         viewport={{ amount: 0.5 }}
         className="h-full w-screen overflow-hidden snap-center flex flex-col justify-between "
       >
-      {/* <Hero scrollYProgress={scrollYProgress} /> */}
+      
         <TheDrip scrollYProgress={scrollYProgress} />
       </motion.div>
       <motion.div
@@ -127,7 +127,7 @@ const HorizontalScrollCarousel = () => {
     );
   };
   
-  const Card = ({ card }) => {
+  const Card = ({ card }: {card?: any}) => {
     return (
       <div
         key={card.id}
