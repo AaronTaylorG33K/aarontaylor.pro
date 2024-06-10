@@ -41,7 +41,7 @@ const TheDrip = ({scrollYProgress}:{scrollYProgress?: any}) => {
   const scaleY = useTransform(
     scrollYProgress,
     [0, 0.9, 1],
-    [0.5, 1.5, 0],
+    [0.5, isMobile? 5:1.5, 0],
     { ease: cubicBezier(0.67, 0.37, 0.13, 0.37)}
   );
 
