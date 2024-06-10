@@ -10,17 +10,18 @@ type LogoProps = {
   className?: string;
   style?: React.CSSProperties;
   animate?: any;
+  scrollYProgress?: any
 };
 
 const Logo = (props: LogoProps) => {
-  const { animate } = props;
-  const { scrollYProgress } = useAnimatedScroll();
+  const { animate, scrollYProgress } = props;
+  // const { scrollYProgress } = useAnimatedScroll();
   const { isMobile } = useViewportSize();
 
   const scale = useTransform(
     scrollYProgress,
     [0, 0.5, 0.6],
-    [isMobile ? 1.1 : 1.5, isMobile ? 1.2 : 1.6, isMobile ? 1.2 : 1.6]
+    [isMobile ? 1.1 : 1, isMobile ? 1.2 : 1, isMobile ? 1.2 : 1]
   );
   const rotate = useTransform(
     scrollYProgress,
@@ -29,19 +30,19 @@ const Logo = (props: LogoProps) => {
   );
 
   const cB = cubicBezier(0.17, 0.67, 0.83, 0.67);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 0.8, 1], [1, 1, 1, 0], {ease: cB});
-  const x = useTransform(scrollYProgress, [0, 0.3, 0.6], ["5vw", "5vw", "5vw"], {ease: cB});
-  const y = useTransform(scrollYProgress, [0,0.1, 0.9, 1], ['0vh', '-20vh','15vh','-50vh'], {ease: cB});
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 0.8, 1], [1, 1, 1, 1], {ease: cB});
+  const x = useTransform(scrollYProgress, [0, 0.3, 0.6], ["-5vw", "-5vw", "-5vw"], {ease: cB});
+  const y = useTransform(scrollYProgress, [0,0.1, 0.9, 1], ['-5vh', '-5vh','-5vh','-5vh'], {ease: cB});
   const color = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6, 0.9, 1],
-    ["#000000", "#46C4D9", "#46C4D9", "#46C4D9", "#ffffff"],
+    ["#000000", "#000000", "#000000", "#000000", "#ffffff"],
     {ease: cB}
   );
 
 
   return (
-    <motion.div>
+    <motion.div className="absolute top-8 left-8 z-[100]">
       <motion.svg
         id="Layer_1"
         xmlns="http://www.w3.org/2000/svg"

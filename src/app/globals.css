@@ -42,6 +42,12 @@ body {
   mix-blend-mode: var(--blendMode, multiply);
 }
 
+.hyperPink {
+  --cardBg: linear-gradient(135deg, rgb(236,0,140), rgb(237,20,92));
+  background: var(--cardBg);
+}
+
+
 .halftone::before {
 
   --blend-mode: 'normal';
@@ -78,6 +84,21 @@ body {
   position:relative;
   z-index:10;
 }
+
+.hyper2 {
+
+  --size: 1.5rem;
+  --mask: repeating-linear-gradient(65deg, rgba(0 0 0), rgb(0 0 0 / 0.255) 50%, rgb(0 0 0) 100%);
+  --dotsColor: 255 255 255;
+  --bg: radial-gradient(circle at center, rgb(var(--dotsColor)) 3%, rgb(var(--dotsColor) / 0.4) var(--dotRadius, 70%));
+  --bgSize: var(--size);
+  --cardBg: linear-gradient(135deg, rgb(236,0,140), rgb(237,20,92));
+  background: var(--cardBg);
+  overflow: hidden;
+  border-image: var(--cardBg) 30;
+  z-index:10;
+}
+
 /* components/Blob.module.css */
 .blobContainer {
   position: relative;
@@ -110,4 +131,18 @@ body {
   75% {
     border-radius: 48% 52% 53% 47% / 43% 54% 46% 57%;
   }
+}
+
+/* Ensure full height for sections */
+.full-height {
+  height: 100vh;
+}
+
+/* Hide scrollbar for horizontal scrolling section */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
 }

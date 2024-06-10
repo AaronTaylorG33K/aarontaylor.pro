@@ -14,7 +14,7 @@ import { useAnimatedScroll } from "@/animations/helper";
 
 import { Bars2Icon } from "@heroicons/react/20/solid";
 
-const NavBar = ({ theme }: { theme?: string }) => {
+const NavBarNew = ({ theme }: { theme?: string }) => {
   const {
     config: {
       navbar: { animate },
@@ -98,86 +98,20 @@ const NavBar = ({ theme }: { theme?: string }) => {
   const drop = useTransform(scrollYProgress, [0.92, 1], [n2, n2], {
     ease: cB,
   });
+
   return (
-    <motion.div
-      animate={animate[`${theme}`]}
-      id="navbar"
-      className="navbar fixed z-50 items-center"
-    >
-      <motion.div className="navbar-start">
-        <Logo width={200} />
-      </motion.div>
 
-      <div
-        className={`navbar-end  space-x-6 hidden lg:inline-flex w-1/2 mr-8 `}
-      >
-        <motion.div
-          style={{ opacity, y, rotate }}
-          className=" origin-top-right"
-        >
-          <Link
-            href="/"
-            className={`py-4 px-12 rounded-lg border ${
-              theme === "dark"
-                ? "border-white text-white bg-black"
-                : "border-slate-200/50 text-slate-800 bg-white"
-            }`}
+    <>
+     
+     <motion.div
+             initial={{opacity:0, scale:0}}
+             animate={{scale: 1, opacity:1}}
+             exit={{opacity:0, scale:0}}
+             transition={{type: "spring", stiffness: 200, damping: 10}}
+            // style={{ y: y4, opacity: opacity4, scaleY: scaleY4, scale:springScale4 }}
+            className="fixed top-8 right-8  rounded-full w-16 h-16 flex items-center justify-center cursor-pointer z-50 bg-black"
           >
-            Home
-          </Link>
-        </motion.div>
-        <motion.div
-          style={{ opacity, y: y2, rotate: rotate2 }}
-          className=" origin-top "
-        >
-          <Link
-            href="/about"
-            className={`py-4 px-12 shadow-lg rounded-lg border ${
-              theme === "dark"
-                ? "border-white text-white bg-black"
-                : "border-slate-200/50 text-slate-800 bg-white"
-            }`}
-          >
-            About
-          </Link>
-        </motion.div>
-        <motion.div
-          style={{ opacity, y: y3, rotate: rotate3 }}
-          className=" origin-bottom-left"
-        >
-          <Link
-            href="/contact"
-            className={`py-4 px-12 shadow-lg rounded-lg border ${
-              theme === "dark"
-                ? "border-white text-white bg-black"
-                : "border-slate-200/50 text-slate-800 bg-white"
-            }`}
-          >
-            Contact
-          </Link>
-        </motion.div>
-
-          <motion.div
-            style={{ y: y4, opacity: opacity4, scaleY: scaleY4, scale:springScale4 }}
-            className="fixed top-8 right-[9.25vw] -z-10 rounded-full w-16 h-16 flex items-center justify-center cursor-pointer bg-black"
-          >
-            {/* <motion.svg
-              className=" "
-              viewBox={`0 0 150 150`}
-              // width={`${isMobile ? '50%':'100%'}`}
-              fill={'#fff'}
-              width=""
-              // style={{ y }}
-            >
-              <motion.path
-                className={""}
-                // className={`shadow-xl`}
-                d={drop}
-                stroke={"#ffffff"}
-                fill={"#ffffff"}
-                style={{shadow: "0 0 10px rgba(0,0,0,0.5)"}}
-              />
-            </motion.svg> */}
+            
 
             <motion.svg
               className="bi bi-three-dots-vertical "
@@ -186,19 +120,58 @@ const NavBar = ({ theme }: { theme?: string }) => {
               viewBox="0 0 16 16"
               width="40"
               xmlns="http://www.w3.org/2000/svg"
-              style={{opacity:opacity5}}
+              // style={{opacity:opacity5}}
             >
               <motion.path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
             </motion.svg>
           </motion.div>
-        </div>
+    </>
+  
+  // return (
+  //   <motion.div
+  //     animate={animate[`${theme}`]}
+  //     id="navbar"
+  //     className="navbar fixed z-50 items-center"
+  //   >
+  //     <motion.div className="navbar-start">
+       
+  //     </motion.div>
+
+  //     <div
+  //       className={`navbar-end  space-x-6 w-1/2 mr-8 `}
+  //     >
+       
+
+  //         <motion.div
+  //            initial={{opacity:0, scale:0}}
+  //            animate={{scale: 1, opacity:1}}
+  //            exit={{opacity:0, scale:0}}
+  //            transition={{type: "spring", stiffness: 200, damping: 10}}
+  //           // style={{ y: y4, opacity: opacity4, scaleY: scaleY4, scale:springScale4 }}
+  //           className="fixed top-8 right-8  rounded-full w-16 h-16 flex items-center justify-center cursor-pointer z-50 bg-white"
+  //         >
+            
+
+  //           <motion.svg
+  //             className="bi bi-three-dots-vertical "
+  //             fill="#000"
+  //             height="100%"
+  //             viewBox="0 0 16 16"
+  //             width="40"
+  //             xmlns="http://www.w3.org/2000/svg"
+  //             // style={{opacity:opacity5}}
+  //           >
+  //             <motion.path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+  //           </motion.svg>
+  //         </motion.div>
+  //       </div>
   
 
-      {/* <div className="navbar-end">
+  //     {/* <div className="navbar-end">
         
-      </div>*/}
-    </motion.div>
+  //     </div>*/}
+  //   </motion.div>
   );
 };
 
-export default NavBar;
+export default NavBarNew;

@@ -4,11 +4,8 @@ import useViewportSize from "@/hooks/useViewportSize";
 import {
   cubicBezier,
   motion,
-  useMotionValue,
-  useScroll,
   useTransform,
 } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const BlobbyHill = () => {
   const { config, scrollPercentage, scrollYProgress } = useAnimatedScroll();

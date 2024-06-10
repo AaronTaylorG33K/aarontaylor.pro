@@ -3,17 +3,17 @@ import TheDrip from "./theDrip";
 
 const open_sans = Open_Sans({ subsets: ["latin"] });
 
-const Hero = () => {
+const Hero = ({scrollYProgress}) => {
   return (
     <div
-      className={` relative h-[400px] w-full bg-white text-black text-5xl pt-28 lg:pt-0 lg:text-7xl flex flex-col items-center justify-between ${open_sans.className}`}
+      className={`snap-none relative h-[400px] w-full bg-white text-black text-5xl pt-28 lg:pt-0 lg:text-7xl flex flex-col items-center justify-between ${open_sans.className}`}
       id="hero"
     >
 
       <div className=" grow-1">Hero</div>
-      <div className=" w-full  ">
-      <TheDrip />
-      </div>
+      
+      
+      
     </div>
   );
 };
