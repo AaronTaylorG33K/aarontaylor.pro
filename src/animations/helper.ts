@@ -22,63 +22,6 @@ interface FoundConfig {
 // specify a startY and endY to contain within a range
 // ommit the endY if you want the state to apply for the rest of the page
 
-export const scrollConfig = {
-  // logo: [
-  //   {
-  //     startY: 0.1,
-  //     endY: 0.2,
-  //     animate: {
-  //       light: { fill: "#000000", scale: 1.1, rotate: -5, opacity: 1, y:0},
-  //       dark: { fill: "#FFFFFF", scale: 1.1, rotate: -5, opacity: 1, y:0 },
-  //     },
-  //   },
-  //   {
-  //     startY: 0.21,
-  //     endY: 0.4,
-  //     animate: {
-  //       light: { fill: "#46C4D9", scale: 1, rotate: 0, opacity: 1, y:0 },
-  //       dark: { fill: "#FFFFFF", scale: 1, rotate: 0, opacity: 1, y:0 },
-  //     },
-  //   },
-  //   {
-  //       startY: 0.41,
-  //       endY: 0.8,
-
-  //       animate: {
-  //         light: { fill: "#46C4D9", scale: 1, rotate: 0, opacity: 0, y: -50 },
-  //         dark: { fill: "#FFFFFF", scale: 1, rotate: 0, opacity: 0, y:-50 },
-  //       },
-  //     },
-  //     {
-  //       startY: 8,
-  //       endY: 1,
-
-  //       animate: {
-  //         light: { fill: "#46C4D9", scale: 1, rotate: 0, opacity: 0, y: -50 },
-  //         dark: { fill: "#FFFFFF", scale: 1, rotate: 0, opacity: 0, y:-50 },
-  //       },
-  //     },
-  // ],
-  navbar: [
-    {
-      startY: 0,
-      endY: 100,
-      animate: { light: { color: "#000000" }, dark: { color: "#ffffff" } },
-    },
-    {
-      startY: 100,
-      animate: { light: { color: "#ffffff" }, dark: { color: "#000000" } },
-    },
-  ],
-  hero: [{ startY: 0, endY: 100, properties: { opacity: 0.5, y: 0 } }],
-  hyper: [{ startY: 0, endY: 100, properties: { opacity: 0.5, y: 0 } }],
-  footer: [{ startY: 0, endY: 100, properties: { opacity: 0.5, y: 0 } }],
-};
-
-function getDistanceFromTop(elem: Element) {
-  var rect = elem.getBoundingClientRect();
-  return rect.top;
-}
 
 export const useAnimatedScroll = () => {
   const { scrollYProgress, scrollY } = useScroll();
@@ -89,27 +32,6 @@ export const useAnimatedScroll = () => {
   const [scrollPercentage, setScrollPercentage] = useState<number>(0);
   const [y, setY] = useState<number>(0);
 
-  const getConfigForRange = useCallback(
-    (
-      configArray: {
-        config?: any;
-        startY: number;
-        endY?: number;
-        properties: any; // Assuming properties are always present
-      }[],
-      y: number
-    ) => {
-      return (
-        configArray.find(
-          (config) =>
-            config.startY <= y &&
-            (config.endY === undefined || config.endY >= y)
-        ) || configArray[0]
-      );
-    },
-    [y]
-  );
-
   // scroll handlers
   useMotionValueEvent(scrollY, "change", (latest) => {
     setY(latest);
@@ -119,20 +41,6 @@ export const useAnimatedScroll = () => {
     setScrollPercentage(Math.round(latest * 100));
   });
 
-  const config = useMemo(() => {
-    let foundConfig: FoundConfig = {};
-    for (const key in scrollConfig) {
-      if (Object.hasOwnProperty.call(scrollConfig, key)) {
-        const configArray = (scrollConfig as ScrollConfig)[key] as any[];
-        const configForRange = getConfigForRange(configArray, y);
-        if (configForRange) {
-          foundConfig[key] = configForRange;
-        }
-      }
-    }
-    return foundConfig;
-  }, [getConfigForRange]);
-
   return {
     scrollYProgress,
     scrollY,
@@ -140,7 +48,6 @@ export const useAnimatedScroll = () => {
     setScrollState,
     scrollPercentage,
     y,
-    config: config as ConfigTypes,
   };
 };
 

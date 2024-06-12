@@ -18,12 +18,6 @@ const Footer = ({pathname}:{pathname?:string}) => {
     if (latest > 0.5) setShowFooter(true);
   });
 
-//   useEffect(() => {
-//     if(pathname === '/'){setShowFooter(false)}
-//     else {
-//         setShowFooter(true)
-//     }
-//   }, []);
 
   const variants = {
     closed: {

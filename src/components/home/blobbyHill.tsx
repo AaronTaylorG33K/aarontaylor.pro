@@ -4,92 +4,44 @@ import useViewportSize from "@/hooks/useViewportSize";
 import {
   cubicBezier,
   motion,
+  useAnimation,
+  useInView,
   useTransform,
 } from "framer-motion";
+import { useEffect, useRef } from "react";
 
-const BlobbyHill = () => {
-  const { config, scrollPercentage, scrollYProgress } = useAnimatedScroll();
+const BlobbyHill = ({ scrollYProgress }: { scrollYProgress?: any }) => {
+  const getYourHandsOffMyPurse = useRef(null);
+  const areYourHandsOnMyPurse = useInView(getYourHandsOffMyPurse, {});
+
   const { isMobile } = useViewportSize();
-  
-  const blueBlob = {
-    x: useTransform(
-      scrollYProgress,
-      [0, 1],
-      [isMobile ? "200%" : "100%", isMobile ? "100%" : "75%"],
-      {
-        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-      }
-    ),
-    y: useTransform(
-      scrollYProgress,
-      [0, 0.8, 0.9, 1],
-      ["200%", "200%", isMobile ? "200%" : "100%", isMobile ? "170%" : "0%"],
-      {
-        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-      }
-    ),
-    scale: useTransform(scrollYProgress, [0, 1], [0.5, isMobile ? 2.5 : 1.2], {
-      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-    }),
-    rotate: useTransform(
-      scrollYProgress,
-      [0, 1],
-      ["0deg", isMobile ? "-30deg" : "-30deg"],
-      {
-        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-      }
-    ),
+  const timing = [0, 0.9, 1];
+  const cB = cubicBezier(0.17, 0.67, 0.83, 0.67);
+
+  const animations = {
+    blueBlob: {
+      x: useTransform(scrollYProgress, timing, ['100vw','100vw',isMobile?'85vw':'75vw'], { ease: cB }),
+      y: useTransform(scrollYProgress, timing, ['100vh','100vh',isMobile ? '35vh':'7vh'], { ease: cB }),
+      scale: useTransform(scrollYProgress, timing, [2, 2, isMobile?2:1.2], { ease: cB}),
+      rotate: useTransform(scrollYProgress, timing, ['0deg', '0deg', '-30deg'], { ease: cB,  }),
+    },
+    yellowBlob: {
+      x: useTransform(scrollYProgress, timing, ['-100vw','-100vw','-15vw']),
+      y: useTransform(scrollYProgress, timing, ['100vh','100vh',isMobile ? '-30vh':'10vh']),
+      scale: useTransform(scrollYProgress, timing, [0.5, isMobile ? 5:2, isMobile ? 1.5:1]),
+      rotate: useTransform(scrollYProgress, timing, ['-90deg', '-90deg', isMobile ? '-10deg':'10deg'], { ease: cB,  }),
+    },
   };
 
-  const yellowBlob = {
-    x: useTransform(
-      scrollYProgress,
-      [0.4, 0.7],
-      [isMobile ? "-25%" : "-300%", isMobile ? "-25%" : "-15%"],
-      {
-        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-      }
-    ),
-    y: useTransform(
-      scrollYProgress,
-      [
-        isMobile ? 0.3 : 0.4,
-        isMobile ? 0.7 : 0.7,
-        isMobile ? 0.9 : 0.9,
-        isMobile ? 1 : 1,
-      ],
-      [
-        isMobile ? "50%" : "80%",
-        isMobile ? "50%" : "80%",
-        isMobile ? "30%" : "80%",
-        isMobile ? "-70%" : "20%",
-      ],
-      {
-        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-      }
-    ),
-    scale: useTransform(
-      scrollYProgress,
-      [isMobile ? 0.3 : 0.5, isMobile ? 0.5 : 0.9, isMobile ? 0.7 : 1],
-      [isMobile ? 1 : 0.1, isMobile ? 1.5 : 0.1, isMobile ? 2.5 : 1.2],
-      {
-        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-      }
-    ),
-    rotate: useTransform(
-      scrollYProgress,
-      [0, 1],
-      [isMobile ? "-120deg":"-180deg", isMobile ? "-30deg" : "0deg"],
-      {
-        ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
-      }
-    ),
-  };
   return (
-    <div className="w-full h-screen absolute bottom-0 left-0 right-0 z-[11] ">
+    <motion.div
+      className="w-full h-full relative bottom-0 left-0 right-0 z-[11] overflow-hidden "
+      ref={getYourHandsOffMyPurse}
+    >
+      {/* --- blue blob --- */}
       <motion.div
-        className="absolute right-0 top-0 w-full"
-        style={{ ...blueBlob }}
+        className="absolute right-0 top-12 w-full"
+        style={{ ...animations.blueBlob }}
       >
         <svg
           id="Isolation_Mode"
@@ -105,7 +57,7 @@ const BlobbyHill = () => {
                 fill: url(#grad2);
                 stroke-width: 0px;
                 animation: blobAnimation 22s infinite;
-                transform-origin: center;
+                transform-origin: top center;
                 }
                 @keyframes blobAnimation {
                   0%, 100% {
@@ -152,8 +104,10 @@ const BlobbyHill = () => {
         </svg>
       </motion.div>
       <motion.div
-        className="absolute bottom-0 left-0 -translate-x-1/4 translate-y-1/4 w-full"
-        style={{ ...yellowBlob }}
+        className={`absolute  -translate-x-1/4 ${
+          isMobile ? "top-1/2 left-0" : "-top-[11vh] left-0"
+        } w-full`}
+        style={{ ...animations.yellowBlob }}
       >
         <svg
           id="Isolation_Mode"
@@ -215,7 +169,7 @@ const BlobbyHill = () => {
           />
         </svg>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

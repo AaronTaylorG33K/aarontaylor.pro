@@ -31,44 +31,53 @@ body {
     background-size: var(--bgSize) var(--bgSize);
   }
 }
-.halftone {
-  --blend-mode: 'normal';
-  position: relative;
-  aspect-ratio: 1;
-  background: rgb(236,0,140);
-  filter: contrast(var(--contrast, 20)) invert(var(--invert, 0));
-  
-
-  mix-blend-mode: var(--blendMode, multiply);
+.card {
+  --mask: linear-gradient(rgb(0 0 0), rgb(0 0 0 / 0.5));
+  --dotsColor: 255 255 255;
+  --bg: radial-gradient(circle at center, rgb(var(--dotsColor)) 3%, rgb(var(--dotsColor) / 0.4) var(--dotRadius, 70%));
+  --bgSize: var(--size);
+  --cardBg: linear-gradient(135deg, hotpink, rgb(210, 39, 125));
+  background: var(--cardBg);
+  overflow: hidden;
+  border: 2px solid;
+  opacity: 0.05;
+  border-image: var(--cardBg) 30;
 }
+
 
 .hyperPink {
   --cardBg: linear-gradient(135deg, rgb(236,0,140), rgb(237,20,92));
   background: var(--cardBg);
 }
-
+.halftone {
+  position: relative;
+  aspect-ratio: 1;
+  background: rgb(0 0 0);
+  filter: contrast(var(--contrast, 20)) invert(var(--invert, 0));
+  mix-blend-mode: var(--blendMode, multiply);
+}
 
 .halftone::before {
-
-  --blend-mode: 'normal';
   content: '';
   position: absolute;
-  z-index: 10;
   inset: 0;
   background-image: var(--bg);
-  background-size: 0 0; /* Initially set to zero */
+  background-size: var(--bgSize, 1.5rem) var(--bgSize, 1.5rem);
   background-repeat: round;
   background-position: 0 0, var(--bgPosition) var(--bgPosition);
   -webkit-mask-image: var(--mask);
   mask-image: var(--mask);
   mask-size: cover;
   mask-position: center;
-  
-  /* mix-blend-mode: var(--blendMode, multiply); */
   transition: background-size 100ms;
-  animation: circleEntry 0.5s ease-in-out forwards; /* Apply the animation */
 }
 
+.halftone::after, 
+.card {
+  --mask: repeating-linear-gradient(45deg, rgb(0 0 0), rgb(0 0 0 / 0.55) 20%, rgb(0 0 0) 40%);
+}
+
+/* 
 
 .hyper {
 

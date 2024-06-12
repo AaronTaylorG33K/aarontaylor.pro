@@ -14,14 +14,10 @@ import { useAnimatedScroll } from "@/animations/helper";
 
 import { Bars2Icon } from "@heroicons/react/20/solid";
 
-const NavBarNew = ({ theme }: { theme?: string }) => {
-  const {
-    config: {
-      navbar: { animate },
-    },
-    scrollYProgress,
-  } = useAnimatedScroll();
+const Menu = ({ theme }: { theme?: string }) => {
 
+
+  const { scrollYProgress } = useScroll();
   const cB = cubicBezier(0.17, 0.67, 0.83, 0.67);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.4], [1, 1, 0]);
   const rotate = useTransform(
@@ -69,22 +65,8 @@ const NavBarNew = ({ theme }: { theme?: string }) => {
 
   // the last menu item drops off the page at 0.7 scrollYProgress
 
-  const opacity4 = useTransform(scrollYProgress, [0.9, 1], [1, 1], {
-    ease: cB,
-  });
-
-  const opacity5 = useTransform(scrollYProgress, [0.98, 1], [0,1], {ease: cB})
-  // [0, 0.2,0.95, 1],
-  const y4 = useTransform(scrollYProgress, [0.2, 0.8, 0.90, 1], ["-10vh","10vh","50vh","2vh"], {
-    ease: cB,
-  });
-  const scaleY4 = useTransform(scrollYProgress, [0.7, 0.8,.9, 1], [1, 1.4,2, 1], {
-    ease: cB,
-  });
-
   const scale4 = useTransform(scrollYProgress, [0.85, 1],[0,1], {ease: cB});
-  const springScale4 = useSpring(scale4,{damping:10, stiffness:100})
-
+  
   const n1 =
     "M90.44,128.93c0,24.97-20.25,45.22-45.22,45.22S0,153.9,0,128.93,17.76,0,42.73,0s47.71,103.95,47.71,128.93Z";
   const n2 =
@@ -108,7 +90,6 @@ const NavBarNew = ({ theme }: { theme?: string }) => {
              animate={{scale: 1, opacity:1}}
              exit={{opacity:0, scale:0}}
              transition={{type: "spring", stiffness: 200, damping: 10}}
-            // style={{ y: y4, opacity: opacity4, scaleY: scaleY4, scale:springScale4 }}
             className="fixed top-8 right-8  rounded-full w-16 h-16 flex items-center justify-center cursor-pointer z-50 bg-black"
           >
             
@@ -120,58 +101,13 @@ const NavBarNew = ({ theme }: { theme?: string }) => {
               viewBox="0 0 16 16"
               width="40"
               xmlns="http://www.w3.org/2000/svg"
-              // style={{opacity:opacity5}}
             >
               <motion.path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
             </motion.svg>
           </motion.div>
     </>
   
-  // return (
-  //   <motion.div
-  //     animate={animate[`${theme}`]}
-  //     id="navbar"
-  //     className="navbar fixed z-50 items-center"
-  //   >
-  //     <motion.div className="navbar-start">
-       
-  //     </motion.div>
-
-  //     <div
-  //       className={`navbar-end  space-x-6 w-1/2 mr-8 `}
-  //     >
-       
-
-  //         <motion.div
-  //            initial={{opacity:0, scale:0}}
-  //            animate={{scale: 1, opacity:1}}
-  //            exit={{opacity:0, scale:0}}
-  //            transition={{type: "spring", stiffness: 200, damping: 10}}
-  //           // style={{ y: y4, opacity: opacity4, scaleY: scaleY4, scale:springScale4 }}
-  //           className="fixed top-8 right-8  rounded-full w-16 h-16 flex items-center justify-center cursor-pointer z-50 bg-white"
-  //         >
-            
-
-  //           <motion.svg
-  //             className="bi bi-three-dots-vertical "
-  //             fill="#000"
-  //             height="100%"
-  //             viewBox="0 0 16 16"
-  //             width="40"
-  //             xmlns="http://www.w3.org/2000/svg"
-  //             // style={{opacity:opacity5}}
-  //           >
-  //             <motion.path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-  //           </motion.svg>
-  //         </motion.div>
-  //       </div>
-  
-
-  //     {/* <div className="navbar-end">
-        
-  //     </div>*/}
-  //   </motion.div>
   );
 };
 
-export default NavBarNew;
+export default Menu;
