@@ -62,7 +62,7 @@ body {
   position: absolute;
   inset: 0;
   background-image: var(--bg);
-  background-size: var(--bgSize, 1.5rem) var(--bgSize, 1.5rem);
+  background-size: var(--bgSize, 1rem) var(--bgSize, 1rem);
   background-repeat: round;
   background-position: 0 0, var(--bgPosition) var(--bgPosition);
   -webkit-mask-image: var(--mask);
