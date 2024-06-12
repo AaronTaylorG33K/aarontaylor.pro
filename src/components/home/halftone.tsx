@@ -6,7 +6,7 @@ export default function HyperPinkBreakpoints({ scrollYProgress }: { scrollYProgr
     const scale = useTransform(scrollYProgress, [0,1],[1.5,1.5],{ease:cB});
     return (
         <motion.div className="w-full h-screen z-[10s] absolute pointer-events-none card overflow-hidden">
-            <motion.div className="halftone  w-full h-[1000vh]" style={{y, scale}}></motion.div>
+            <motion.div className="halftone  w-full h-[1000vh]" style={{y, height, scale}}></motion.div>
         </motion.div>
     );
 };
