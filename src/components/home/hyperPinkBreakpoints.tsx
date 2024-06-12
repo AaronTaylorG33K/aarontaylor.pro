@@ -12,7 +12,7 @@ const HyperPinkBreakpoints = () => {
   const snapPanelClass = `w-screen h-full overflow-hidden snap-center`;
   return (
     <motion.div
-      className="overflow-y-auto w-screen h-[90vh] snap-mandatory snap-y hyperPink"
+      className="overflow-y-auto w-screen h-[80vh] lg:h-[90vh] snap-mandatory snap-y hyperPink"
       layout
       ref={ref}
     >

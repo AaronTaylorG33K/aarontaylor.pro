@@ -37,8 +37,7 @@ const Footer = ({pathname}:{pathname?:string}) => {
   };
 
   return (
-    <AnimatePresence>
-      {(showFooter ||  pathname !== '/') && (
+  
         <motion.div
           initial={{ bottom: "-20vh", opacity: 0, height: isMobile ? "30vh":"10vh" }}
           animate={{ bottom: "-20vh", opacity: 1, height: isMobile ? "40vh":"30vh" }}
@@ -98,8 +97,6 @@ const Footer = ({pathname}:{pathname?:string}) => {
           <div className="w-full lg:w-1/4 flex justify-center lg:justify-end items-center h-auto lg:h-[10vh] text-[rgba(255,255,255,0.5)] text-sm">&copy; Copyright 2024 Aaron Taylor</div>
           </div>
         </motion.div>
-      )}
-    </AnimatePresence>
   );
 };
 
