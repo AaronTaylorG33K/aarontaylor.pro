@@ -26,9 +26,9 @@ const BlobbyHill = ({ scrollYProgress }: { scrollYProgress?: any }) => {
       rotate: useTransform(scrollYProgress, timing, ['0deg', '0deg', '-30deg'], { ease: cB,  }),
     },
     yellowBlob: {
-      x: useTransform(scrollYProgress, timing, ['-100vw','-100vw','-15vw']),
+      x: useTransform(scrollYProgress, timing, ['-100vw','-100vw','-25vw']),
       y: useTransform(scrollYProgress, timing, ['100vh','100vh',isMobile ? '-30vh':'10vh']),
-      scale: useTransform(scrollYProgress, timing, [0.5, isMobile ? 5:2, isMobile ? 1.5:1]),
+      scale: useTransform(scrollYProgress, timing, [0, isMobile ? 5:0, isMobile ? 1.5:1]),
       rotate: useTransform(scrollYProgress, timing, ['-90deg', '-90deg', isMobile ? '-10deg':'10deg'], { ease: cB,  }),
     },
   };
@@ -114,7 +114,6 @@ const BlobbyHill = ({ scrollYProgress }: { scrollYProgress?: any }) => {
           data-name="Isolation Mode"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 591.6 518.78"
-          //   width={"175%"}
         >
           <defs>
             <style>

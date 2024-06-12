@@ -36,7 +36,7 @@ const TheDrip = ({ scrollYProgress }: { scrollYProgress?: any }) => {
     borderTopWidth: useTransform(
       scrollYProgress,
       [0, 0.9, 1],
-      [isMobile ? "150px":"100px", isMobile ? "450px":"100px", "0px"]
+      [isMobile ? "150px":"100px", isMobile ? "350px":"100px", "0px"]
     ),
     filter: useTransform(
       scrollYProgress,
