@@ -10,6 +10,7 @@ interface ViewportType {
   isMobile: boolean;
   isTablet: boolean;
   isDesktop: boolean;
+  width: number;
 }
 
 const useViewportSize = (): ViewportType => {
@@ -20,7 +21,7 @@ const useViewportSize = (): ViewportType => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isTablet, setIsTablet] = useState<boolean>(false);
   const [isDesktop, setIsDesktop] = useState<boolean>(false);
-
+  // const [width, setWidth] = useState<number>(0);
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -42,14 +43,15 @@ const useViewportSize = (): ViewportType => {
   }, []);
 
   useEffect(() => {
-    const { width } = viewportSize;
 
+    const { width } = viewportSize;
     setIsMobile(width < 640);
     setIsTablet(width >= 640 && width < 1024);
     setIsDesktop(width >= 1024);
   }, [viewportSize]);
 
-  return { isMobile, isTablet, isDesktop };
+  const { width } = viewportSize;
+  return { isMobile, isTablet, isDesktop, width };
 };
 
 export default useViewportSize;

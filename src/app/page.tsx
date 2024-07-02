@@ -1,6 +1,14 @@
-import TheStage from "@/components/home/theStage";
-import HyperPinkBreakpoints from "@/components/home/hyperPinkBreakpoints";
 import { Metadata } from "next";
+import { useContext } from "react";
+import { cubicBezier, motion, MotionValue, useScroll, useTransform } from "framer-motion";
+import WaveComponent from "@/components/wave";
+import Homepage from "@/components/homepage";
+
+
+interface LayoutRouterContextType {
+  scrollableContainerRef: React.RefObject<HTMLElement> | null;
+  scrollYProgress: MotionValue<number>;
+}
 
 export const metadata: Metadata = {
   title: "Aaron Taylor | Professional IT & Media Services",
@@ -8,10 +16,13 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+
   return (
     <>
-      <TheStage />
-      <HyperPinkBreakpoints />
+    <Homepage />
+    <div className="h-[3000px] bg-[rgba(255,255,255,0.1)]">
+ 
+    </div>
     </>
   );
 }

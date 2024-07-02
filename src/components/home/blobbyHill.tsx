@@ -1,5 +1,4 @@
 "use client";
-import { useAnimatedScroll } from "@/animations/helper";
 import useViewportSize from "@/hooks/useViewportSize";
 import {
   cubicBezier,
@@ -19,7 +18,7 @@ const BlobbyHill = ({ scrollYProgress }: { scrollYProgress?: any }) => {
   const cB = cubicBezier(0.17, 0.67, 0.83, 0.67);
 
   const animations = {
-    blueBlob: {
+    blueBlob: { 
       x: useTransform(scrollYProgress, timing, ['100vw','100vw',isMobile?'85vw':'75vw'], { ease: cB }),
       y: useTransform(scrollYProgress, timing, ['100vh','100vh',isMobile ? '35vh':'7vh'], { ease: cB }),
       scale: useTransform(scrollYProgress, timing, [2, 2, isMobile?2:1.2], { ease: cB}),
