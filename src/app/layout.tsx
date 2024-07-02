@@ -14,7 +14,7 @@ export default function RootLayout(props: { children: ReactNode}) {
   return (
     <html lang="en">
       <body className="overlfow-hidden">
-        <div className="w-screen h-[90vh] bg-gradient-to-br from-purple-800 to-pink-600 relative overflow-hidden">
+        <div className="w-screen h-[90vh] bg-black relative overflow-hidden">
           <Menu />
           <div className="relative w-full h-full z-30 overflow-hidden">
             {props.children}
