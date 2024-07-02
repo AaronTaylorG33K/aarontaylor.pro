@@ -337,7 +337,7 @@ const Homepage = () => {
        
         <div
           id="section1"
-          className=" relative w-screen  h-[80dvh] lg:h-[90dvh] snap-center justify-end items-end border border-red-500"
+          className=" relative w-screen  h-[80dvh] lg:h-[90dvh] snap-center justify-end items-end  "
         >
           <motion.div className="absolute top-32  z-30   flex items-center justify-center  pointer-events-none overflow-hidden">
             <Image
@@ -436,7 +436,7 @@ const Homepage = () => {
 
         <div
           id="section2"
-          className="w-screen  h-[80dvh] lg:h-[90dvh] relative snap-center flex justify-end items-end border border-green-500"
+          className="w-screen  h-[80dvh] lg:h-[90dvh] relative snap-center flex justify-end items-end "
         >
           <div className="absolute text-right pointer-events-none top-0 left-0 right-0  bottom-[9vh] lg:-bottom-4 flex text-right justify-end items-end">
             <motion.svg
@@ -527,7 +527,7 @@ const Homepage = () => {
 
         <div
           id="section3"
-          className=" h-[80dvh] lg:h-[90dvh] w-screen flex relative snap-center items-center justify-center border border-yellow-500"
+          className=" h-[80dvh] lg:h-[90dvh] w-screen flex relative snap-center items-center justify-center "
         >
           <div className="absolute left-0 top-0 right-0 bottom-[9vh] lg:-bottom-4 pointer-events-none">
             <motion.svg
@@ -701,7 +701,7 @@ const Homepage = () => {
 
         <div
           id="section6"
-          className=" h-[80dvh] lg:h-[90dvh] w-screen flex relative snap-center items-end justify-end border border-red-500 "
+          className=" h-[90dvh] w-screen flex relative snap-center items-end justify-end  "
         >
           <div className="absolute left-0 top-0 right-0 bottom-[10vh] lg:bottom-0 pointer-events-none">
             <motion.svg
