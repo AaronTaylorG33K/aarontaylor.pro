@@ -48,6 +48,30 @@ const Homepage = () => {
         ease: cB,
       }),
     },
+    clouds: {
+      1: {
+        x: useTransform(
+          scrollYProgress,
+          [0, 0.2, 0.4],
+          ["0vw", "-200vw", "-200vw"],
+          { ease: cB }
+        ),
+        opacity: useTransform(scrollYProgress, keyframes, [1, 0, 0, 0, 0], {
+          ease: cB,
+        }),
+      },
+      2: {
+        x: useTransform(
+          scrollYProgress,
+          [0, 0.2, 0.4],
+          ["0vw", "200vw", "200vw"],
+          { ease: cB }
+        ),
+        opacity: useTransform(scrollYProgress, keyframes, [1, 0, 0, 0, 0], {
+          ease: cB,
+        }),
+      }
+    },
     slide1: {
       dream: {
         x: useTransform(
@@ -332,110 +356,120 @@ const Homepage = () => {
 
   return (
     <>
-     <Logo scrollYProgress={scrollYProgress} />
-      <div ref={ref} className="h-full  w-full overflow-y-scroll">
-       
-        <div
+      <Logo scrollYProgress={scrollYProgress} />
+      <motion.div
+        ref={ref}
+        className="h-full  w-full overflow-y-scroll"
+        layoutScroll
+      >
+        <motion.div
+          layout
           id="section1"
-          className=" relative w-screen  h-[80dvh] lg:h-[90dvh] snap-center justify-end items-end  "
+          className=" relative w-screen  h-[240dvh] lg:h-[270dvh] snap-center justify-end items-end "
         >
-          <motion.div className="absolute top-32  z-30   flex items-center justify-center  pointer-events-none overflow-hidden">
-            <Image
-              className="pointer-events-none opacity-30"
-              src="/cloud2.png"
-              width={isMobile ? 1200 :800}
-              height="700"
-              alt="cloud"
-            />
-          </motion.div>
-          <Image
-              quality={100}
-              src="/cloud.png"
-              width={isMobile ? 1300:800}
-              height={300}
-              alt="cloud"
-              className="absolute -right-[20vw] bottom-[10vh] z-50  pointer-events-none"
-              
-             
-            />
-          <div className="absolute bottom-[10vh]  z-50   pointer-events-none overflow-hidden">
-            
-          </div>
-          <div className=" pointer-events-none top-0 left-0 right-0 bottom-0 z-40">
-            <motion.svg
-              className="h-full ml-auto pointer-events-none"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 1868.13 2119.33"
-            >
-              <motion.path
-                style={{ ...animations.A }}
-                d="M1354.18,2119.33l-83.73-256.98h-666.98l-86.62,256.98H0L721.84,0h461.98l684.31,2119.33h-513.95ZM770.93,1374.39h343.6l-167.47-513.95-176.13,513.95Z"
-              />
-            </motion.svg>{" "}
-          </div>
-          <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center pointer-events-none">
-            <motion.svg
-              fill="#fff"
-              className="w-[80vw] max-w-[500px] pointer-events-none relative z-40"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 2456.81 257.94"
-            >
-              <g>
-                <motion.path
-                  style={{ ...animations.slide1.dream }}
-                  d="M58.99.7c16.98.93,32.98,5.01,47.99,12.22,15.01,7.22,28.04,16.64,39.09,28.27,11.05,11.64,19.77,25.13,26.18,40.49,6.4,15.36,9.6,31.76,9.6,49.21s-3.14,33.33-9.42,48.34c-6.28,15.01-14.95,28.22-26,39.62-11.05,11.4-24.03,20.54-38.92,27.4-14.89,6.87-31.06,10.77-48.52,11.69H0V.35h58.99v.35ZM58.99,198.95c9.07-.93,17.51-3.32,25.3-7.17,7.79-3.85,14.54-8.81,20.24-14.87,5.7-6.06,10.18-13,13.44-20.82,3.26-7.82,4.89-16.15,4.89-25.02s-1.63-17.78-4.89-26.07c-3.26-8.28-7.8-15.63-13.61-22.04-5.82-6.41-12.57-11.67-20.24-15.74-7.68-4.08-16.06-6.59-25.13-7.53v139.26Z"
+          <motion.div
+            layout
+            className="flex items-center justify-center  gap-4 pointer-events-none sticky top-0 bottom-0 left-0 right-0"
+          >
+            <motion.div className="relative w-screen  h-[80dvh] lg:h-[90dvh]">
+              <motion.div className="absolute top-32  z-10   flex items-center justify-center  pointer-events-none overflow-hidden" style={{...animations.clouds[1]}}>
+                <Image
+                  className="pointer-events-none opacity-30"
+                  src="/cloud2.png"
+                  width={isMobile ? 1200 : 800}
+                  height="700"
+                  alt="cloud"
                 />
-                <motion.path
-                  style={{ ...animations.slide1.dream }}
-                  d="M270.85,191.62c-3.03.47-6.05.82-9.07,1.05-3.03.23-6.17.47-9.42.7v64.57h-58.99V2.79h58.99c14.66.23,28.39,2.91,41.19,8.02,12.79,5.12,24.02,11.97,33.68,20.57,9.65,8.6,17.22,18.65,22.69,30.15,5.46,11.5,8.2,23.64,8.2,36.42,0,13.94-2.91,26.73-8.73,38.34-5.82,11.62-13.96,21.73-24.43,30.32l56.54,91.32h-69.46l-41.19-66.32ZM252.35,134.38c6.28-.23,12.27-1.34,17.98-3.33,5.7-1.98,10.7-4.62,15.01-7.89,4.3-3.27,7.68-7.07,10.12-11.4,2.44-4.32,3.67-8.94,3.67-13.85s-1.22-9.47-3.67-13.68c-2.44-4.21-5.82-7.95-10.12-11.22-4.31-3.27-9.31-5.9-15.01-7.89-5.7-1.98-11.69-3.1-17.98-3.33v72.6Z"
+              </motion.div>
+              <motion.div className="absolute bottom-12 -right-32  z-40   flex items-center justify-center  pointer-events-none overflow-hidden" style={{...animations.clouds[2]}}>
+                <Image
+                  quality={100}
+                  src="/cloud.png"
+                  width={isMobile ? 1300 : 800}
+                  height={300}
+                  alt="cloud"
+                  className=" pointer-events-none"
                 />
-                <motion.path
-                  style={{ ...animations.slide1.dream }}
-                  d="M445.37,61.08v38.39h85.51v58.99h-85.51v40.49h105.41v58.99h-164.39V2.09l164.39-.35v59.34h-105.41Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide1.dream }}
-                  d="M723.9,226.87h-80.63l-10.47,31.06h-62.48L657.58,1.75h55.85l82.72,256.19h-62.13l-10.12-31.06ZM705.05,167.88l-20.24-62.13-21.29,62.13h41.54Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide1.dream }}
-                  d="M1045.7,1.4l15.01,256.54h-58.99l-6.28-104.71-35.6,104.71h-58.99l-37.7-108.9-6.98,108.9h-59.34L813.24,1.4h60.73l56.19,160.56L984.97,1.4h60.73Z"
-                />
-              </g>
-              <g>
-                <motion.path
-                  style={{ ...animations.slide1.with }}
-                  d="M1469.77,0l-75.74,257.94h-58.29l-33.86-128.44-29.32,128.44h-58.64L1128.76,0h62.13l47.47,142.75L1270.82,0h57.94l37.7,142.06L1407.99,0h61.78Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide1.with }}
-                  d="M1524.91,257.94h-58.99V1.4h58.99v256.54Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide1.with }}
-                  d="M1697.68,59.68h-49.21v198.25h-58.99V59.68h-48.86V.7h157.07v58.99Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide1.with }}
-                  d="M1912.68,1.75v256.19h-58.99v-96.68h-74v96.68h-58.99V1.75h58.99v100.52h74V1.75h58.99Z"
-                />
-              </g>
-              <g>
-                <motion.path
-                  style={{ ...animations.slide1.me }}
-                  d="M2259.96,1.4l15.01,256.54h-58.99l-6.28-104.71-35.6,104.71h-58.99l-37.7-108.9-6.98,108.9h-59.34L2027.51,1.4h60.73l56.19,160.56L2199.23,1.4h60.73Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide1.me }}
-                  d="M2351.4,61.08v38.39h85.51v58.99h-85.51v40.49h105.41v58.99h-164.4V2.09l164.4-.35v59.34h-105.41Z"
-                />
-              </g>
-            </motion.svg>
-          </div>
-        </div>
+              </motion.div>
 
-        <div
+              <div className="absolute pointer-events-none top-0 left-0 right-0 bottom-0 z-30">
+                <motion.svg
+                  className="h-full ml-auto pointer-events-none  z-30"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 1868.13 2119.33"
+                >
+                  <motion.path
+                    style={{ ...animations.A }}
+                    d="M1354.18,2119.33l-83.73-256.98h-666.98l-86.62,256.98H0L721.84,0h461.98l684.31,2119.33h-513.95ZM770.93,1374.39h343.6l-167.47-513.95-176.13,513.95Z"
+                  />
+                </motion.svg>{" "}
+              </div>
+              <div className="absolute z-50  top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center pointer-events-none">
+                <motion.svg
+                  fill="#fff"
+                  className="w-[80vw] max-w-[500px] pointer-events-none relative z-40 "
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 2456.81 257.94"
+                >
+                  <g>
+                    <motion.path
+                      style={{ ...animations.slide1.dream }}
+                      d="M58.99.7c16.98.93,32.98,5.01,47.99,12.22,15.01,7.22,28.04,16.64,39.09,28.27,11.05,11.64,19.77,25.13,26.18,40.49,6.4,15.36,9.6,31.76,9.6,49.21s-3.14,33.33-9.42,48.34c-6.28,15.01-14.95,28.22-26,39.62-11.05,11.4-24.03,20.54-38.92,27.4-14.89,6.87-31.06,10.77-48.52,11.69H0V.35h58.99v.35ZM58.99,198.95c9.07-.93,17.51-3.32,25.3-7.17,7.79-3.85,14.54-8.81,20.24-14.87,5.7-6.06,10.18-13,13.44-20.82,3.26-7.82,4.89-16.15,4.89-25.02s-1.63-17.78-4.89-26.07c-3.26-8.28-7.8-15.63-13.61-22.04-5.82-6.41-12.57-11.67-20.24-15.74-7.68-4.08-16.06-6.59-25.13-7.53v139.26Z"
+                    />
+                    <motion.path
+                      style={{ ...animations.slide1.dream }}
+                      d="M270.85,191.62c-3.03.47-6.05.82-9.07,1.05-3.03.23-6.17.47-9.42.7v64.57h-58.99V2.79h58.99c14.66.23,28.39,2.91,41.19,8.02,12.79,5.12,24.02,11.97,33.68,20.57,9.65,8.6,17.22,18.65,22.69,30.15,5.46,11.5,8.2,23.64,8.2,36.42,0,13.94-2.91,26.73-8.73,38.34-5.82,11.62-13.96,21.73-24.43,30.32l56.54,91.32h-69.46l-41.19-66.32ZM252.35,134.38c6.28-.23,12.27-1.34,17.98-3.33,5.7-1.98,10.7-4.62,15.01-7.89,4.3-3.27,7.68-7.07,10.12-11.4,2.44-4.32,3.67-8.94,3.67-13.85s-1.22-9.47-3.67-13.68c-2.44-4.21-5.82-7.95-10.12-11.22-4.31-3.27-9.31-5.9-15.01-7.89-5.7-1.98-11.69-3.1-17.98-3.33v72.6Z"
+                    />
+                    <motion.path
+                      style={{ ...animations.slide1.dream }}
+                      d="M445.37,61.08v38.39h85.51v58.99h-85.51v40.49h105.41v58.99h-164.39V2.09l164.39-.35v59.34h-105.41Z"
+                    />
+                    <motion.path
+                      style={{ ...animations.slide1.dream }}
+                      d="M723.9,226.87h-80.63l-10.47,31.06h-62.48L657.58,1.75h55.85l82.72,256.19h-62.13l-10.12-31.06ZM705.05,167.88l-20.24-62.13-21.29,62.13h41.54Z"
+                    />
+                    <motion.path
+                      style={{ ...animations.slide1.dream }}
+                      d="M1045.7,1.4l15.01,256.54h-58.99l-6.28-104.71-35.6,104.71h-58.99l-37.7-108.9-6.98,108.9h-59.34L813.24,1.4h60.73l56.19,160.56L984.97,1.4h60.73Z"
+                    />
+                  </g>
+                  <g>
+                    <motion.path
+                      style={{ ...animations.slide1.with }}
+                      d="M1469.77,0l-75.74,257.94h-58.29l-33.86-128.44-29.32,128.44h-58.64L1128.76,0h62.13l47.47,142.75L1270.82,0h57.94l37.7,142.06L1407.99,0h61.78Z"
+                    />
+                    <motion.path
+                      style={{ ...animations.slide1.with }}
+                      d="M1524.91,257.94h-58.99V1.4h58.99v256.54Z"
+                    />
+                    <motion.path
+                      style={{ ...animations.slide1.with }}
+                      d="M1697.68,59.68h-49.21v198.25h-58.99V59.68h-48.86V.7h157.07v58.99Z"
+                    />
+                    <motion.path
+                      style={{ ...animations.slide1.with }}
+                      d="M1912.68,1.75v256.19h-58.99v-96.68h-74v96.68h-58.99V1.75h58.99v100.52h74V1.75h58.99Z"
+                    />
+                  </g>
+                  <g>
+                    <motion.path
+                      style={{ ...animations.slide1.me }}
+                      d="M2259.96,1.4l15.01,256.54h-58.99l-6.28-104.71-35.6,104.71h-58.99l-37.7-108.9-6.98,108.9h-59.34L2027.51,1.4h60.73l56.19,160.56L2199.23,1.4h60.73Z"
+                    />
+                    <motion.path
+                      style={{ ...animations.slide1.me }}
+                      d="M2351.4,61.08v38.39h85.51v58.99h-85.51v40.49h105.41v58.99h-164.4V2.09l164.4-.35v59.34h-105.41Z"
+                    />
+                  </g>
+                </motion.svg>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
           id="section2"
+          layout
           className="w-screen  h-[80dvh] lg:h-[90dvh] relative snap-center flex justify-end items-end "
         >
           <div className="absolute text-right pointer-events-none top-0 left-0 right-0  bottom-[9vh] lg:-bottom-4 flex text-right justify-end items-end">
@@ -523,10 +557,11 @@ const Homepage = () => {
               </g>
             </motion.svg>
           </div>
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
           id="section3"
+          layout
           className=" h-[80dvh] lg:h-[90dvh] w-screen flex relative snap-center items-center justify-center "
         >
           <div className="absolute left-0 top-0 right-0 bottom-[9vh] lg:-bottom-4 pointer-events-none">
@@ -617,9 +652,10 @@ const Homepage = () => {
               </g>
             </motion.svg>
           </div>
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
+          layout
           id="section5"
           className=" h-[80dvh] lg:h-[90dvh] w-screen flex relative snap-center items-center justify-center bg-[rgba(0,0,0)]"
         >
@@ -697,9 +733,10 @@ const Homepage = () => {
               </g>
             </motion.svg>
           </div>
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
+          layout
           id="section6"
           className=" h-[90dvh] w-screen flex relative snap-center items-end justify-end  "
         >
@@ -782,8 +819,8 @@ const Homepage = () => {
 
             {/* <TheDrip scrollYProgress={scrollYProgress} /> */}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </>
   );
 };
