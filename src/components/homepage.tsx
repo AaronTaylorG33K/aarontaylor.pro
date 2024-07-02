@@ -332,11 +332,12 @@ const Homepage = () => {
 
   return (
     <>
+     <Logo scrollYProgress={scrollYProgress} />
       <div ref={ref} className="h-full  w-full overflow-y-scroll">
-        <Logo scrollYProgress={scrollYProgress} />
+       
         <div
           id="section1"
-          className=" w-screen h-[300vh] snap-center justify-end items-end "
+          className=" relative w-screen h-[300vh] snap-center justify-end items-end "
         >
           <motion.div className="absolute top-32  z-30   flex items-center justify-center  pointer-events-none overflow-hidden">
             <Image
@@ -360,7 +361,7 @@ const Homepage = () => {
           <div className="absolute bottom-[10vh]  z-50   pointer-events-none overflow-hidden">
             
           </div>
-          <div className="absolute pointer-events-none top-0 left-0 right-0 bottom-0 z-40">
+          <div className=" pointer-events-none top-0 left-0 right-0 bottom-0 z-40">
             <motion.svg
               className="h-full ml-auto pointer-events-none"
               xmlns="http://www.w3.org/2000/svg"
@@ -435,7 +436,7 @@ const Homepage = () => {
 
         <div
           id="section2"
-          className="w-screen h-[300vh] snap-center flex justify-end items-end "
+          className="w-screen h-[300vh] relative snap-center flex justify-end items-end "
         >
           <div className="absolute text-right pointer-events-none top-0 left-0 right-0  bottom-[9vh] lg:-bottom-4 flex text-right justify-end items-end">
             <motion.svg
@@ -526,7 +527,7 @@ const Homepage = () => {
 
         <div
           id="section3"
-          className="h-[600vh] w-screen flex snap-center items-center justify-center"
+          className="h-[600vh] w-screen flex relative snap-center items-center justify-center"
         >
           <div className="absolute left-0 top-0 right-0 bottom-[9vh] lg:-bottom-4 pointer-events-none">
             <motion.svg
@@ -620,7 +621,7 @@ const Homepage = () => {
 
         <div
           id="section5"
-          className="h-[800vh] w-screen flex snap-center items-center justify-center bg-[rgba(0,0,0)]"
+          className="h-[800vh] w-screen flex relative snap-center items-center justify-center bg-[rgba(0,0,0)]"
         >
           <div className="absolute left-0 top-0 right-0 bottom-[10vh] lg:-bottom-4 pointer-events-none">
             <motion.svg
@@ -700,7 +701,7 @@ const Homepage = () => {
 
         <div
           id="section6"
-          className="h-[300vh] w-screen flex snap-center items-end justify-end "
+          className="h-[300vh] w-screen flex relative snap-center items-end justify-end "
         >
           <div className="absolute left-0 top-0 right-0 bottom-[10vh] lg:bottom-0 pointer-events-none">
             <motion.svg
