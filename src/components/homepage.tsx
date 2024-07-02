@@ -381,13 +381,13 @@ const Homepage = () => {
     '#553c9a', // purple-800
     '#805ad5', // light purple
     '#00ffc2', // even lighter purple
-    '#afff00', // pink-600
+    '#000000', // pink-600
   ];
   
   const endColors = [
     '#d53f8c', // pink-600
     '#ed64a6', // light pink
-    '#d53f8c', // even lighter pink
+    '#000000', // even lighter pink
     '#000000', // purple-800
   ];
 
