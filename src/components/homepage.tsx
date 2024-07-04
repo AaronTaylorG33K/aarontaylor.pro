@@ -189,7 +189,7 @@ const Homepage = () => {
         x: useTransform(
           scrollYProgress,
           [0, 0.3, 0.4, 0.5, 0.6],
-          ["350vw", "350vw", "0vw", "0vw", "-350vw"],
+          ["150vw", "150vw", "0vw", "0vw", "-150vw"],
           { ease: cB }
         ),
         opacity: useTransform(
@@ -205,7 +205,7 @@ const Homepage = () => {
         x: useTransform(
           scrollYProgress,
           [0, 0.32, 0.4, 0.5, 0.62],
-          ["350vw", "350vw", "0vw", "0vw", "-350vw"],
+          ["150vw", "150vw", "0vw", "0vw", "-150vw"],
           { ease: cB }
         ),
         opacity: useTransform(
@@ -221,7 +221,7 @@ const Homepage = () => {
         x: useTransform(
           scrollYProgress,
           [0, 0.32, 0.4, 0.5, 0.62],
-          ["350vw", "350vw", "0vw", "0vw", "-350vw"],
+          ["150vw", "150vw", "0vw", "0vw", "-150vw"],
           { ease: cB }
         ),
         opacity: useTransform(
@@ -237,7 +237,7 @@ const Homepage = () => {
         x: useTransform(
           scrollYProgress,
           [0, 0.34, 0.4, 0.5, 0.64],
-          ["350vw", "350vw", "0vw", "0vw", "-350vw"],
+          ["150vw", "150vw", "0vw", "0vw", "-150vw"],
           { ease: cB }
         ),
         opacity: useTransform(
@@ -253,7 +253,7 @@ const Homepage = () => {
         x: useTransform(
           scrollYProgress,
           [0, 0.36, 0.4, 0.5, 0.66],
-          ["350vw", "350vw", "0vw", "0vw", "-350vw"],
+          ["150vw", "150vw", "0vw", "0vw", "-150vw"],
           { ease: cB }
         ),
         opacity: useTransform(

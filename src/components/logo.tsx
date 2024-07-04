@@ -43,7 +43,7 @@ const Logo = (props: LogoProps) => {
 
 
   return (
-    <motion.div className="fixed top-8 left-8 z-[100]">
+    <motion.div className="fixed top-8 left-8 z-[100] pointer-events-none">
       <motion.svg
         id="Layer_1"
         xmlns="http://www.w3.org/2000/svg"
