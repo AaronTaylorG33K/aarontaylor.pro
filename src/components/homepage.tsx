@@ -96,6 +96,14 @@ const Homepage = () => {
         }),
       },
     },
+    aaron: {
+      image: {
+      y: useTransform(scrollYProgress, [0, 0.2, 0.3, 0.4], [isMobile? '35vh':'15vh','100vh',0,0],{ease:cB}),
+      x: useTransform(scrollYProgress, [0, 0.2, 0.3, 0.4], ['0vw','-50vw','0vw','0vw'],{ease:cB}),
+      opacity: useTransform(scrollYProgress, [0, 0.2, 0.3, 0.4], [1, 0,0,0],{ease:cB}),
+      
+    }
+    },
     slide1: {
       dream: {
         x: useTransform(
@@ -134,6 +142,7 @@ const Homepage = () => {
       },
     },
     slide2: {
+   
       lets: {
         x: useTransform(
           scrollYProgress,
@@ -535,8 +544,12 @@ const Homepage = () => {
               </motion.svg>
             </div>
             <div className="w-screen  h-[81dvh] lg:h-[90dvh] overflow-hidden">
+
+<motion.div className="w-full h-full  lg:w-[50vw] absolute z-50" style={{...animations.aaron.image}} >
+              <Image src="/aaron.png" width={1200} height={700} alt="Aaron" className="absolute" />
+              </motion.div>
               <motion.svg
-                className="ml-auto h-full w-full absolute right-0"
+                className="ml-auto h-full w-full absolute right-0 z-20"
                 preserveAspectRatio={"xMaxYMax meet"}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 2058.59 2182.94"
