@@ -98,11 +98,26 @@ const Homepage = () => {
     },
     aaron: {
       image: {
-      y: useTransform(scrollYProgress, [0, 0.2, 0.3, 0.4], [isMobile? '35vh':'15vh','100vh',0,0],{ease:cB}),
-      x: useTransform(scrollYProgress, [0, 0.2, 0.3, 0.4], ['0vw','-50vw','0vw','0vw'],{ease:cB}),
-      opacity: useTransform(scrollYProgress, [0, 0.2, 0.3, 0.4], [1, 0,0,0],{ease:cB}),
-      
-    }
+        y: useTransform(
+          scrollYProgress,
+          [0, 0.2, 0.3, 0.4],
+          [isMobile ? "13dvh" : "35dvh", "100dvh", 0, 0],
+          { ease: cB }
+        ),
+        x: useTransform(
+          scrollYProgress,
+          [0, 0.2, 0.3, 0.4],
+          [isMobile ? "0vw":"10vw", "50vw", "0vw", "0vw"],
+          { ease: cB }
+        ),
+        opacity: useTransform(
+          scrollYProgress,
+          [0, 0.2, 0.3, 0.4],
+          [1, 0, 0, 0],
+          { ease: cB }
+        ),
+        // rotate: useTransform(scrollYProgress, [0, 0.2, 0.3, 0.4],[0,60,0,0]),
+      },
     },
     slide1: {
       dream: {
@@ -142,7 +157,6 @@ const Homepage = () => {
       },
     },
     slide2: {
-   
       lets: {
         x: useTransform(
           scrollYProgress,
@@ -387,17 +401,17 @@ const Homepage = () => {
     },
   };
   const startColors = [
-    '#553c9a', // purple-800
-    '#805ad5', // light purple
-    '#00ffc2', // even lighter purple
-    '#000000', // pink-600
+    "#553c9a", // purple-800
+    "#805ad5", // light purple
+    "#00ffc2", // even lighter purple
+    "#000000", // pink-600
   ];
-  
+
   const endColors = [
-    '#d53f8c', // pink-600
-    '#ed64a6', // light pink
-    '#000000', // even lighter pink
-    '#000000', // purple-800
+    "#d53f8c", // pink-600
+    "#ed64a6", // light pink
+    "#000000", // even lighter pink
+    "#000000", // purple-800
   ];
 
   const startColor = useTransform(
@@ -406,11 +420,7 @@ const Homepage = () => {
     startColors
   );
 
-  const endColor = useTransform(
-    scrollYProgress,
-    [0, 0.33, 0.66, 1],
-    endColors
-  );
+  const endColor = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], endColors);
 
   const bgGradient = useTransform(
     [startColor, endColor],
@@ -427,15 +437,15 @@ const Homepage = () => {
         className="h-full  w-full overflow-y-scroll hyperPink"
         layoutScroll
       >
-          <div
-            className="fixed z-[5] inset-0 pointer-events-none"
-            style={{
-              backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.2) 2px, transparent 0)`,
-              backgroundSize: "15px 15px",
-              backgroundPosition: "-16.5px -16.5px",
-              maskImage: `radial-gradient(ellipse at center, rgba(0, 0, 0, 1), transparent 75%)`,
-            }}
-          />
+        <div
+          className="fixed z-[5] inset-0 pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.2) 2px, transparent 0)`,
+            backgroundSize: "15px 15px",
+            backgroundPosition: "-16.5px -16.5px",
+            maskImage: `radial-gradient(ellipse at center, rgba(0, 0, 0, 1), transparent 75%)`,
+          }}
+        />
         <motion.div
           layout
           id="section1"
@@ -447,27 +457,32 @@ const Homepage = () => {
             className="flex flex-row items-center justify-center  gap-4 pointer-events-none sticky top-0 bottom-0 left-0 right-0 overflow-x-hidden w-full "
           >
             <motion.div
-              className="absolute top-32  z-10   flex items-center justify-center  pointer-events-none "
+              className="absolute top-12  z-10   flex items-start justify-start  pointer-events-none w-full h-full overflow-hidden"
               style={{ ...animations.clouds[1] }}
             >
               <Image
                 className="pointer-events-none opacity-30"
                 src="/cloud2.png"
-                width={isMobile ? 1200 : 800}
+                width={isMobile ? 1200 : 1200}
                 height="700"
+                priority
                 alt="cloud"
               />
             </motion.div>
             <motion.div
-              className="absolute bottom-12 -right-1/2 left-1/2 top-1/2  z-40   flex items-center justify-center  pointer-events-none overflow-hidden"
+              className="absolute bottom-0 -right-1/4 left-1/2 top-1/2  z-40   flex items-center justify-center  pointer-events-none overflow-hidden w-full"
               style={{ ...animations.clouds[2] }}
             >
+        
               <Image
                 quality={100}
-                src="/cloud.png"
-                layout="fill"
+                src="/cloud5.png"
+                width={800}
+                height={500}
                 alt="cloud"
-                className=" pointer-events-none max-h-[300px] max-w-[700px]"
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw" 
+                className=" pointer-events-none  object-fit  h-[50dvh] w-auto"
               />
             </motion.div>
 
@@ -484,7 +499,7 @@ const Homepage = () => {
               </motion.svg>{" "}
             </div>
 
-            <div className="absolute z-50  top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center pointer-events-none">
+            <div className="absolute z-50  -top-[20dvh] left-0 right-0 bottom-0 flex flex-col items-center justify-center pointer-events-none">
               <motion.svg
                 fill="#fff"
                 className="w-[80vw] max-w-[500px] pointer-events-none relative z-40 "
@@ -543,10 +558,18 @@ const Homepage = () => {
                 </g>
               </motion.svg>
             </div>
-            <div className="w-screen  h-[81dvh] lg:h-[90dvh] overflow-hidden">
-
-<motion.div className="w-full h-full  lg:w-[50vw] absolute z-50" style={{...animations.aaron.image}} >
-              <Image src="/aaron.png" width={1200} height={700} alt="Aaron" className="absolute" />
+            <div className="w-screen  h-[90dvh] sm:h-[90dvh] md:h-[90dvh] lg:h-[90dvh] overflow-hidden">
+              <motion.div
+                className="w-full h-full lg:w-[50vw] absolute bottom-[10dvh] sm:bottom-[7dvh] md:bottom-[7dvh] lg:bottom-[25dvh] z-40  overflow-hidden "
+                style={{ ...animations.aaron.image }}
+              >
+                <Image
+                  src="/aaron-fitted.png"
+                  width="1200"
+                  height="600"
+                  alt="Aaron"
+                  className="absolute  object-fit bottom-0"
+                />
               </motion.div>
               <motion.svg
                 className="ml-auto h-full w-full absolute right-0 z-20"
@@ -798,7 +821,6 @@ const Homepage = () => {
           </motion.div>
         </motion.div>
 
-       
         <motion.div
           layout
           id="section6"
@@ -891,7 +913,6 @@ const Homepage = () => {
           ref={refs.section5}
           className=" h-[90dvh] lg:h-[90dvh] w-screen flex relative snap-center items-center justify-center bg-[rgba(0,0,0)]"
         ></motion.div>
- 
       </motion.div>
     </>
   );
