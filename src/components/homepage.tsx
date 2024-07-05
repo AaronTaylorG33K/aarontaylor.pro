@@ -12,8 +12,6 @@ import { useEffect, useRef } from "react";
 import TheDrip from "./home/theDrip";
 import Logo from "./logo";
 import Image from "next/image";
-import OverGrownLogo from "./OverGrownLogo";
-import KhalifaMintsLogo from "./KhalifaMints";
 
 const Homepage = () => {
   const ref = useRef(null);
