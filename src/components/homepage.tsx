@@ -12,6 +12,8 @@ import { useEffect, useRef } from "react";
 import TheDrip from "./home/theDrip";
 import Logo from "./logo";
 import Image from "next/image";
+import OverGrownLogo from "./OverGrownLogo";
+import KhalifaMintsLogo from "./KhalifaMints";
 
 const Homepage = () => {
   const ref = useRef(null);
@@ -107,7 +109,7 @@ const Homepage = () => {
         x: useTransform(
           scrollYProgress,
           [0, 0.2, 0.3, 0.4],
-          [isMobile ? "0vw":"10vw", "50vw", "0vw", "0vw"],
+          [isMobile ? "12vw":"20vw", "50vw", "0vw", "0vw"],
           { ease: cB }
         ),
         opacity: useTransform(
@@ -160,13 +162,13 @@ const Homepage = () => {
       lets: {
         x: useTransform(
           scrollYProgress,
-          [0, 0.2, 0.3, 0.4],
-          ["-200vw", "0vw", "0vw", "400vw"],
+          [0, 0.2, 0.4, 0.5],
+          ["-200vw", "0vw", "0vw", "-250vw"],
           { ease: cB }
         ),
         opacity: useTransform(
           scrollYProgress,
-          [0, 0.2, 0.3, 0.4],
+          [0, 0.2, 0.4, 0.5],
           [0, 1, 1, 0],
           {
             ease: cB,
@@ -176,33 +178,33 @@ const Homepage = () => {
       make: {
         x: useTransform(
           scrollYProgress,
-          [0, 0.2, 0.3, 0.4],
-          ["-300vw", "0vw", "0vw", "500vw"],
+          [0, 0.2,  0.42, 0.5],
+          ["-300vw", "0vw", "0vw", "-250vw"],
           { ease: cB }
         ),
-        opacity: useTransform(scrollYProgress, keyframes, [0, 1, 0, 0, 0], {
+        opacity: useTransform(scrollYProgress, [0, 0.2,  0.42, 0.5], [0, 1, 1, 0], {
           ease: cB,
         }),
       },
       some: {
         x: useTransform(
           scrollYProgress,
-          [0, 0.2, 0.3, 0.4],
-          ["-500vw", "0vw", "0vw", "500vw"],
+          [0, 0.2,  0.44, 0.5],
+          ["-500vw", "0vw", "0vw", "-250vw"],
           { ease: cB }
         ),
-        opacity: useTransform(scrollYProgress, keyframes, [0, 1, 0, 0, 0], {
+        opacity: useTransform(scrollYProgress, [0, 0.2,  0.44, 0.5], [0, 1, 1, 0], {
           ease: cB,
         }),
       },
       magic: {
         x: useTransform(
           scrollYProgress,
-          [0, 0.2, 0.3, 0.4],
-          ["-200vw", "0vw", "0vw", "600vw"],
+          [0, 0.2,  0.45, 0.5],
+          ["-200vw", "0vw", "0vw", isMobile?"0vw":"-25vw"],
           { ease: cB }
         ),
-        opacity: useTransform(scrollYProgress, keyframes, [0, 1, 0, 0, 0], {
+        opacity: useTransform(scrollYProgress, [0, 0.2,  0.6, 0.8], [0, 1, 1,  0], {
           ease: cB,
         }),
       },
@@ -430,6 +432,7 @@ const Homepage = () => {
   return (
     <>
       <Logo scrollYProgress={scrollYProgress} />
+      
       <motion.div
         ref={ref}
         id="hyperPink"
@@ -437,6 +440,7 @@ const Homepage = () => {
         className="h-full  w-full overflow-y-scroll hyperPink"
         layoutScroll
       >
+      
         <div
           className="fixed z-[5] inset-0 pointer-events-none"
           style={{
@@ -450,8 +454,16 @@ const Homepage = () => {
           layout
           id="section1"
           ref={refs.section1}
-          className=" relative w-screen z-10  h-[586dvh] lg:h-[640dvh] snap-center justify-end items-end "
+          className=" relative w-screen z-10 h-[180dvh] h-[640dvh] snap-center justify-end items-end "
         >
+{/* <div className="-z-10 absolute">
+<Starfield
+        starCount={1000}
+        starColor={[255, 255, 255]}
+        speedFactor={0.05}
+
+        
+      /></div> */}
           <motion.div
             layout
             className="flex flex-row items-center justify-center  gap-4 pointer-events-none sticky top-0 bottom-0 left-0 right-0 overflow-x-hidden w-full "
@@ -469,7 +481,7 @@ const Homepage = () => {
                 alt="cloud"
               />
             </motion.div>
-            <motion.div
+            {/* <motion.div
               className="absolute bottom-0 -right-1/4 left-1/2 top-1/2  z-40   flex items-center justify-center  pointer-events-none overflow-hidden w-full"
               style={{ ...animations.clouds[2] }}
             >
@@ -484,7 +496,7 @@ const Homepage = () => {
                 sizes="(max-width: 768px) 100vw, 50vw" 
                 className=" pointer-events-none  object-fit  h-[50dvh] w-auto"
               />
-            </motion.div>
+            </motion.div> */}
 
             <div className="absolute pointer-events-none top-0 left-0 right-0 bottom-0 z-30">
               <motion.svg
@@ -655,7 +667,7 @@ const Homepage = () => {
                 </g>
               </motion.svg>
             </div>
-            <div className="w-[100vw]  h-[81dvh] lg:h-[90dvh]  flex-none">
+            {/* <div className="w-[100vw]  h-[81dvh] lg:h-[90dvh]  flex-none">
               <motion.svg
                 className="ml-auto h-full w-full absolute z-50 right-0"
                 preserveAspectRatio={"xMaxYMax meet"}
@@ -742,9 +754,9 @@ const Homepage = () => {
                   />
                 </g>
               </motion.svg>
-            </div>
+            </div> */}
 
-            <div className="absolute pointer-events-none w-[100vw]  h-[81dvh] lg:h-[90dvh]  flex-none ">
+            {/* <div className="absolute pointer-events-none w-[100vw]  h-[81dvh] lg:h-[90dvh]  flex-none ">
               <motion.svg
                 fill="#fff"
                 className="ml-auto h-full w-full"
@@ -817,7 +829,7 @@ const Homepage = () => {
                   />
                 </g>
               </motion.svg>
-            </div>
+            </div> */}
           </motion.div>
         </motion.div>
 
@@ -825,9 +837,42 @@ const Homepage = () => {
           layout
           id="section6"
           ref={refs.section6}
-          className="h-[81vh] lg:h-[90dvh] w-screen flex relative snap-center items-end justify-end  "
+          className="h-[90vh] lg:h-[90dvh] w-screen flex relative snap-center items-start justify-start  "
         >
-          <div className="absolute left-0 top-0 right-0 bottom-[10vh] lg:bottom-0 pointer-events-none">
+          <div className="absolute left-0 top-0 right-0 bottom-12 lg:bottom-0 pointer-events-none">
+
+
+        <div className="max-w-screen-xl mx-8 flex flex-col items-center gap-8 py-36">
+   
+          <Image
+          className="object-fit w-1/2"
+          width={1200}
+          height={1200}
+          src="/runrabbit-logo.png"
+          alt="runrabbit-logo" />
+
+<Image
+          className="object-fit w-full"
+          width={1200}
+          height={1200}
+          src="/sugarsmiths-logo.png"
+          alt="sugarsmiths-logo" />
+
+
+<Image
+          className="object-fit w-full"
+          width={1200}
+          height={1200}
+          src="/khalifamints-logo.png"
+          alt="khalifamints-logo" />
+          <Image
+          className="object-fit w-full"
+          width={1200}
+          height={1200}
+          src="/overgrown-logo.png"
+          alt="overgrown-logo" />
+        </div>
+
             {/* <motion.svg
               className="ml-auto h-full w-full relative z-40"
               preserveAspectRatio={"xMaxYMax meet"}
@@ -911,8 +956,12 @@ const Homepage = () => {
           layout
           id="section5"
           ref={refs.section5}
-          className=" h-[90dvh] lg:h-[90dvh] w-screen flex relative snap-center items-center justify-center bg-[rgba(0,0,0)]"
-        ></motion.div>
+          className=" h-[90dvh] text-white lg:h-[90dvh] w-screen flex relative snap-center items-center justify-center  z-50"
+        >
+
+black
+
+        </motion.div>
       </motion.div>
     </>
   );

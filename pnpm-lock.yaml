@@ -50,6 +50,9 @@ importers:
       react-github-btn:
         specifier: ^1.4.0
         version: 1.4.0(react@18.3.1)
+      react-starfield:
+        specifier: ^1.0.3
+        version: 1.0.3(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       react-wavify:
         specifier: ^1.11.0
         version: 1.11.0(react@18.3.1)
@@ -1682,6 +1685,12 @@ packages:
     engines: {node: '>=0.10.0'}
     peerDependencies:
       react: ^18.0.0
+
+  react-starfield@1.0.3:
+    resolution: {integrity: sha512-JgNib2NPBvcCyvm0eLWnE1bjy5x3q/qywenjiIlrWScbz8tPAcRgmqsBfHe3mMkOs0bFm2kH6wjtc0HBRzFDqA==}
+    peerDependencies:
+      next: '>=13.4'
+      react: '>=17.0.0'
 
   react-use-measure@2.1.1:
     resolution: {integrity: sha512-nocZhN26cproIiIduswYpV5y5lQpSQS1y/4KuvUCjSKmw7ZWIS/+g3aFnX3WdBkyuGUtTLif3UTqnLLhbDoQig==}
@@ -3900,6 +3909,11 @@ snapshots:
       loose-envify: 1.4.0
       react: 18.3.1
       scheduler: 0.21.0
+
+  react-starfield@1.0.3(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
+    dependencies:
+      next: 14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
 
   react-use-measure@2.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
