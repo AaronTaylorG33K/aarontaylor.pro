@@ -199,10 +199,10 @@ const Homepage = () => {
         x: useTransform(
           scrollYProgress,
           [0, 0.2,  0.45, 0.5],
-          ["-200vw", "0vw", "0vw", isMobile?"0vw":"-25vw"],
+          ["-200vw", "0vw", "0vw", "-200vw"],
           { ease: cB }
         ),
-        opacity: useTransform(scrollYProgress, [0, 0.2,  0.6, 0.8], [0, 1, 1,  0], {
+        opacity: useTransform(scrollYProgress, [0, 0.2,  0.45, 0.5], [0, 1, 1,  0], {
           ease: cB,
         }),
       },
@@ -435,7 +435,7 @@ const Homepage = () => {
         ref={ref}
         id="hyperPink"
         style={{ backgroundImage: bgGradient }}
-        className="h-full  w-full overflow-y-scroll hyperPink"
+        className="h-full  w-full overflow-y-auto hyperPink hide-scroll"
         layoutScroll
       >
       
@@ -464,7 +464,7 @@ const Homepage = () => {
       /></div> */}
           <motion.div
             layout
-            className="flex flex-row items-center justify-center  gap-4 pointer-events-none sticky top-0 bottom-0 left-0 right-0 overflow-x-hidden w-full "
+            className="flex flex-row items-center justify-center  gap-4 pointer-events-none sticky top-0 bottom-0 left-0 right-0 overflow-hidden w-full "
           >
             <motion.div
               className="absolute top-12  z-10   flex items-start justify-start  pointer-events-none w-full h-full overflow-hidden"
