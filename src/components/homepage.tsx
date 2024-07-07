@@ -1,5 +1,6 @@
 "use client";
 import useViewportSize from "@/hooks/useViewportSize";
+import { Caveat } from '@next/font/google'
 import {
   cubicBezier,
   motion,
@@ -13,6 +14,12 @@ import TheDrip from "./home/theDrip";
 import Logo from "./logo";
 import Image from "next/image";
 
+const caveat = Caveat({
+  subsets: [
+    'latin'
+  ],
+  weight: ['400','500']
+})
 const Homepage = () => {
   const ref = useRef(null);
 
@@ -68,7 +75,18 @@ const Homepage = () => {
         ["0vw", "200vw", "200vw"],
         { ease: cB }
       ),
-      opacity: useTransform(scrollYProgress, keyframes, [1, 0, 0, 0, 0], {
+      opacity: useTransform(scrollYProgress,  [0, 0.2, 0.4], [1, 0, 0], {
+        ease: cB,
+      }),
+    },
+    text: {
+      // x: useTransform(
+      //   scrollYProgress,
+      //   [0, 0.2, 0.4],
+      //   ["0vw", "200vw", "200vw"],
+      //   { ease: cB }
+      // ),
+      opacity: useTransform(scrollYProgress, [0, 0.1, 0.4], [1, 0, 0], {
         ease: cB,
       }),
     },
@@ -452,16 +470,9 @@ const Homepage = () => {
           layout
           id="section1"
           ref={refs.section1}
-          className=" relative w-screen z-10 h-[180dvh] h-[640dvh] snap-center justify-end items-end "
+          className=" relative w-screen z-10 h-[180dvh] h-[24nj3w 340dvh] snap-center justify-end items-end "
         >
-{/* <div className="-z-10 absolute">
-<Starfield
-        starCount={1000}
-        starColor={[255, 255, 255]}
-        speedFactor={0.05}
 
-        
-      /></div> */}
           <motion.div
             layout
             className="flex flex-row items-center justify-center  gap-4 pointer-events-none sticky top-0 bottom-0 left-0 right-0 overflow-hidden w-full "
@@ -509,7 +520,10 @@ const Homepage = () => {
               </motion.svg>{" "}
             </div>
 
-            <div className="absolute z-50  -top-[20dvh] left-0 right-0 bottom-0 flex flex-col items-center justify-center pointer-events-none">
+            <motion.div style={{ ...animations.text }} className={`absolute min-w-[330px] -mt-14  mx-4 lg:mt-0 lg:ml-12  text-xl lg:text-2xl leading-none overflow-hidden  flex justify-center items-center z-50  text-white p-4 w-1/2 lg:w-1/5 mt-16 ${caveat.className}`}>
+              {`Hey there, I'm Aaron! I\'ve been designing, coding and managing IT teams for over 25 years. I have a passion for AI and enterprise app dev using cutting edge technology.`}
+            </motion.div>
+            <div className="absolute z-50  -top-[30dvh] left-0 right-0 bottom-0 flex flex-col items-center justify-center pointer-events-none">
               <motion.svg
                 fill="#fff"
                 className="w-[80vw] max-w-[500px] pointer-events-none relative z-40 "
@@ -567,7 +581,10 @@ const Homepage = () => {
                   />
                 </g>
               </motion.svg>
+              
             </div>
+
+        
             <div className="w-screen  h-[90dvh] sm:h-[90dvh] md:h-[90dvh] lg:h-[90dvh] overflow-hidden">
               <motion.div
                 className="w-full h-full lg:w-[50vw] absolute bottom-[10dvh] sm:bottom-[7dvh] md:bottom-[7dvh] lg:bottom-[25dvh] z-40  overflow-hidden "
