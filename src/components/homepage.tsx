@@ -859,6 +859,9 @@ const Homepage = () => {
 
         <div className="max-w-screen-xl mx-8 flex flex-col items-center gap-8 py-36">
    
+            <h1 className="text-7xl leading-none text-white font-bold pb-6 border-b-4 border-white">Recent Branding</h1>
+
+
           <Image
           className="object-fit w-1/2"
           width={1200}
@@ -887,6 +890,40 @@ const Homepage = () => {
           src="/overgrown-logo.png"
           alt="overgrown-logo" />
         </div>
+
+        <div className="max-w-screen-xl mx-8 flex flex-col items-center gap-8 py-36">
+   
+   <h1 className="text-7xl leading-none text-white font-bold pb-6 border-b-4 border-white">Recent Web</h1>
+
+
+ <Image
+ className="object-fit w-1/2"
+ width={1200}
+ height={1200}
+ src="/runrabbit-logo.png"
+ alt="runrabbit-logo" />
+
+<Image
+ className="object-fit w-full"
+ width={1200}
+ height={1200}
+ src="/sugarsmiths-logo.png"
+ alt="sugarsmiths-logo" />
+
+
+<Image
+ className="object-fit w-full"
+ width={1200}
+ height={1200}
+ src="/khalifamints-logo.png"
+ alt="khalifamints-logo" />
+ <Image
+ className="object-fit w-full"
+ width={1200}
+ height={1200}
+ src="/overgrown-logo.png"
+ alt="overgrown-logo" />
+</div>
 
             {/* <motion.svg
               className="ml-auto h-full w-full relative z-40"
