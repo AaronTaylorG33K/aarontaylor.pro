@@ -538,7 +538,7 @@ const Homepage = () => {
 
             <motion.div
               style={{ ...animations.text }}
-              className={`absolute min-w-[330px] -mt-16  mx-4 lg:mt-0 lg:ml-12  text-xl lg:text-2xl leading-none overflow-hidden  flex justify-center items-center z-50  text-white p-4 w-1/2 lg:w-1/5 mt-16 ${caveat.className}`}
+              className={`absolute min-w-[330px] mx-4 lg:mt-0 lg:ml-12  text-xl lg:text-2xl leading-none overflow-hidden  flex justify-center items-center z-50  text-white p-4 w-1/2 lg:w-1/5  -mt-16  ${caveat.className}`}
             >
               {`Hey there, I'm Aaron! I\'ve been designing, coding and managing IT teams for over 25 years. I have a passion for AI and enterprise app dev using cutting edge technology.`}
             </motion.div>
