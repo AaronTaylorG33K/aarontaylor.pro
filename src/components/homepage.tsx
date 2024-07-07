@@ -942,100 +942,127 @@ const Homepage = () => {
                 </div>
               </div>
 
-
-
-              <div className="w-full flex gap-8">
-                <div className="w-1/2 flex items-center justify-center">
-                  <div className="p-4">
+              <div className="w-full  flex flex-col-reverse md:flex-row gap-0 md:gap-8">
+                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[70dvh]">
+                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0">
                     <h3
-                      className={`text-7xl text-white ${anton.className} uppercase`}
+                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
                     >
-                      Sugarsmiths
+                      {`Sugarsmith\'s`}
                     </h3>
                     <div className={`text-3xl text-white ${caveat.className}`}>
-                      Branding & package design.
+                      Branding & package design
                     </div>
                   </div>
                 </div>
-                <div className="bg-black/20 backdrop-blur-sm p-4 w-1/2 min-h-[500px] max-h-[500px] overflow-hidden flex justify-center items-center ">
-                  <Image
-                    className="object-fit rotate-12 "
+                <div className="flex justify-center items-center w-full md:w-1/2">
+                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
+                    
+                    <Image
+                    className="object-fit rotate-12 scale-125"
                     width={1200}
                     height={1200}
                     src="/sugarsmiths-logo.png"
                     alt="sugarsmiths-logo"
                   />
+
+                  </div>
                 </div>
               </div>
-              <div className="w-full flex gap-8">
-                <div className="bg-black/20 backdrop-blur-sm p-4 w-1/2 h-[500px] overflow-hidden flex justify-center items-center ">
-                  <Image
-                    className="object-fit -rotate-12"
+
+
+              <div className="w-full  flex flex-col md:flex-row gap-0 md:gap-8">
+                
+                <div className="flex justify-center items-center w-full md:w-1/2">
+                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
+                    
+                    <Image
+                    className="object-fit -rotate-12 scale-125"
                     width={1200}
                     height={1200}
                     src="/khalifamints-logo.png"
                     alt="khalifamints-logo"
                   />
+
+                  </div>
                 </div>
-                <div className="w-1/2 flex flex-col items-center justify-center">
-                  <h3
-                    className={`text-7xl text-white ${anton.className} uppercase`}
-                  >
-                    Headwater
-                  </h3>
-                  <div className={`text-3xl text-white ${caveat.className}`}>
-                    Design & stickers
+                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[90dvh]">
+                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0 w-full">
+                    <h3
+                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
+                    >
+                      Headwater
+                    </h3>
+                    <div className={`text-3xl text-white ${caveat.className}`}>
+                      Sticker design
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="w-full flex gap-8">
-                <div className="w-1/2 flex items-center justify-center">
-                  <div className="p-4">
+
+              <div className="w-full  flex flex-col-reverse md:flex-row gap-0 md:gap-8">
+                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[70dvh]">
+                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0">
                     <h3
-                      className={`text-7xl text-white ${anton.className} uppercase`}
+                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
                     >
-                      Overgrown Hydroponics
+                      {`Overgrown Hydroponics`}
                     </h3>
                     <div className={`text-3xl text-white ${caveat.className}`}>
-                      Branding & package design.
+                      Branding, packaging & merch design
                     </div>
                   </div>
                 </div>
-                <div className="bg-black/20 backdrop-blur-sm p-4 w-1/2 h-[500px] overflow-hidden flex justify-center items-center ">
-                  <Image
-                    className="object-fit rotate-12"
+                <div className="flex justify-center items-center w-full md:w-1/2">
+                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
+                    
+                    <Image
+                    className="object-fit rotate-12 scale-125"
                     width={1200}
                     height={1200}
                     src="/overgrown-logo.png"
                     alt="overgrown-logo"
                   />
-                </div>
-              </div>
 
-              <div className="w-full flex gap-8">
-                <div className="bg-black/20 backdrop-blur-sm p-4 w-1/2 max-h-[500px] overflow-hidden flex justify-center items-center ">
-                  <Image
-                    className="object-fit -rotate-12 -mt-12"
-                    width={1200}
-                    height={1200}
-                    src="/seedbeast-logo.png"
-                    alt="runrabbit-logo"
-                  />
-                </div>
-
-                <div className="w-1/2 flex flex-col items-center justify-center">
-                  <h3
-                    className={`text-7xl text-white ${anton.className} uppercase`}
-                  >
-                    SeedBeast
-                  </h3>
-                  <div className={`text-3xl text-white ${caveat.className}`}>
-                    Branding & merch design
                   </div>
                 </div>
               </div>
-            </div>
+
+
+
+
+              <div className="w-full  flex flex-col md:flex-row gap-0 md:gap-8">
+                
+                <div className="flex justify-center items-center w-full md:w-1/2">
+                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
+                    
+                    <Image
+                    className="object-fit -rotate-12 scale-125"
+                    width={1200}
+                    height={1200}
+                    src="/seedbeast-logo.png"
+                    alt="seedbeast-logo"
+                  />
+
+                  </div>
+                </div>
+                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[90dvh]">
+                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0 w-full">
+                    <h3
+                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
+                    >
+                      Seed Beast
+                    </h3>
+                    <div className={`text-3xl text-white ${caveat.className}`}>
+                      Branding & merch design
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+</div>
+              
 
             {/* <motion.svg
               className="ml-auto h-full w-full relative z-40"
