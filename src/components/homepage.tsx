@@ -929,7 +929,7 @@ const Homepage = () => {
                   </div>
                 </div>
                 <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[90dvh]">
-                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0">
+                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0 w-full">
                     <h3
                       className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
                     >
@@ -944,7 +944,7 @@ const Homepage = () => {
 
               <div className="w-full  flex flex-col-reverse md:flex-row gap-0 md:gap-8">
                 <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[70dvh]">
-                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0">
+                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0 w-full">
                     <h3
                       className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
                     >
@@ -957,9 +957,17 @@ const Homepage = () => {
                 </div>
                 <div className="flex justify-center items-center w-full md:w-1/2">
                   <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    
+                  <div className="absolute inset-0 bg-black/50 transition-all duration-300 z-40"></div>
                     <Image
-                    className="object-fit rotate-12 scale-125"
+                    className="object-fit  scale-125 before:content('') before:bg-black/50 before:w-full before:h-full"
+                    width={1200}
+                    height={1200}
+                    src="/sugarsmiths-package.jpeg"
+                    alt="sugarsmiths-logo"
+                  />
+
+<Image
+                    className="object-fit  absolute scale-75 top-4 z-50 "
                     width={1200}
                     height={1200}
                     src="/sugarsmiths-logo.png"
