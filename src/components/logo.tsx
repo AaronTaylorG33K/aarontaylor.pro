@@ -31,7 +31,7 @@ const Logo = (props: LogoProps) => {
   const y = useTransform(scrollYProgress, [0.88,1],['0px','-100px'])
 
   const cB = cubicBezier(0.17, 0.67, 0.83, 0.67);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 0.8, 1], [1, 1, 1, 1], {ease: cB});
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [1, 0, 0, 0], {ease: cB});
   // const x = useTransform(scrollYProgress, [0, 0.3, 0.6], ["-5vw", "-5vw", "-5vw"], {ease: cB});
   // const y = useTransform(scrollYProgress, [0,0.1, 0.9, 1], ['-5vh', '-5vh','-5vh','-5vh'], {ease: cB});
   const color = useTransform(

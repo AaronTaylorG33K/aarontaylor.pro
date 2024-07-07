@@ -1,6 +1,6 @@
 "use client";
 import useViewportSize from "@/hooks/useViewportSize";
-import { Caveat } from '@next/font/google'
+import { Caveat, Anton } from "@next/font/google";
 import {
   cubicBezier,
   motion,
@@ -15,11 +15,13 @@ import Logo from "./logo";
 import Image from "next/image";
 
 const caveat = Caveat({
-  subsets: [
-    'latin'
-  ],
-  weight: ['400','500']
-})
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
+const anton = Anton({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 const Homepage = () => {
   const ref = useRef(null);
 
@@ -75,7 +77,7 @@ const Homepage = () => {
         ["0vw", "200vw", "200vw"],
         { ease: cB }
       ),
-      opacity: useTransform(scrollYProgress,  [0, 0.2, 0.4], [1, 0, 0], {
+      opacity: useTransform(scrollYProgress, [0, 0.2, 0.4], [1, 0, 0], {
         ease: cB,
       }),
     },
@@ -125,7 +127,7 @@ const Homepage = () => {
         x: useTransform(
           scrollYProgress,
           [0, 0.2, 0.3, 0.4],
-          [isMobile ? "12vw":"20vw", "50vw", "0vw", "0vw"],
+          [isMobile ? "12vw" : "20vw", "50vw", "0vw", "0vw"],
           { ease: cB }
         ),
         opacity: useTransform(
@@ -194,35 +196,50 @@ const Homepage = () => {
       make: {
         x: useTransform(
           scrollYProgress,
-          [0, 0.2,  0.42, 0.5],
+          [0, 0.2, 0.42, 0.5],
           ["-300vw", "0vw", "0vw", "-250vw"],
           { ease: cB }
         ),
-        opacity: useTransform(scrollYProgress, [0, 0.2,  0.42, 0.5], [0, 1, 1, 0], {
-          ease: cB,
-        }),
+        opacity: useTransform(
+          scrollYProgress,
+          [0, 0.2, 0.42, 0.5],
+          [0, 1, 1, 0],
+          {
+            ease: cB,
+          }
+        ),
       },
       some: {
         x: useTransform(
           scrollYProgress,
-          [0, 0.2,  0.44, 0.5],
+          [0, 0.2, 0.44, 0.5],
           ["-500vw", "0vw", "0vw", "-250vw"],
           { ease: cB }
         ),
-        opacity: useTransform(scrollYProgress, [0, 0.2,  0.44, 0.5], [0, 1, 1, 0], {
-          ease: cB,
-        }),
+        opacity: useTransform(
+          scrollYProgress,
+          [0, 0.2, 0.44, 0.5],
+          [0, 1, 1, 0],
+          {
+            ease: cB,
+          }
+        ),
       },
       magic: {
         x: useTransform(
           scrollYProgress,
-          [0, 0.2,  0.45, 0.5],
+          [0, 0.2, 0.45, 0.5],
           ["-200vw", "0vw", "0vw", "-200vw"],
           { ease: cB }
         ),
-        opacity: useTransform(scrollYProgress, [0, 0.2,  0.45, 0.5], [0, 1, 1,  0], {
-          ease: cB,
-        }),
+        opacity: useTransform(
+          scrollYProgress,
+          [0, 0.2, 0.45, 0.5],
+          [0, 1, 1, 0],
+          {
+            ease: cB,
+          }
+        ),
       },
     },
     slide3: {
@@ -420,21 +437,22 @@ const Homepage = () => {
   };
   const startColors = [
     "#553c9a", // purple-800
-    "#805ad5", // light purple
-    "#00ffc2", // even lighter purple
-    "#000000", // pink-600
+    "#553c9a", // green
+    "#1c75bc", // blue
+    "#553c9a", // even lighter purple
+    // "#8dc63f", // pink-600
   ];
 
   const endColors = [
     "#d53f8c", // pink-600
-    "#ed64a6", // light pink
-    "#000000", // even lighter pink
-    "#000000", // purple-800
+    "#00aeef", // light pink
+    "#4ac8f5", // even lighter pink
+    "#d53f8c", // purple-800
   ];
 
   const startColor = useTransform(
     scrollYProgress,
-    [0, 0.33, 0.66, 1],
+    [0, 0.05, 0.3, 0.4],
     startColors
   );
 
@@ -448,7 +466,7 @@ const Homepage = () => {
   return (
     <>
       <Logo scrollYProgress={scrollYProgress} />
-      
+
       <motion.div
         ref={ref}
         id="hyperPink"
@@ -456,7 +474,6 @@ const Homepage = () => {
         className="h-full  w-full overflow-y-auto hyperPink hide-scroll"
         layoutScroll
       >
-      
         <div
           className="fixed z-[5] inset-0 pointer-events-none"
           style={{
@@ -472,7 +489,6 @@ const Homepage = () => {
           ref={refs.section1}
           className=" relative w-screen z-10 h-[180dvh] h-[24nj3w 340dvh] snap-center justify-end items-end "
         >
-
           <motion.div
             layout
             className="flex flex-row items-center justify-center  gap-4 pointer-events-none sticky top-0 bottom-0 left-0 right-0 overflow-hidden w-full "
@@ -520,7 +536,10 @@ const Homepage = () => {
               </motion.svg>{" "}
             </div>
 
-            <motion.div style={{ ...animations.text }} className={`absolute min-w-[330px] -mt-14  mx-4 lg:mt-0 lg:ml-12  text-xl lg:text-2xl leading-none overflow-hidden  flex justify-center items-center z-50  text-white p-4 w-1/2 lg:w-1/5 mt-16 ${caveat.className}`}>
+            <motion.div
+              style={{ ...animations.text }}
+              className={`absolute min-w-[330px] -mt-16  mx-4 lg:mt-0 lg:ml-12  text-xl lg:text-2xl leading-none overflow-hidden  flex justify-center items-center z-50  text-white p-4 w-1/2 lg:w-1/5 mt-16 ${caveat.className}`}
+            >
               {`Hey there, I'm Aaron! I\'ve been designing, coding and managing IT teams for over 25 years. I have a passion for AI and enterprise app dev using cutting edge technology.`}
             </motion.div>
             <div className="absolute z-50  -top-[30dvh] left-0 right-0 bottom-0 flex flex-col items-center justify-center pointer-events-none">
@@ -581,10 +600,8 @@ const Homepage = () => {
                   />
                 </g>
               </motion.svg>
-              
             </div>
 
-        
             <div className="w-screen  h-[90dvh] sm:h-[90dvh] md:h-[90dvh] lg:h-[90dvh] overflow-hidden">
               <motion.div
                 className="w-full h-full lg:w-[50vw] absolute bottom-[10dvh] sm:bottom-[7dvh] md:bottom-[7dvh] lg:bottom-[25dvh] z-40  overflow-hidden "
@@ -854,76 +871,171 @@ const Homepage = () => {
           ref={refs.section6}
           className="h-[90vh] lg:h-[90dvh] w-screen flex relative snap-center items-start justify-start  "
         >
-          <div className="absolute left-0 top-0 right-0 bottom-12 lg:bottom-0 pointer-events-none">
+          <div className="absolute left-0 top-0 right-0 bottom-12 lg:bottom-0 pointer-events-none z-50">
+            <div className="max-w-screen mx-8 flex flex-col items-center gap-8 py-36">
+              <h1 className="text-7xl leading-none text-white font-bold pb-6 border-b-4 border-white w-full">
+                Recent Web
+              </h1>
+            </div>
+            <div className="max-w-screen mx-8 flex flex-col items-center gap-8 py-36 ">
+              
+              
+              <h1 className="text-7xl leading-none text-white font-bold pb-6 border-b-4 border-white w-full mx-4">
+                Recent Branding
+              </h1>
+
+              <div className="w-full  flex flex-col-reverse md:flex-row gap-0 md:gap-8">
+                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[70dvh]">
+                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0">
+                    <h3
+                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
+                    >
+                      Run Rabbit Tattoos
+                    </h3>
+                    <div className={`text-3xl text-white ${caveat.className}`}>
+                      Branding & merch design
+                    </div>
+                  </div>
+                </div>
+                <div className="flex justify-center items-center w-full md:w-1/2">
+                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
+                    
+                    <Image
+                    className="object-fit"
+                    width={1200}
+                    height={1200}
+                    src="/runrabbit-logo.png"
+                    alt="runrabbit-logo"
+                  />
+
+                  </div>
+                </div>
+              </div>
 
 
-        <div className="max-w-screen-xl mx-8 flex flex-col items-center gap-8 py-36">
-   
-            <h1 className="text-7xl leading-none text-white font-bold pb-6 border-b-4 border-white">Recent Branding</h1>
+              <div className="w-full  flex flex-col md:flex-row gap-0 md:gap-8">
+                
+                <div className="flex justify-center items-center w-full md:w-1/2">
+                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
+                    
+                    <Image
+                    className="object-fit -rotate-12 scale-125"
+                    width={1200}
+                    height={1200}
+                    src="/slam-campbell-logo.png"
+                    alt="slam-campbell-logo"
+                  />
+
+                  </div>
+                </div>
+                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[90dvh]">
+                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0">
+                    <h3
+                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
+                    >
+                      Slam Campbell
+                    </h3>
+                    <div className={`text-3xl text-white ${caveat.className}`}>
+                      Branding & merch design
+                    </div>
+                  </div>
+                </div>
+              </div>
 
 
-          <Image
-          className="object-fit w-1/2"
-          width={1200}
-          height={1200}
-          src="/runrabbit-logo.png"
-          alt="runrabbit-logo" />
 
-<Image
-          className="object-fit w-full"
-          width={1200}
-          height={1200}
-          src="/sugarsmiths-logo.png"
-          alt="sugarsmiths-logo" />
+              <div className="w-full flex gap-8">
+                <div className="w-1/2 flex items-center justify-center">
+                  <div className="p-4">
+                    <h3
+                      className={`text-7xl text-white ${anton.className} uppercase`}
+                    >
+                      Sugarsmiths
+                    </h3>
+                    <div className={`text-3xl text-white ${caveat.className}`}>
+                      Branding & package design.
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-black/20 backdrop-blur-sm p-4 w-1/2 min-h-[500px] max-h-[500px] overflow-hidden flex justify-center items-center ">
+                  <Image
+                    className="object-fit rotate-12 "
+                    width={1200}
+                    height={1200}
+                    src="/sugarsmiths-logo.png"
+                    alt="sugarsmiths-logo"
+                  />
+                </div>
+              </div>
+              <div className="w-full flex gap-8">
+                <div className="bg-black/20 backdrop-blur-sm p-4 w-1/2 h-[500px] overflow-hidden flex justify-center items-center ">
+                  <Image
+                    className="object-fit -rotate-12"
+                    width={1200}
+                    height={1200}
+                    src="/khalifamints-logo.png"
+                    alt="khalifamints-logo"
+                  />
+                </div>
+                <div className="w-1/2 flex flex-col items-center justify-center">
+                  <h3
+                    className={`text-7xl text-white ${anton.className} uppercase`}
+                  >
+                    Headwater
+                  </h3>
+                  <div className={`text-3xl text-white ${caveat.className}`}>
+                    Design & stickers
+                  </div>
+                </div>
+              </div>
 
+              <div className="w-full flex gap-8">
+                <div className="w-1/2 flex items-center justify-center">
+                  <div className="p-4">
+                    <h3
+                      className={`text-7xl text-white ${anton.className} uppercase`}
+                    >
+                      Overgrown Hydroponics
+                    </h3>
+                    <div className={`text-3xl text-white ${caveat.className}`}>
+                      Branding & package design.
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-black/20 backdrop-blur-sm p-4 w-1/2 h-[500px] overflow-hidden flex justify-center items-center ">
+                  <Image
+                    className="object-fit rotate-12"
+                    width={1200}
+                    height={1200}
+                    src="/overgrown-logo.png"
+                    alt="overgrown-logo"
+                  />
+                </div>
+              </div>
 
-<Image
-          className="object-fit w-full"
-          width={1200}
-          height={1200}
-          src="/khalifamints-logo.png"
-          alt="khalifamints-logo" />
-          <Image
-          className="object-fit w-full"
-          width={1200}
-          height={1200}
-          src="/overgrown-logo.png"
-          alt="overgrown-logo" />
-        </div>
+              <div className="w-full flex gap-8">
+                <div className="bg-black/20 backdrop-blur-sm p-4 w-1/2 max-h-[500px] overflow-hidden flex justify-center items-center ">
+                  <Image
+                    className="object-fit -rotate-12 -mt-12"
+                    width={1200}
+                    height={1200}
+                    src="/seedbeast-logo.png"
+                    alt="runrabbit-logo"
+                  />
+                </div>
 
-        <div className="max-w-screen-xl mx-8 flex flex-col items-center gap-8 py-36">
-   
-   <h1 className="text-7xl leading-none text-white font-bold pb-6 border-b-4 border-white">Recent Web</h1>
-
-
- <Image
- className="object-fit w-1/2"
- width={1200}
- height={1200}
- src="/runrabbit-logo.png"
- alt="runrabbit-logo" />
-
-<Image
- className="object-fit w-full"
- width={1200}
- height={1200}
- src="/sugarsmiths-logo.png"
- alt="sugarsmiths-logo" />
-
-
-<Image
- className="object-fit w-full"
- width={1200}
- height={1200}
- src="/khalifamints-logo.png"
- alt="khalifamints-logo" />
- <Image
- className="object-fit w-full"
- width={1200}
- height={1200}
- src="/overgrown-logo.png"
- alt="overgrown-logo" />
-</div>
+                <div className="w-1/2 flex flex-col items-center justify-center">
+                  <h3
+                    className={`text-7xl text-white ${anton.className} uppercase`}
+                  >
+                    SeedBeast
+                  </h3>
+                  <div className={`text-3xl text-white ${caveat.className}`}>
+                    Branding & merch design
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {/* <motion.svg
               className="ml-auto h-full w-full relative z-40"
@@ -1010,9 +1122,7 @@ const Homepage = () => {
           ref={refs.section5}
           className=" h-[90dvh] text-white lg:h-[90dvh] w-screen flex relative snap-center items-center justify-center  z-50"
         >
-
-black
-
+         
         </motion.div>
       </motion.div>
     </>
