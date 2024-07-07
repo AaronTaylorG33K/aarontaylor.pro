@@ -1,14 +1,5 @@
 import { Metadata } from "next";
-import { useContext } from "react";
-import { cubicBezier, motion, MotionValue, useScroll, useTransform } from "framer-motion";
-import WaveComponent from "@/components/wave";
 import Homepage from "@/components/homepage";
-
-
-interface LayoutRouterContextType {
-  scrollableContainerRef: React.RefObject<HTMLElement> | null;
-  scrollYProgress: MotionValue<number>;
-}
 
 export const metadata: Metadata = {
   title: "Aaron Taylor | Professional IT & Media Services",
