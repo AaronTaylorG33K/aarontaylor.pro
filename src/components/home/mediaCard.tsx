@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import { Caveat, Anton } from "@next/font/google";
 import { useRef } from "react";
@@ -39,7 +40,7 @@ const MediaCard: React.FC<MediaCardProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: isInView ? 1 : 0 }}
           transition={{ duration: 1.5 }}
-          className="bg-black/20 md:bg-black/0 p-4 md:p-0"
+          className="bg-black/20 md:bg-black/0 p-4 md:p-0 w-full"
         >
           <h3
             className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
@@ -52,11 +53,12 @@ const MediaCard: React.FC<MediaCardProps> = ({
         </motion.div>
       </div>
       <div className="flex justify-center items-center w-full md:w-1/2">
-        <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
+        <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20v w-full backdrop-blur-sm overflow-hidden ">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1.2 : 1, rotate: isInView ? orientation === 'left' ? '12deg':'-12deg':'0deg' }}
             transition={{ duration: 1.5 }}
+            className="w-full"
           >
             <Image
               className="object-contain"
