@@ -713,7 +713,7 @@ const Homepage = () => {
           <div className="absolute left-0 top-0 right-0 bottom-12 lg:bottom-0  z-50">
             <div className="max-w-screen  flex flex-col items-center gap-8 ">
               <WebCard /> 
-              <WebCard2 />
+              {/* <WebCard2 /> */}
 
 
 
