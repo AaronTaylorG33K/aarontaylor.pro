@@ -40,7 +40,7 @@ const MediaCard: React.FC<MediaCardProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: isInView ? 1 : 0 }}
           transition={{ duration: 1.5 }}
-          className="bg-black/20 md:bg-black/0 p-4 md:p-0 w-full"
+          className="bg-black/20 md:bg-black/0 p-4 md:p-0 w-full md:w-auto"
         >
           <h3
             className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
