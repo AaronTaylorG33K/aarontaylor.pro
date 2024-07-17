@@ -15,6 +15,7 @@ import Logo from "./logo";
 import Image from "next/image";
 import WebCard from "./home/webCard";
 import WebCard2 from "./home/webCard2";
+import MediaCard from "./home/mediaCard";
 
 const caveat = Caveat({
   subsets: ["latin"],
@@ -712,271 +713,55 @@ const Homepage = () => {
         >
           <div className="absolute left-0 top-0 right-0 bottom-12 lg:bottom-0  z-50">
             <div className="max-w-screen  flex flex-col items-center gap-8 ">
-              <WebCard /> 
+              <WebCard />
               {/* <WebCard2 /> */}
 
-
-
-
               {/* <div className="h-[500vh]"></div> */}
-              
             </div>
             <div className="max-w-screen mx-8 flex flex-col items-center gap-8 py-36 ">
-           
+              <MediaCard
+                url="/runrabbit-logo.png"
+                title="Run Rabbit Tattoos"
+                subtitle="Branding & merch design"
+                orientation="left"
+              />
 
-              <div className="w-full  flex flex-col-reverse md:flex-row gap-0 md:gap-8">
-                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[70dvh]">
-                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0">
-                    <h3
-                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
-                    >
-                      Run Rabbit Tattoos
-                    </h3>
-                    <div className={`text-3xl text-white ${caveat.className}`}>
-                      Branding & merch design
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center items-center w-full md:w-1/2">
-                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    <Image
-                      className="object-fit"
-                      width={1200}
-                      height={1200}
-                      src="/runrabbit-logo.png"
-                      alt="runrabbit-logo"
-                    />
-                  </div>
-                </div>
-              </div>
+              <MediaCard
+                url="/slam-campbell-logo.png"
+                title="Slam Campbell"
+                subtitle="Branding & merch design"
+                orientation="right"
+              />
 
-              <div className="w-full  flex flex-col md:flex-row gap-0 md:gap-8">
-                <div className="flex justify-center items-center w-full md:w-1/2">
-                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    <Image
-                      className="object-fit -rotate-12 scale-125"
-                      width={1200}
-                      height={1200}
-                      src="/slam-campbell-logo.png"
-                      alt="slam-campbell-logo"
-                    />
-                  </div>
-                </div>
-                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[90dvh]">
-                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0 w-full">
-                    <h3
-                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
-                    >
-                      Slam Campbell
-                    </h3>
-                    <div className={`text-3xl text-white ${caveat.className}`}>
-                      Branding & merch design
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <MediaCard
+                url="/sugarsmiths-package2.jpeg"
+                title="Sugarsmiths"
+                subtitle="Branding & package design"
+                orientation="left"
+              />
 
-              <div className="w-full  flex flex-col-reverse md:flex-row gap-0 md:gap-8">
-                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[70dvh]">
-                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0 w-full">
-                    <h3
-                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
-                    >
-                      {`Sugarsmith\'s`}
-                    </h3>
-                    <div className={`text-3xl text-white ${caveat.className}`}>
-                      Branding & package design
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center items-center w-full md:w-1/2">
-                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    <div className="absolute inset-0 bg-black/20 transition-all duration-300 z-40"></div>
-                    <Image
-                      className="object-fit  scale-125 before:content('') before:bg-black/50 before:w-full before:h-full"
-                      width={1200}
-                      height={1200}
-                      src="/sugarsmiths-package2.jpeg"
-                      alt="sugarsmiths-logo"
-                    />
+              <MediaCard
+                url="/khalifamints-logo.png"
+                title="Headwater"
+                subtitle="Sticker design"
+                orientation="right"
+              />
 
-                    <Image
-                      className="object-fit  absolute scale-75 top-4 z-50 "
-                      width={1200}
-                      height={1200}
-                      src="/sugarsmiths-logo.png"
-                      alt="sugarsmiths-logo"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="w-full  flex flex-col md:flex-row gap-0 md:gap-8">
-                <div className="flex justify-center items-center w-full md:w-1/2">
-                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    <Image
-                      className="object-fit -rotate-12 scale-125"
-                      width={1200}
-                      height={1200}
-                      src="/khalifamints-logo.png"
-                      alt="khalifamints-logo"
-                    />
-                  </div>
-                </div>
-                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[90dvh]">
-                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0 w-full">
-                    <h3
-                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
-                    >
-                      Headwater
-                    </h3>
-                    <div className={`text-3xl text-white ${caveat.className}`}>
-                      Sticker design
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="w-full  flex flex-col-reverse md:flex-row gap-0 md:gap-8">
-                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[70dvh]">
-                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0">
-                    <h3
-                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
-                    >
-                      {`Overgrown Hydroponics`}
-                    </h3>
-                    <div className={`text-3xl text-white ${caveat.className}`}>
-                      Branding, packaging & merch design
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center items-center w-full md:w-1/2">
-                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    <Image
-                      className="object-fit rotate-12 scale-125"
-                      width={1200}
-                      height={1200}
-                      src="/overgrown-logo.png"
-                      alt="overgrown-logo"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="w-full  flex flex-col md:flex-row gap-0 md:gap-8">
-                <div className="flex justify-center items-center w-full md:w-1/2">
-                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    <Image
-                      className="object-fit -rotate-12 scale-125"
-                      width={1200}
-                      height={1200}
-                      src="/seedbeast-logo.png"
-                      alt="seedbeast-logo"
-                    />
-                  </div>
-                </div>
-                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[90dvh]">
-                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0 w-full">
-                    <h3
-                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
-                    >
-                      Seed Beast
-                    </h3>
-                    <div className={`text-3xl text-white ${caveat.className}`}>
-                      Branding & merch design
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <MediaCard
+                url="/overgrown-logo.png"
+                title="Overgrown Hydroponics"
+                subtitle="Branding, packaging & merch design"
+                orientation="left"
+              />
+              <MediaCard
+                url="/seedbeast-logo.png"
+                title="Seed Beast"
+                subtitle="Branding & merch design"
+                orientation="right"
+              />
             </div>
-
-            {/* <motion.svg
-              className="ml-auto h-full w-full relative z-40"
-              preserveAspectRatio={"xMaxYMax meet"}
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 337.67 497.01"
-            >
-              <motion.g style={{ ...animations.slide5.time.group }}>
-                <motion.path
-                  style={{ ...animations.slide5.time }}
-                  d="M88.3,0v27.03h-22.55v90.86h-27.03V27.03h-22.39V0h71.98Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide5.time }}
-                  d="M125.09,117.89h-27.03V.32h27.03v117.57Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide5.time }}
-                  d="M219.46.32h27.83l6.88,117.57h-27.03l-2.88-47.99-16.32,47.99h-27.03l-17.28-49.91-3.2,49.91h-27.19L140.76.32h27.83l25.75,73.58L219.46.32Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide5.time }}
-                  d="M337.67,27.67h-48.31v17.6h39.19v27.03h-39.19v18.56h48.31v27.03h-75.34V.64l75.34-.16v27.19Z"
-                />
-              </motion.g>
-              <motion.g style={{ ...animations.slide5.for.group }}>
-                <motion.path
-                  style={{ ...animations.slide5.for }}
-                  d="M117.89,153.89h-43.83v17.76h34.71v27.03h-34.71v45.59h-27.03v-117.41h70.86v27.03Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide5.for }}
-                  d="M184.51,126.69c8.09,0,15.71,1.55,22.84,4.64,7.14,3.09,13.37,7.28,18.69,12.56s9.53,11.49,12.62,18.64c3.09,7.15,4.63,14.77,4.63,22.87s-1.54,15.73-4.63,22.87c-3.09,7.15-7.3,13.36-12.62,18.64s-11.55,9.46-18.69,12.56c-7.14,3.09-14.75,4.64-22.84,4.64s-15.71-1.54-22.84-4.64c-7.14-3.09-13.34-7.28-18.61-12.56s-9.45-11.49-12.54-18.64c-3.09-7.14-4.63-14.77-4.63-22.87s1.54-15.73,4.63-22.87c3.09-7.14,7.27-13.36,12.54-18.64s11.47-9.46,18.61-12.56c7.14-3.09,14.75-4.64,22.84-4.64ZM184.59,217.07c4.37,0,8.48-.82,12.32-2.48,3.84-1.65,7.2-3.92,10.08-6.8s5.14-6.24,6.8-10.08c1.65-3.84,2.48-7.94,2.48-12.32s-.83-8.48-2.48-12.32c-1.65-3.84-3.92-7.2-6.8-10.08s-6.24-5.14-10.08-6.8c-3.84-1.65-7.95-2.48-12.32-2.48s-8.48.83-12.32,2.48c-3.84,1.65-7.2,3.92-10.08,6.8s-5.15,6.24-6.8,10.08c-1.65,3.84-2.48,7.95-2.48,12.32s.82,8.48,2.48,12.32c1.65,3.84,3.92,7.2,6.8,10.08s6.24,5.15,10.08,6.8c3.84,1.65,7.94,2.48,12.32,2.48Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide5.for }}
-                  d="M286.96,213.87c-1.39.22-2.77.37-4.16.48-1.39.11-2.83.21-4.32.32v29.59h-27.03v-116.93h27.03c6.72.11,13.01,1.33,18.88,3.67,5.86,2.34,11.01,5.49,15.44,9.43,4.42,3.94,7.89,8.55,10.4,13.82,2.5,5.27,3.76,10.83,3.76,16.69,0,6.39-1.33,12.25-4,17.57-2.67,5.32-6.4,9.96-11.2,13.9l25.91,41.85h-31.83l-18.88-30.39ZM278.49,187.64c2.88-.1,5.62-.61,8.24-1.53,2.61-.91,4.9-2.12,6.88-3.62,1.97-1.5,3.52-3.24,4.64-5.22,1.12-1.98,1.68-4.1,1.68-6.35s-.56-4.34-1.68-6.27c-1.12-1.93-2.67-3.64-4.64-5.14-1.97-1.5-4.27-2.7-6.88-3.62-2.61-.91-5.36-1.42-8.24-1.53v33.27Z"
-                />
-              </motion.g>
-              <motion.g style={{ ...animations.slide5.that.group }}>
-                <motion.path
-                  style={{ ...animations.slide5.that }}
-                  d="M71.98,252.74v27.03h-22.55v90.86h-27.03v-90.86H0v-27.03h71.98Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide5.that }}
-                  d="M142.68,253.22h27.03v117.41h-27.03v-44.31h-33.91v44.31h-27.03v-117.41h27.03v46.07h33.91v-46.07Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide5.that }}
-                  d="M249.22,370.64l-4.64-14.24h-36.95l-4.8,14.24h-28.63l39.99-117.41h25.59l37.91,117.41h-28.47ZM216.9,329.37h19.04l-9.28-28.47-9.76,28.47Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide5.that }}
-                  d="M337.67,252.74v27.03h-22.55v90.86h-27.03v-90.86h-22.39v-27.03h71.98Z"
-                />
-              </motion.g>
-              <motion.g style={{ ...animations.slide5.drip.group }}>
-                <motion.path
-                  style={{ ...animations.slide5.drip }}
-                  d="M72.3,379.12c7.78.43,15.12,2.29,21.99,5.6,6.88,3.31,12.85,7.63,17.92,12.96,5.06,5.33,9.06,11.52,12,18.56,2.93,7.04,4.4,14.56,4.4,22.55s-1.44,15.28-4.32,22.15-6.85,12.93-11.92,18.16c-5.07,5.23-11.01,9.41-17.84,12.56-6.83,3.15-14.24,4.93-22.23,5.36h-27.03v-118.05h27.03v.16ZM72.3,469.97c4.16-.43,8.02-1.52,11.6-3.29,3.57-1.76,6.66-4.04,9.28-6.82,2.61-2.78,4.66-5.96,6.16-9.54,1.49-3.58,2.24-7.4,2.24-11.47s-.75-8.15-2.24-11.95c-1.49-3.79-3.57-7.16-6.24-10.1-2.67-2.94-5.76-5.35-9.28-7.22-3.52-1.87-7.36-3.02-11.52-3.45v63.82Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide5.drip }}
-                  d="M170.36,466.62c-1.39.22-2.77.37-4.16.48-1.39.11-2.83.21-4.32.32v29.59h-27.03v-116.93h27.03c6.72.11,13.01,1.33,18.88,3.67,5.86,2.34,11.01,5.49,15.44,9.43,4.42,3.94,7.89,8.55,10.4,13.82,2.5,5.27,3.76,10.83,3.76,16.69,0,6.39-1.33,12.25-4,17.57-2.67,5.32-6.4,9.96-11.2,13.9l25.91,41.85h-31.83l-18.88-30.39ZM161.88,440.38c2.88-.1,5.62-.61,8.24-1.53,2.61-.91,4.9-2.12,6.88-3.62,1.97-1.5,3.52-3.24,4.64-5.22,1.12-1.98,1.68-4.1,1.68-6.35s-.56-4.34-1.68-6.27-2.67-3.64-4.64-5.14c-1.97-1.5-4.27-2.7-6.88-3.62-2.61-.91-5.36-1.42-8.24-1.53v33.27Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide5.drip }}
-                  d="M246.18,497.01h-27.03v-117.57h27.03v117.57Z"
-                />
-                <motion.path
-                  style={{ ...animations.slide5.drip }}
-                  d="M337.67,429.02c0,6.72-1.25,13.04-3.76,18.96-2.51,5.92-5.97,11.12-10.4,15.6-4.43,4.48-9.57,8.03-15.44,10.64-5.87,2.61-12.16,3.97-18.88,4.08v18.72h-27.03v-117.41h27.03c6.72.11,13.01,1.49,18.88,4.16,5.86,2.67,11.01,6.24,15.44,10.72,4.42,4.48,7.89,9.68,10.4,15.6,2.5,5.92,3.76,12.24,3.76,18.96ZM289.2,451.1c2.98-.1,5.78-.77,8.4-2,2.61-1.22,4.88-2.82,6.8-4.8,1.92-1.97,3.44-4.29,4.56-6.96,1.12-2.66,1.68-5.49,1.68-8.48s-.56-5.81-1.68-8.48c-1.12-2.66-2.64-4.98-4.56-6.96-1.92-1.97-4.19-3.57-6.8-4.8-2.61-1.22-5.41-1.89-8.4-2v44.47Z"
-                />
-              </motion.g>
-            </motion.svg> */}
-
-            {/* <TheDrip scrollYProgress={scrollYProgress} /> */}
           </div>
         </motion.div>
-        {/* <motion.div
-          layout
-          id="section5"
-          ref={refs.section5}
-          className=" h-[90dvh] text-white lg:h-[90dvh] w-screen flex relative snap-center items-center justify-center  z-50"
-        >
-         
-        </motion.div> */}
       </motion.div>
     </>
   );
