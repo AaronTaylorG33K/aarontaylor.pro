@@ -13,6 +13,8 @@ import { useEffect, useRef } from "react";
 import TheDrip from "./home/theDrip";
 import Logo from "./logo";
 import Image from "next/image";
+import WebCard from "./home/webCard";
+import WebCard2 from "./home/webCard2";
 
 const caveat = Caveat({
   subsets: ["latin"],
@@ -200,7 +202,7 @@ const Homepage = () => {
           ["-300vw", "0vw", "0vw", "300vw"],
           { ease: cB }
         ),
-      
+
         opacity: useTransform(
           scrollYProgress,
           [0, 0.2, 0.325, 0.425],
@@ -473,10 +475,9 @@ const Homepage = () => {
         id="hyperPink"
         style={{ backgroundImage: bgGradient }}
         className="h-full  w-full overflow-y-auto hyperPink hide-scroll"
-        layoutScroll
       >
         <div
-          className="fixed z-[5] inset-0 pointer-events-none"
+          className="fixed z-[5] inset-0 "
           style={{
             backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.2) 2px, transparent 0)`,
             backgroundSize: "15px 15px",
@@ -700,7 +701,6 @@ const Homepage = () => {
                 </g>
               </motion.svg>
             </div>
-          
           </motion.div>
         </motion.div>
 
@@ -708,79 +708,21 @@ const Homepage = () => {
           layout
           id="section6"
           ref={refs.section6}
-          className=" w-screen flex relative snap-center items-start justify-start  "
+          className=" w-screen flex relative snap-center items-start justify-start pointer-events-auto "
         >
-          <div className="absolute left-0 top-0 right-0 bottom-12 lg:bottom-0 pointer-events-none z-50">
-            <div className="max-w-screen mx-8 flex flex-col items-center gap-8 ">
-              <h1 className="text-7xl leading-none text-white font-bold pb-6 border-b-4 border-white w-full">
-                Recent Web
-              </h1>
-
-              <div className="w-full  flex flex-col-reverse md:flex-row gap-0 md:gap-8">
-                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[70dvh]">
-                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0">
-                    <h3
-                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
-                    >
-                      Run Rabbit Tattoos
-                    </h3>
-                    <div className={`text-3xl text-white ${caveat.className}`}>
-                      Branding & merch design
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center items-center w-full md:w-1/2">
-                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    
-                    <Image
-                    className="object-fit"
-                    width={1200}
-                    height={1200}
-                    src="/runrabbit-logo.png"
-                    alt="runrabbit-logo"
-                  />
-
-                  </div>
-                </div>
-              </div>
+          <div className="absolute left-0 top-0 right-0 bottom-12 lg:bottom-0  z-50">
+            <div className="max-w-screen  flex flex-col items-center gap-8 ">
+              <WebCard /> 
+              <WebCard2 />
 
 
-              <div className="w-full  flex flex-col md:flex-row gap-0 md:gap-8">
-                
-                <div className="flex justify-center items-center w-full md:w-1/2">
-                  <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    
-                    <Image
-                    className="object-fit -rotate-12 scale-125"
-                    width={1200}
-                    height={1200}
-                    src="/slam-campbell-logo.png"
-                    alt="slam-campbell-logo"
-                  />
 
-                  </div>
-                </div>
-                <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[90dvh]">
-                  <div className="bg-black/20 md:bg-black/0 p-4 md:p-0 w-full">
-                    <h3
-                      className={`text-5xl md:text-7xl text-white ${anton.className} uppercase`}
-                    >
-                      Slam Campbell
-                    </h3>
-                    <div className={`text-3xl text-white ${caveat.className}`}>
-                      Branding & merch design
-                    </div>
-                  </div>
-                </div>
-              </div>
 
+              {/* <div className="h-[500vh]"></div> */}
+              
             </div>
             <div className="max-w-screen mx-8 flex flex-col items-center gap-8 py-36 ">
-              
-              
-              <h1 className="text-7xl leading-none text-white font-bold pb-6 border-b-4 border-white w-full mx-4">
-                Recent Branding
-              </h1>
+           
 
               <div className="w-full  flex flex-col-reverse md:flex-row gap-0 md:gap-8">
                 <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[70dvh]">
@@ -797,33 +739,27 @@ const Homepage = () => {
                 </div>
                 <div className="flex justify-center items-center w-full md:w-1/2">
                   <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    
                     <Image
-                    className="object-fit"
-                    width={1200}
-                    height={1200}
-                    src="/runrabbit-logo.png"
-                    alt="runrabbit-logo"
-                  />
-
+                      className="object-fit"
+                      width={1200}
+                      height={1200}
+                      src="/runrabbit-logo.png"
+                      alt="runrabbit-logo"
+                    />
                   </div>
                 </div>
               </div>
 
-
               <div className="w-full  flex flex-col md:flex-row gap-0 md:gap-8">
-                
                 <div className="flex justify-center items-center w-full md:w-1/2">
                   <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    
                     <Image
-                    className="object-fit -rotate-12 scale-125"
-                    width={1200}
-                    height={1200}
-                    src="/slam-campbell-logo.png"
-                    alt="slam-campbell-logo"
-                  />
-
+                      className="object-fit -rotate-12 scale-125"
+                      width={1200}
+                      height={1200}
+                      src="/slam-campbell-logo.png"
+                      alt="slam-campbell-logo"
+                    />
                   </div>
                 </div>
                 <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[90dvh]">
@@ -855,41 +791,36 @@ const Homepage = () => {
                 </div>
                 <div className="flex justify-center items-center w-full md:w-1/2">
                   <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                  <div className="absolute inset-0 bg-black/20 transition-all duration-300 z-40"></div>
+                    <div className="absolute inset-0 bg-black/20 transition-all duration-300 z-40"></div>
                     <Image
-                    className="object-fit  scale-125 before:content('') before:bg-black/50 before:w-full before:h-full"
-                    width={1200}
-                    height={1200}
-                    src="/sugarsmiths-package2.jpeg"
-                    alt="sugarsmiths-logo"
-                  />
+                      className="object-fit  scale-125 before:content('') before:bg-black/50 before:w-full before:h-full"
+                      width={1200}
+                      height={1200}
+                      src="/sugarsmiths-package2.jpeg"
+                      alt="sugarsmiths-logo"
+                    />
 
-<Image
-                    className="object-fit  absolute scale-75 top-4 z-50 "
-                    width={1200}
-                    height={1200}
-                    src="/sugarsmiths-logo.png"
-                    alt="sugarsmiths-logo"
-                  />
-
+                    <Image
+                      className="object-fit  absolute scale-75 top-4 z-50 "
+                      width={1200}
+                      height={1200}
+                      src="/sugarsmiths-logo.png"
+                      alt="sugarsmiths-logo"
+                    />
                   </div>
                 </div>
               </div>
 
-
               <div className="w-full  flex flex-col md:flex-row gap-0 md:gap-8">
-                
                 <div className="flex justify-center items-center w-full md:w-1/2">
                   <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    
                     <Image
-                    className="object-fit -rotate-12 scale-125"
-                    width={1200}
-                    height={1200}
-                    src="/khalifamints-logo.png"
-                    alt="khalifamints-logo"
-                  />
-
+                      className="object-fit -rotate-12 scale-125"
+                      width={1200}
+                      height={1200}
+                      src="/khalifamints-logo.png"
+                      alt="khalifamints-logo"
+                    />
                   </div>
                 </div>
                 <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[90dvh]">
@@ -906,7 +837,6 @@ const Homepage = () => {
                 </div>
               </div>
 
-
               <div className="w-full  flex flex-col-reverse md:flex-row gap-0 md:gap-8">
                 <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[70dvh]">
                   <div className="bg-black/20 md:bg-black/0 p-4 md:p-0">
@@ -922,35 +852,27 @@ const Homepage = () => {
                 </div>
                 <div className="flex justify-center items-center w-full md:w-1/2">
                   <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    
                     <Image
-                    className="object-fit rotate-12 scale-125"
-                    width={1200}
-                    height={1200}
-                    src="/overgrown-logo.png"
-                    alt="overgrown-logo"
-                  />
-
+                      className="object-fit rotate-12 scale-125"
+                      width={1200}
+                      height={1200}
+                      src="/overgrown-logo.png"
+                      alt="overgrown-logo"
+                    />
                   </div>
                 </div>
               </div>
 
-
-
-
               <div className="w-full  flex flex-col md:flex-row gap-0 md:gap-8">
-                
                 <div className="flex justify-center items-center w-full md:w-1/2">
                   <div className="w-full h-[30vh] md:h-[60vh] md:w-[35vw] flex justify-center items-center bg-black/50 md:bg-black/20 backdrop-blur-sm overflow-hidden ">
-                    
                     <Image
-                    className="object-fit -rotate-12 scale-125"
-                    width={1200}
-                    height={1200}
-                    src="/seedbeast-logo.png"
-                    alt="seedbeast-logo"
-                  />
-
+                      className="object-fit -rotate-12 scale-125"
+                      width={1200}
+                      height={1200}
+                      src="/seedbeast-logo.png"
+                      alt="seedbeast-logo"
+                    />
                   </div>
                 </div>
                 <div className="w-full md:w-1/2  lg:w-1/2 flex items-center justify-center md:min-h-[90dvh]">
@@ -966,9 +888,7 @@ const Homepage = () => {
                   </div>
                 </div>
               </div>
-
-</div>
-              
+            </div>
 
             {/* <motion.svg
               className="ml-auto h-full w-full relative z-40"
@@ -1049,14 +969,14 @@ const Homepage = () => {
             {/* <TheDrip scrollYProgress={scrollYProgress} /> */}
           </div>
         </motion.div>
-        <motion.div
+        {/* <motion.div
           layout
           id="section5"
           ref={refs.section5}
           className=" h-[90dvh] text-white lg:h-[90dvh] w-screen flex relative snap-center items-center justify-center  z-50"
         >
          
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </>
   );
