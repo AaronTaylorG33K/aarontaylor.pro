@@ -9,7 +9,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import TheDrip from "./home/theDrip";
 import Logo from "./logo";
 import Image from "next/image";
@@ -468,37 +468,41 @@ const Homepage = () => {
     ([start, end]) => `linear-gradient(to bottom right, ${start}, ${end})`
   );
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<FormDataType>({});
 
-  const handleChange = (e) => {
+  type FormDataType = {
+    [key: string]: string;
+  };
+  
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-
-  const [formSubmitted, setFormSubmitted] = useState(false)
-
-  const handleSubmit = async (e) => {
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
-    // Handle form submission logic here (e.g., send form data to an API)
-    // console.log("Form submitted", formData);
-
-    const r = await fetch('/api/send', {method:'POST', body: JSON.stringify(formData)});
-    const d = await r.json();
-
-    if(r.ok) {
-
-      setFormSubmitted(true)
-      console.log('Success')
+  
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setFormSubmitted(true);
+      } else {
+        console.error('Error:', data);
+      }
+    } catch (error) {
+      console.error('Error:', error);
     }
-
-  };  
+  };
 
   return (
     <>
