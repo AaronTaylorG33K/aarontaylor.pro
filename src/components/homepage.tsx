@@ -9,13 +9,14 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import TheDrip from "./home/theDrip";
 import Logo from "./logo";
 import Image from "next/image";
 import WebCard from "./home/webCard";
 import WebCard2 from "./home/webCard2";
 import MediaCard from "./home/mediaCard";
+import BlobbyHill from "./home/blobbyHill";
 
 const caveat = Caveat({
   subsets: ["latin"],
@@ -467,6 +468,38 @@ const Homepage = () => {
     ([start, end]) => `linear-gradient(to bottom right, ${start}, ${end})`
   );
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+
+  const [formSubmitted, setFormSubmitted] = useState(false)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Handle form submission logic here (e.g., send form data to an API)
+    // console.log("Form submitted", formData);
+
+    const r = await fetch('/api/send', {method:'POST', body: JSON.stringify(formData)});
+    const d = await r.json();
+
+    if(r.ok) {
+
+      setFormSubmitted(true)
+      console.log('Success')
+    }
+
+  };  
+
   return (
     <>
       <Logo scrollYProgress={scrollYProgress} />
@@ -715,10 +748,8 @@ const Homepage = () => {
             <div className="max-w-screen  flex flex-col items-center gap-8 ">
               <WebCard />
               {/* <WebCard2 /> */}
-
-              {/* <div className="h-[500vh]"></div> */}
             </div>
-            <div className="max-w-screen mx-8 flex flex-col items-center gap-8 py-36 ">
+            <div className="max-w-screen mx-8 flex flex-col items-center gap-8 pt-36 ">
               <MediaCard
                 url="/runrabbit-logo.png"
                 title="Run Rabbit Tattoos"
@@ -759,6 +790,85 @@ const Homepage = () => {
                 subtitle="Branding & merch design"
                 orientation="right"
               />
+
+              <motion.div
+                layout
+                id="section3"
+                ref={refs.section3}
+                className=" relative bottom-0 w-screen px-8 z-10 h-[95dvh] snap-center flex flex-col justify-center items-center pointer-events-none "
+              >
+
+                <BlobbyHill scrollYProgress={scrollYProgress} />
+
+                <div className="absolute z-20 w-auto">
+                <div className="">
+                 
+                </div>
+
+                <div className="p-8  bg-black/50 backdrop-blur-xl  rounded-xl w-full max-w-[400px] mx-4 mt-8 text-white pointer-events-auto">
+                <h3 className="text-3xl text-white block text-center mb-8">Work with me</h3>
+
+                  {formSubmitted && (<div>Your information has been sent to me! I will get back to you ASAP!</div>)}
+                  {!formSubmitted && (<form onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                      <label
+                        className="block text-sm font-medium mb-1"
+                        htmlFor="name"
+                      >
+                        Name
+                      </label>
+
+                      {/* <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" /> */}
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        className="input input-bordered w-full "
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        className="block text-sm font-medium mb-1  "
+                        htmlFor="email"
+                      >
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        className="input input-bordered  w-full "
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        className="block text-sm font-medium mb-1"
+                        htmlFor="message"
+                      >
+                        Message
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        className="textarea textarea-bordered   w-full"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <button type="submit" className="btn btn-secondary text-white w-full">
+                      Send Message
+                    </button>
+                  </form>)}
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </motion.div>
